@@ -5,5 +5,26 @@ main:
     url: /categories/
   - title: "Tags"
     url: /tags/
+  - title: "Targets"
+    url: /portfolio/
   - title: "About"
     url: /about/
+
+sidebar-M31-v1:
+  - title: "Equipment"
+    children:
+      - title: "<b>Telescope:</b> Williams Optics GT71"
+      - title: "<b>Camera:</b> Canon EOS 750D"
+      - title: "<b>Mount:</b> BRESSER EXOS-2 EQ GoTo"
+      - title: "<b>Flattener:</b> WO Flat 6A III"
+      - title: "<b>Acquisition:</b> Astroberry/Raspberry Pi"
+      - title: "<b>Software:</b> Deep Sky Stacker and Gimp"
+  - title: "Acquisition details"
+    children:
+      - title: "<b>Dates:</b> Feb. 12 and 13, 2022"
+      - title: "<b>Moon illumination:</b> 86.2%"
+      - title: "<b>Integration:</b> 2.2h"
+      - title: "<b>Data source:</b> Backyard"
+      - title: "<b>Frames:</b> 20x180\" & 35x120\""
+      - title: "<b>Calibration:</b> Bias, Dark and Flats"
+      - title: "<b>ISO:</b> 800"
