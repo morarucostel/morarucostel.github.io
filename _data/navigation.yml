@@ -28,3 +28,21 @@ sidebar-M31-v1:
       - title: "<b>Frames:</b> 20x180\" & 35x120\""
       - title: "<b>Calibration:</b> Bias, Dark and Flats"
       - title: "<b>ISO:</b> 800"
+
+sidebar-M42:
+  - title: "Equipment"
+    children:
+      - title: "<b>Camera:</b> Canon EOS 750D"
+      - title: "<b>Lens:</b> EF-S 75-300mm"
+      - title: "<b>Mount:</b> BRESSER EXOS-2 EQ GoTo"
+      - title: "<b>Acquisition:</b> Astroberry/Raspberry Pi"
+      - title: "<b>Software:</b> Deep Sky Stacker and Gimp"
+  - title: "Acquisition details"
+    children:
+      - title: "<b>Dates:</b> Dec. 22, 2021"
+      - title: "<b>Moon illumination:</b> 92%"
+      - title: "<b>Integration:</b> 2.5h"
+      - title: "<b>Data source:</b> Backyard"
+      - title: "<b>Frames:</b> 15x600\""
+      - title: "<b>Calibration:</b> Bias, Dark and Flats"
+      - title: "<b>ISO:</b> 100"
