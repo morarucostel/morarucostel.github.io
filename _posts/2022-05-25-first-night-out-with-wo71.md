@@ -16,3 +16,5 @@ It was the very first target I shot with my new William Optics GT71 telescope. A
 Being the first deep sky object with a new telescope, I spent a lot of time under the night sky, playing with the focuser and the Bahtinov mask, enjoying the new `toy` and playing with the ZWO ASI 120mm camera used for tracking. From my experience, introducing a new object or change in your astro-photography shooting session will require a learning curve, no matter how much research you do before the shooting session. First night out with my new William Optics GT71 was a great success considering the Moon illumination and the limited amount of time I had for shooting the target.
 
 The brightness of the nightly sky can be seen in the first two single shots presented in the gallery, followed by the final processed image.
+
+For the results of the session check-out the [Andromeda Galaxy]({{ site.baseurl }}/portfolio/1-M31).
