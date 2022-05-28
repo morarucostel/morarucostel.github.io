@@ -23,7 +23,6 @@ description: >- # this means to ignore newlines until "baseurl:"
 twitter_username: costelmoraru
 github_username: morarucostel
 minimal_mistakes_skin: air
-search: true
 
 # Build settings
 markdown: kramdown
@@ -41,6 +40,7 @@ include:
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
+exclude: [vendor]
 # exclude:
 #   - Gemfile
 #   - Gemfile.lock
@@ -132,3 +132,12 @@ collections:
 
 compress_html:
   clippings: all
+
+search: true
+search_full_content: true
+search_provider: algolia
+algolia:
+  application_id: COAK3875GY
+  index_name: live_costel.me
+  search_only_api_key: 0ef3f78a43522efecb9e1dd297d434b1
+  powered_by: true
