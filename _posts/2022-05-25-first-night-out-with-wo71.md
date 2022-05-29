@@ -1,5 +1,5 @@
 ---
-title: "First night out - William Optics GT71"
+title: "First night out with William Optics GT71"
 date: 2022-05-25T15:34:30-04:00
 categories:
   - blog
