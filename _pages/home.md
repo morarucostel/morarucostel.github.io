@@ -14,7 +14,7 @@ excerpt: >
   as I learn the insights of the astrophotography hobby.
 #  <small><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/4.24.0">Latest release v4.24.0</a></small>
 feature_row:
-  - image_path: /assets/images/targets.png
+  - image_path: /assets/images/mytargets.png
     alt: "targets"
     title: "Targets"
     excerpt: "The deep sky object Targets I took with my equipment during my journey as an amateur astrophotographer."
