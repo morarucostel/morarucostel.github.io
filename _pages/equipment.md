@@ -8,14 +8,32 @@ redirect_from:
 toc: true
 ---
 
-Minimal Mistakes has been developed as a [Gem-based theme](http://jekyllrb.com/docs/themes/) for easier use, and 100% compatible with GitHub Pages when used as a remote theme.
+This is a history of my equipments for both visual and photography purposes. For easier navigation on the page, I find it easier to work with the hand right summary and navigate to the right section.
 
-**If you enjoy this theme, please consider [sponsoring me](https://github.com/sponsors/mmistakes) to continue developing and maintaining it.**
+If you enjoy this work, please consider **sponsoring me** by buying me a coffee.
 
-[!["Buy Me A Coffee"](https://user-images.githubusercontent.com/1376749/120938564-50c59780-c6e1-11eb-814f-22a0399623c5.png)](https://www.buymeacoffee.com/mmistakes)
+[!["Buy Me A Beer"](/assets/images/buy-me-a-coffe.png)](https://www.buymeacoffee.com/mcostel)
 
-[![Support via PayPal](https://cdn.jsdelivr.net/gh/twolfson/paypal-github-button@1.0.0/dist/button.svg)](https://www.paypal.me/mmistakes)
-{: style="margin-top: 0.5em;"}
+## Current astrophotography gear
+
+The current gear that I am using for the astro photography sessions I consider it somehow as an entry level, based on cost and complexity of other more experienced colleagues that in the business.
+
+### Bresser EXOS-2 EQ GoTo Mount
+
+If you're running Jekyll v3.7+ and self-hosting you can quickly install the theme as a Ruby gem.
+
+
+### William Optics GT71 telescope
+
+With Gem-based themes, directories such as the `assets`, `_layouts`, `_includes`, and `_sass` are stored in the theme’s gem, hidden from your immediate view. This allows for easier installation and updating as you don't have to manage any of the theme files.
+https://www.bresser.de/en/Astronomy/BRESSER-Messier-EXOS-2-EQ-GoTo-Mount.html
+
+
+### William Optics flattener
+
+With Gem-based themes, directories such as the `assets`, `_layouts`, `_includes`, and `_sass` are stored in the theme’s gem, hidden from your immediate view. This allows for easier installation and updating as you don't have to manage any of the theme files.
+
+
 
 ## Installing the theme
 
