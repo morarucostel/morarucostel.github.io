@@ -67,7 +67,7 @@ I went with the cost effective option of buying a [Raspberry Pi 4](https://www.r
 Cable management of the entire gear is an important aspect if you want to ease up and speed up the setup process. There are numerous options based on your budgets, however I found that a normal 60W HUB Power Charger is enough to power my camera, 2x dew heaters, Raspberry Pi and guide camera. Basically everything that I'm using, except the mount itself which is being powered by its own adapter.
 
 
-## Astro seeing gear
+## Visural observation gear
 <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>**Updated:** <time datetime="2022-03-20">March 20, 2022</time>
 {: .notice--info}
 
@@ -75,4 +75,4 @@ My first telescope that I was able to use to actually see something on the night
 
 ### Telescope Bresser NT-203/1000
 
-An amazing telescope that I used mainly for astronomy observations is the [Bresser NT-203/1000](https://www.bresser.de/en/Astronomy/Telescopes/BRESSER-Messier-NT-203-1000-Hexafoc-EXOS-2-EQ5-Telescope.html) telescope. I was able to see galaxies, nebulas and the planets from our solar system. Because of the aperture and its focal length, I am not advising you to start your astronomy exploration with such a big telescope because every mistake that you make, with the alignment or the focusing or the positioning of the mount will be amplified by the telescope magnification and it will ruin your experience. When you are new in this hobby, first you need a small telescope that will allow you to just point and immediately see something as a reward, otherwise you get frustrated and it will ruin the experience. 
+An amazing telescope that I used mainly for astronomy observations is the [Bresser NT-203/1000](https://www.bresser.de/en/Astronomy/Telescopes/BRESSER-Messier-NT-203-1000-Hexafoc-EXOS-2-EQ5-Telescope.html) telescope. I was able to see galaxies, nebulas and the planets from our solar system. Because of the aperture and its focal length, I am not advising you to start your astronomy exploration with such a big telescope because every mistake that you make, with the alignment or the focusing or the positioning of the mount will be amplified by the telescope magnification and it will ruin your experience. When you are new in this hobby, first you need a small telescope that will allow you to just point and immediately see something as a reward, otherwise you get frustrated and it will ruin the experience.
