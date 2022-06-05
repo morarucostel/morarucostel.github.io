@@ -7,6 +7,10 @@ tags:
   - William Optics
   - M31
   - Andromeda
+gallery:
+  - url: /assets/images/M31_v1_processed_2022-02-12n13.jpg
+    image_path: assets/images/M31_v1_processed_2022-02-12n13-th.jpg
+    alt: "Final M31 after processing"
 ---
 
 The Andromeda Galaxy is a spiral galaxy with diameter of about 220,000 light years, approximately 2.5 million light-years from Earth and the nearest large galaxy to the Milky Way.
@@ -17,4 +21,6 @@ Being the first deep sky object with a new telescope, I spent a lot of time unde
 
 The brightness of the nightly sky can be seen in the first two single shots presented in the gallery, followed by the final processed image.
 
-For the results of the session check-out the [Andromeda Galaxy]({{ site.baseurl }}/portfolio/1-M31).
+{% include gallery caption="The beautiful Andromeda, our closest galaxy." %}
+
+For the results of the session check-out the full size high resolution image [Andromeda Galaxy]({{ site.baseurl }}/portfolio/1-M31).
