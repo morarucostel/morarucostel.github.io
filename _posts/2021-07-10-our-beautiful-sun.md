@@ -14,19 +14,19 @@ gallery:
 #    alt: "M31 on Feb 12th with 120 secs"
   - url: /assets/images/sun1.jpg
     image_path: assets/images/sun1-th.jpg
-    alt: "M31 on Feb 12th with 120 secs"
+    alt: "Sun shot with various ISO"
   - url: /assets/images/sun2.jpg
     image_path: assets/images/sun2-th.jpg
-    alt: "M31 on Feb 13th with 180 secs"
+    alt: "Sun's edge, magnified"
   - url: /assets/images/sun3.jpg
     image_path: assets/images/sun3-th.jpg
-    alt: "Final M31 after processing"
+    alt: "Sun shot with various ISO"
   - url: /assets/images/sun4.jpg
     image_path: assets/images/sun4-th.jpg
-    alt: "Final M31 after processing"
+    alt: "Sun shot with various ISO"
   - url: /assets/images/sun5.jpg
     image_path: assets/images/sun5-th.jpg
-    alt: "Final M31 after processing"
+    alt: "Sun shot with various ISO"
 ---
 
 It was a sunny day, at home with my children when I realised that is a very good opportunity to show them the Sun through my Newtonian telescope. So, I brought outside my gear: the [BRESSER NT-203/1000](https://www.bresser.de/en/Astronomy/Telescopes/BRESSER-Messier-NT-203-1000-Hexafoc-EXOS-2-EQ5-Telescope.html) telescope with its mount and the solar filter.
