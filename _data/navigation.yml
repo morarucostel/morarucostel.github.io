@@ -82,3 +82,22 @@ sidebar-B33:
       - title: "<b>Frames:</b> 10x600\" & 64x120\""
       - title: "<b>Calibration:</b> Bias, Dark and Flats"
       - title: "<b>ISO:</b> 100 & 800"
+
+sidebar-NGC1499:
+  - title: "Equipment"
+    children:
+      - title: "<b>Telescope:</b> Williams Optics GT71"
+      - title: "<b>Camera:</b> Canon EOS 750D"
+      - title: "<b>Mount:</b> BRESSER EXOS-2 EQ GoTo"
+      - title: "<b>Flattener:</b> WO Flat 6A III"
+      - title: "<b>Acquisition:</b> Astroberry/Raspberry Pi"
+      - title: "<b>Software:</b> Deep Sky Stacker and Gimp"
+  - title: "Acquisition details"
+    children:
+      - title: "<b>Dates:</b> Jan. 1 and 7, 2022"
+      - title: "<b>Moon illumination:</b> 29%"
+      - title: "<b>Integration:</b> 3.8h"
+      - title: "<b>Data source:</b> Backyard"
+      - title: "<b>Frames:</b> 10x600\" & 64x120\""
+      - title: "<b>Calibration:</b> Bias, Dark and Flats"
+      - title: "<b>ISO:</b> 100 & 800"
