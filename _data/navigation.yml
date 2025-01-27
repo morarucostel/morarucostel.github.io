@@ -102,3 +102,23 @@ sidebar-NGC1499:
       - title: "<b>Frames:</b> 30x180\" & 37x120\""
       - title: "<b>Calibration:</b> Bias, Dark and Flats"
       - title: "<b>Gain:</b> 256"
+
+sidebar-NGC2174:
+  - title: "Equipment"
+    children:
+      - title: "<b>Telescope:</b> Williams Optics GT71"
+      - title: "<b>Camera:</b> Risingcam IMX571"
+      - title: "<b>Filter:</b> Optolong L-Ultimate 2"
+      - title: "<b>Mount:</b> BRESSER EXOS-2 EQ GoTo"
+      - title: "<b>Flattener:</b> WO Flat 6A III"
+      - title: "<b>Acquisition:</b> N.I.N.A./MeLE"
+      - title: "<b>Software:</b> ASTAP and Gimp"
+  - title: "Acquisition details"
+    children:
+      - title: "<b>Dates:</b> Jan. 3rd and 10th, 2025"
+      - title: "<b>Moon illumination:</b> 10%"
+      - title: "<b>Integration:</b> 2h"
+      - title: "<b>Data source:</b> Backyard"
+      - title: "<b>Frames:</b> 62x120\""
+      - title: "<b>Calibration:</b> Bias, Dark and Flats"
+      - title: "<b>Gain:</b> 256"
