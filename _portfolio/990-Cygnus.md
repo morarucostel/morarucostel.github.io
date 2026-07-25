@@ -3,7 +3,7 @@ title: "Cygnus region"
 excerpt: "A very large constellation"
 header:
   image: https://cdn.astrobin.com/thumbs/GFBhmyrzFtDu_1824x0__sPnTECk.jpg?v=1785002469
-  teaser: https://cdn.astrobin.com/thumbs/GFBhmyrzFtDu_130x130_QEbPmHX8.png?v=1785002467
+  teaser: /assets/images/cygnus/Cygnus-partial-th.jpg
 sidebar:
   - title: "Cygnus area"
     nav: sidebar-Cygnus
