@@ -1,0 +1,206 @@
+main:
+  - title: "Targets"
+    url: /portfolio/
+  - title: "Posts"
+    url: /posts/
+  - title: "Equipment"
+    url: /equipment/
+  - title: "About"
+    url: /about/
+
+sidebar-M31-v1:
+  - title: "Equipment"
+    children:
+      - title: "<b>Telescope:</b> Williams Optics GT71"
+      - title: "<b>Camera:</b> RisingCam 26mp IMX571"
+      - title: "<b>Mount:</b> BRESSER EXOS-2 EQ GoTo"
+      - title: "<b>Flattener:</b> WO Flat 6A III"
+      - title: "<b>Acquisition:</b> Nina"
+      - title: "<b>Software:</b> Deep Sky Stacker and Gimp"
+  - title: "Acquisition details"
+    children:
+      - title: "<b>Dates:</b> Dec. 24th, 2025"
+      - title: "<b>Moon illumination:</b> 18%"
+      - title: "<b>Integration:</b> 2h"
+      - title: "<b>Data source:</b> Backyard"
+      - title: "<b>Frames:</b> 20x180\" & 35x120\""
+      - title: "<b>Calibration:</b> Bias, Dark and Flats"
+      - title: "<b>Gain:</b> 256 at -20C"
+
+sidebar-M42:
+  - title: "Equipment"
+    children:
+      - title: "<b>Camera:</b> Canon EOS 750D"
+      - title: "<b>Lens:</b> EF-S 75-300mm"
+      - title: "<b>Mount:</b> BRESSER EXOS-2 EQ GoTo"
+      - title: "<b>Acquisition:</b> Astroberry/Raspberry Pi"
+      - title: "<b>Software:</b> Deep Sky Stacker and Gimp"
+  - title: "Acquisition details"
+    children:
+      - title: "<b>Dates:</b> Dec. 22, 2021"
+      - title: "<b>Moon illumination:</b> 92%"
+      - title: "<b>Integration:</b> 2.5h"
+      - title: "<b>Data source:</b> Backyard"
+      - title: "<b>Frames:</b> 15x600\""
+      - title: "<b>Calibration:</b> Bias, Dark and Flats"
+      - title: "<b>ISO:</b> 100"
+
+sidebar-M45:
+  - title: "Equipment"
+    children:
+      - title: "<b>Telescope:</b> Williams Optics GT71"
+      - title: "<b>Camera:</b> Canon EOS 750D"
+      - title: "<b>Mount:</b> BRESSER EXOS-2 EQ GoTo"
+      - title: "<b>Flattener:</b> WO Flat 6A III"
+      - title: "<b>Acquisition:</b> Astroberry/Raspberry Pi"
+      - title: "<b>Software:</b> Deep Sky Stacker and Gimp"
+  - title: "Acquisition details"
+    children:
+      - title: "<b>Dates:</b> Feb. 28, 2022"
+      - title: "<b>Moon illumination:</b> 7%"
+      - title: "<b>Integration:</b> 2h"
+      - title: "<b>Data source:</b> Backyard"
+      - title: "<b>Frames:</b> 41x180\""
+      - title: "<b>Calibration:</b> Bias, Dark and Flats"
+      - title: "<b>ISO:</b> 800"
+
+sidebar-B33:
+  - title: "Equipment"
+    children:
+      - title: "<b>Telescope:</b> Williams Optics GT71"
+      - title: "<b>Camera:</b> Canon EOS 750D"
+      - title: "<b>Mount:</b> BRESSER EXOS-2 EQ GoTo"
+      - title: "<b>Flattener:</b> WO Flat 6A III"
+      - title: "<b>Acquisition:</b> Astroberry/Raspberry Pi"
+      - title: "<b>Software:</b> Deep Sky Stacker and Gimp"
+  - title: "Acquisition details"
+    children:
+      - title: "<b>Dates:</b> Jan. 1 and 7, 2022"
+      - title: "<b>Moon illumination:</b> 29%"
+      - title: "<b>Integration:</b> 3.8h"
+      - title: "<b>Data source:</b> Backyard"
+      - title: "<b>Frames:</b> 10x600\" & 64x120\""
+      - title: "<b>Calibration:</b> Bias, Dark and Flats"
+      - title: "<b>ISO:</b> 100 & 800"
+
+sidebar-NGC1499:
+  - title: "Equipment"
+    children:
+      - title: "<b>Telescope:</b> Williams Optics GT71"
+      - title: "<b>Camera:</b> Risingcam IMX571"
+      - title: "<b>Filter:</b> Optolong L-Ultimate 2"
+      - title: "<b>Mount:</b> BRESSER EXOS-2 EQ GoTo"
+      - title: "<b>Flattener:</b> WO Flat 6A III"
+      - title: "<b>Acquisition:</b> N.I.N.A./MeLE"
+      - title: "<b>Software:</b> ASTAP and Gimp"
+  - title: "Acquisition details"
+    children:
+      - title: "<b>Dates:</b> Dec. 25 & Jan. 3, 2025"
+      - title: "<b>Moon illumination:</b> 10%"
+      - title: "<b>Integration:</b> 2.7h"
+      - title: "<b>Data source:</b> Backyard"
+      - title: "<b>Frames:</b> 30x180\" & 37x120\""
+      - title: "<b>Calibration:</b> Bias, Dark and Flats"
+      - title: "<b>Gain:</b> 256"
+
+sidebar-NGC2174:
+  - title: "Equipment"
+    children:
+      - title: "<b>Telescope:</b> Williams Optics GT71"
+      - title: "<b>Camera:</b> Risingcam IMX571"
+      - title: "<b>Filter:</b> Optolong L-Ultimate 2"
+      - title: "<b>Mount:</b> BRESSER EXOS-2 EQ GoTo"
+      - title: "<b>Flattener:</b> WO Flat 6A III"
+      - title: "<b>Acquisition:</b> N.I.N.A./MeLE"
+      - title: "<b>Software:</b> ASTAP and Gimp"
+  - title: "Acquisition details"
+    children:
+      - title: "<b>Dates:</b> Jan. 3rd and 10th, 2025"
+      - title: "<b>Moon illumination:</b> 10%"
+      - title: "<b>Integration:</b> 2h"
+      - title: "<b>Data source:</b> Backyard"
+      - title: "<b>Frames:</b> 62x120\""
+      - title: "<b>Calibration:</b> Bias, Dark and Flats"
+      - title: "<b>Gain:</b> 256"
+
+sidebar-Moon:
+  - title: "Equipment"
+    children:
+      - title: "<b>Telescope:</b> Williams Optics GT71"
+      - title: "<b>Camera:</b> Risingcam IMX571"
+      - title: "<b>Filter:</b> Astronomik L-2 - UV IR"
+      - title: "<b>Mount:</b> BRESSER EXOS-2 EQ GoTo"
+      - title: "<b>Flattener:</b> WO Flat 6A III"
+      - title: "<b>Acquisition:</b> N.I.N.A./MeLE"
+      - title: "<b>Software:</b> Sharpcap, Autostakkert"
+  - title: "Acquisition details"
+    children:
+      - title: "<b>Dates:</b> Jan. 4th, 2026"
+      - title: "<b>Moon illumination:</b> 99.4%"
+      - title: "<b>Integration:</b> 5 min"
+      - title: "<b>Data source:</b> Backyard"
+      - title: "<b>Frames:</b> 10.000 frames"
+      - title: "<b>Calibration:</b> None"
+      - title: "<b>Gain:</b> 256"
+
+sidebar-IC5070:
+  - title: "Equipment"
+    children:
+      - title: "<b>Telescope:</b> Williams Optics GT71"
+      - title: "<b>Camera:</b> Risingcam IMX571"
+      - title: "<b>Filter:</b> Optolong L-Ultimate 2"
+      - title: "<b>Mount:</b> MLAstro SAL33"
+      - title: "<b>Flattener:</b> WO Flat 6A III"
+      - title: "<b>Acquisition:</b> N.I.N.A./MeLE"
+      - title: "<b>Software:</b> Siril"
+  - title: "Acquisition details"
+    children:
+      - title: "<b>Dates:</b> May 28th, 2026"
+      - title: "<b>Moon illumination:</b> 93%"
+      - title: "<b>Integration:</b> 66 min"
+      - title: "<b>Data source:</b> Backyard"
+      - title: "<b>Frames:</b> 22x180\" HaOIII"
+      - title: "<b>Calibration:</b> Bias, Dark and Flats"
+      - title: "<b>Gain:</b> 100 at -10°C"
+
+sidebar-NGC6888:
+  - title: "Equipment"
+    children:
+      - title: "<b>Telescope:</b> Williams Optics GT71"
+      - title: "<b>Camera:</b> Risingcam IMX571"
+      - title: "<b>Filter:</b> Optolong L-Ultimate 2"
+      - title: "<b>Mount:</b> MLAstro SAL33"
+      - title: "<b>Flattener:</b> WO Flat 6A III"
+      - title: "<b>Acquisition:</b> N.I.N.A./MeLE"
+      - title: "<b>Software:</b> Siril"
+  - title: "Acquisition details"
+    children:
+      - title: "<b>Dates:</b> June 19th, 2026"
+      - title: "<b>Moon illumination:</b> 93%"
+      - title: "<b>Integration:</b> 180 min"
+      - title: "<b>Data source:</b> Backyard"
+      - title: "<b>Frames:</b> 60x180\" HaOIII"
+      - title: "<b>Calibration:</b> Bias, Dark and Flats"
+      - title: "<b>Gain:</b> 100 at -10°C"
+
+sidebar-Cygnus:
+  - title: "Equipment"
+    children:
+      - title: "<b>Telescope:</b> Williams Optics GT71"
+      - title: "<b>Camera:</b> Risingcam IMX571"
+      - title: "<b>Filter:</b> Optolong L-Ultimate 2"
+      - title: "<b>Mount:</b> MLAstro SAL33"
+      - title: "<b>Flattener:</b> WO Flat 6A III"
+      - title: "<b>Acquisition:</b> N.I.N.A./MeLE"
+      - title: "<b>Software:</b> Siril"
+  - title: "Acquisition details"
+    children:
+      - title: "<b>Type:</b> Mosaic of 27 panels"
+      - title: "<b>Dates:</b> July 10-12th, 2026"
+      - title: "<b>Moon illumination:</b> 0%"
+      - title: "<b>Integration:</b> 11x25x3 min"
+      - title: "<b>Data source:</b> Backyard"
+      - title: "<b>Frames:</b> 180s\" HaOIII"
+      - title: "<b>Calibration:</b> Bias, Dark and Flats"
+      - title: "<b>Gain:</b> 100 at -10°C"
+

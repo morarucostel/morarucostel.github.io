@@ -1,0 +1,33 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('p.page__date').forEach(function (el) {
+    el.remove();
+  });
+});
+
+document.addEventListener('click', async function (event) {
+  const link = event.target.closest('a.force-download');
+  if (!link) return;
+
+  event.preventDefault();
+
+  try {
+    const res = await fetch(link.href, { credentials: 'same-origin' });
+    if (!res.ok) throw new Error('Failed to fetch file');
+
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = link.dataset.filename || link.getAttribute('download') || 'download';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    window.location.href = link.href;
+  }
+});
+</script>
