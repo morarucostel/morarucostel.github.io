@@ -20,6 +20,9 @@ Cygnus is a northern constellation on the plane of the Milky Way, deriving its n
 
 Photographing Cygnus area is my first mosaic project, and a bold one. The mosaic consists of 27 panels with an initial exposure of one hour per panel using the `Optolong L-Ultimate 2"` HaOIII filter. The plan is to add every year additional data to the panels, more hours to the panels that have nebulas in them. 
 
+Check out the final image, with complete 12 panels on astrobin.
+<a href="https://app.astrobin.com/i/v6xqe8"><img src="https://cdn.astrobin.com/thumbs/0YHh19z8QA4r_130x130_xEK2vb8Y.png?v=1784962188" /></a>
+
 Below you can check the current mosaic project in progress, only 11 panels from the overall 27. After stacking and stitching the first 11 panels, the image is already 3GB, a real strugle for my computer during the post-processing phase.
 
 {% include gallery caption="Mosaic project in progress." %}
