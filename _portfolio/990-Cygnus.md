@@ -2,7 +2,7 @@
 title: "Cygnus region"
 excerpt: "A very large constellation"
 header:
-  image: /assets/images/cygnus/Cygnus-partial-normal.jpg
+  image: https://cdn.astrobin.com/thumbs/GFBhmyrzFtDu_1824x0__sPnTECk.jpg?v=1785002469
   teaser: /assets/images/cygnus/Cygnus-partial-th.jpg
 sidebar:
   - title: "Cygnus area"
@@ -22,6 +22,12 @@ Photographing Cygnus area is my first mosaic project, and a bold one. The mosaic
 
 Check out the final image, with complete 12 panels on astrobin.
 <a href="https://app.astrobin.com/i/v6xqe8"><img src="https://cdn.astrobin.com/thumbs/0YHh19z8QA4r_130x130_xEK2vb8Y.png?v=1784962188" /></a>
+
+<a href="https://app.astrobin.com/i/v6xqe8"><img src="https://cdn.astrobin.com/thumbs/GFBhmyrzFtDu_130x130_QEbPmHX8.png?v=1785002467" /></a>
+
+<a href="https://app.astrobin.com/i/v6xqe8"><img src="https://cdn.astrobin.com/thumbs/GFBhmyrzFtDu_620x0_1g3BC9VT.jpg?v=1785002492" /></a>
+
+<a href="https://app.astrobin.com/i/v6xqe8"><img src="https://cdn.astrobin.com/thumbs/GFBhmyrzFtDu_1824x0__sPnTECk.jpg?v=1785002469" /></a>
 
 Below you can check the current mosaic project in progress, only 11 panels from the overall 27. After stacking and stitching the first 11 panels, the image is already 3GB, a real strugle for my computer during the post-processing phase.
 
