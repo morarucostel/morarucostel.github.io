@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Contact | Modern Photography Portfolio";
+const description = "Get in touch for bookings, collaborations, or print inquiries.";
+
+const services = [
+  "Portrait Session",
+  "Event Coverage",
+  "Commercial/Editorial",
+  "Architecture/Interior",
+  "Fine Art Prints",
+  "Other"
+];
+
+const budgets = [
+  "Under $1,000",
+  "$1,000 - $3,000",
+  "$3,000 - $5,000",
+  "$5,000 - $10,000",
+  "$10,000+"
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="min-h-screen pt-32 pb-20 px-6 md:px-12 lg:px-20 bg-background text-secondary transition-colors duration-300">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+      
+      <!-- Contact Info & Context -->
+      <div class="space-y-12">
+        <div>
+          <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-primary mb-6 tracking-tight">
+            Let's Create Together
+          </h1>
+          <p class="text-lg font-light leading-relaxed text-secondary max-w-md">
+            I'm currently accepting new commissions for 2026. Whether you have a specific project in mind or just want to discuss possibilities, I'd love to hear from you.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <div>
+            <h2 class="text-primary font-medium mb-2">Email</h2>
+            <a href="mailto:hello@elenavashchenko.com" class="text-secondary hover:text-primary transition-colors">
+              hello@elenavashchenko.com
+            </a>
+          </div>
+          <div>
+            <h2 class="text-primary font-medium mb-2">Studio</h2>
+            <p class="text-secondary">
+              Shibuya City, Tokyo<br>
+              Japan 150-0002
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inquiry Form -->
+      <div class="bg-surface/50 p-8 md:p-10 rounded-lg border border-border">
+        <form id="contact-form" class="space-y-8" novalidate>
+          
+          <!-- Name & Email -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label for="name" class="block text-sm font-medium text-primary">Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required
+                aria-describedby="name-error"
+                class="w-full bg-background border border-border rounded-md px-4 py-3 text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors data-[invalid=true]:border-red-500"
+                placeholder="Jane Doe"
+              />
+              <p id="name-error" class="hidden text-red-500 text-sm mt-1" role="alert"></p>
+            </div>
+            <div class="space-y-2">
+              <label for="email" class="block text-sm font-medium text-primary">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required
+                aria-describedby="email-error"
+                class="w-full bg-background border border-border rounded-md px-4 py-3 text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors data-[invalid=true]:border-red-500"
+                placeholder="jane@example.com"
+              />
+              <p id="email-error" class="hidden text-red-500 text-sm mt-1" role="alert"></p>
+            </div>
+          </div>
+
+          <!-- Service Selection -->
+          <div class="space-y-2">
+            <label for="service" class="block text-sm font-medium text-primary">Service Type</label>
+            <div class="relative">
+              <select 
+                id="service" 
+                name="service" 
+                class="w-full bg-background border border-border rounded-md px-4 py-3 text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none transition-colors"
+              >
+                <option value="" disabled selected>Select a service...</option>
+                {services.map(service => (
+                  <option value={service}>{service}</option>
+                ))}
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-secondary">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Budget Selection -->
+          <div class="space-y-2">
+            <label for="budget" class="block text-sm font-medium text-primary">Budget Range (USD)</label>
+            <div class="relative">
+              <select 
+                id="budget" 
+                name="budget" 
+                class="w-full bg-background border border-border rounded-md px-4 py-3 text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none transition-colors"
+              >
+                <option value="" disabled selected>Select a range...</option>
+                {budgets.map(budget => (
+                  <option value={budget}>{budget}</option>
+                ))}
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-secondary">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Details -->
+          <div class="space-y-2">
+            <label for="message" class="block text-sm font-medium text-primary">Project Details</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              rows="5" 
+              required
+              aria-describedby="message-error"
+              class="w-full bg-background border border-border rounded-md px-4 py-3 text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none data-[invalid=true]:border-red-500"
+              placeholder="Tell me about your vision, timeline, and any specific requirements..."
+            ></textarea>
+            <p id="message-error" class="hidden text-red-500 text-sm mt-1" role="alert"></p>
+          </div>
+
+          <!-- Submit Button -->
+          <button 
+            type="submit" 
+            class="w-full bg-primary text-background font-medium py-4 rounded-md hover:opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+          >
+            Send Inquiry
+          </button>
+
+          <!-- Status Message Area -->
+          <div id="form-status" class="hidden text-center text-sm pt-4" role="alert"></div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+<script>
+  import { handleDemoFormSubmit } from '../utils/demo-form-handler';
+
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  
+  if (form) {
+    // Disable default HTML5 validation bubbles to use our custom UI
+    form.noValidate = true;
+
+    form.addEventListener('submit', async (e) => {
+      let isValid = true;
+      const inputs = form.querySelectorAll('input[required], textarea[required]');
+
+      inputs.forEach((input) => {
+        const field = input as HTMLInputElement | HTMLTextAreaElement;
+        const errorId = field.getAttribute('aria-describedby');
+        const errorEl = errorId ? document.getElementById(errorId) : null;
+        
+        // Reset state
+        field.removeAttribute('data-invalid');
+        field.setAttribute('aria-invalid', 'false');
+        if (errorEl) {
+          errorEl.classList.add('hidden');
+          errorEl.textContent = '';
+        }
+
+        if (!field.value.trim()) {
+          isValid = false;
+          showError(field, errorEl, `${field.name.charAt(0).toUpperCase() + field.name.slice(1)} is required`);
+        } else if (field.type === 'email' && !validateEmail(field.value)) {
+          isValid = false;
+          showError(field, errorEl, 'Please enter a valid email address');
+        }
+      });
+
+      if (!isValid) {
+        e.preventDefault();
+        // Focus first invalid field
+        const firstInvalid = form.querySelector('[data-invalid="true"]') as HTMLElement;
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
+
+      // Valid form - attempt demo submission
+      const handled = await handleDemoFormSubmit(
+        e,
+        (loading) => {
+          const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+          if (loading) {
+            btn.disabled = true;
+            if (!btn.dataset.originalText) btn.dataset.originalText = btn.textContent || '';
+            btn.textContent = 'Sending...';
+          } else {
+            btn.disabled = false;
+            btn.textContent = btn.dataset.originalText || 'Send Inquiry';
+          }
+        },
+        (message) => {
+          const status = document.getElementById('form-status');
+          if (status) {
+            status.textContent = message;
+            status.classList.remove('hidden', 'text-red-500');
+            status.classList.add('text-green-500');
+          }
+        },
+        1500 // Increased delay for testing visibility
+      );
+
+      if (!handled) {
+        // Fallback for non-demo mode (real backend would go here)
+        e.preventDefault();
+        alert('Form submission is not configured in this template. Enable demo mode to simulate.');
+      }
+    });
+
+    // Real-time validation clearing
+    form.addEventListener('input', (e) => {
+      const field = e.target as HTMLInputElement;
+      if (field.hasAttribute('data-invalid')) {
+         field.removeAttribute('data-invalid');
+         field.setAttribute('aria-invalid', 'false');
+         const errorId = field.getAttribute('aria-describedby');
+         const errorEl = errorId ? document.getElementById(errorId) : null;
+         if (errorEl) errorEl.classList.add('hidden');
+      }
+      
+      // Clear global status on input
+      const status = document.getElementById('form-status');
+      if (status && !status.classList.contains('hidden')) {
+        status.classList.add('hidden');
+        status.textContent = '';
+      }
+    });
+  }
+
+  function showError(field: HTMLElement, errorEl: HTMLElement | null, message: string) {
+    field.setAttribute('data-invalid', 'true');
+    field.setAttribute('aria-invalid', 'true');
+    if (errorEl) {
+      errorEl.textContent = message;
+      errorEl.classList.remove('hidden');
+    }
+  }
+
+  function validateEmail(email: string) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+</script>

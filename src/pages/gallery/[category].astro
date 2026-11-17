@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import galleryImages from '../../data/gallery-images.json';
+import lqipDataRaw from '../../data/lqip-data.json';
+import MasonryGrid from '../../components/gallery/MasonryGrid.astro';
+import type { GalleryImage } from '../../components/gallery/MasonryGrid.astro';
+import type { ImageMetadata } from 'astro';
+
+const lqipData = lqipDataRaw as Record<string, string>;
+
+export async function getStaticPaths() {
+  const categories = [...new Set(galleryImages.map((img) => img.category))];
+  
+  return categories.map((category) => {
+    return {
+      params: { category },
+      props: { category },
+    };
+  });
+}
+
+const { category } = Astro.props;
+
+// Capitalize category for display
+const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
+
+// Filter images for this category
+const categoryImages = galleryImages.filter((img) => img.category === category);
+
+// Image resolution logic (shared with FeaturedGallery)
+const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/gallery/**/*.{jpg,jpeg,png,webp}', {
+  eager: true,
+});
+
+const getResolvedImage = (srcPath: string) => {
+  const filename = srcPath.split('/').pop();
+  if (!filename) return undefined;
+  const foundKey = Object.keys(imagesGlob).find(key => key.endsWith(filename));
+  return foundKey && imagesGlob[foundKey] ? imagesGlob[foundKey].default : undefined;
+};
+
+const masonryImages = categoryImages
+  .map((img) => {
+    const resolved = getResolvedImage(img.src);
+    if (!resolved) return null;
+    return {
+      id: img.id,
+      title: img.title,
+      category: img.category,
+      caption: img.caption,
+      src: resolved,
+      lqip: lqipData[img.id],
+      exif: img.exif,
+    };
+  })
+  .filter((img) => img !== null) as GalleryImage[];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": `${categoryTitle} Portfolio`,
+  "description": `View my ${category} photography portfolio.`,
+  "url": new URL(Astro.url.pathname, Astro.site || 'http://localhost:4321').href,
+  "image": masonryImages.slice(0, 10).map(img => ({
+      "@type": "ImageObject",
+      "contentUrl": new URL(img.src.src, Astro.site || 'http://localhost:4321').href,
+      "name": img.title,
+      "description": img.caption,
+      "thumbnail": img.lqip
+  }))
+};
+
+const ogImage = masonryImages.length > 0 ? masonryImages[0].src.src : undefined;
+---
+
+<BaseLayout title={`${categoryTitle} Portfolio`} description={`View my ${category} photography portfolio.`} image={ogImage}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
+  <div class="pt-32 pb-20 px-4 md:px-8 bg-background min-h-screen transition-colors duration-300">
+    <div class="max-w-7xl mx-auto">
+      {/* Header */}
+      <div class="flex flex-col items-center mb-16 text-center">
+        <h1 class="text-4xl md:text-5xl font-serif tracking-wide text-primary mb-6">
+          {categoryTitle}
+        </h1>
+        <div class="w-24 h-px bg-border mb-6"></div>
+        <p class="text-secondary max-w-2xl font-light text-lg">
+          A collection of {category} moments captured in time.
+        </p>
+      </div>
+
+      <MasonryGrid images={masonryImages} />
+      
+      {masonryImages.length === 0 && (
+        <div class="text-center py-20 text-secondary">
+          <p>No images found in this category yet.</p>
+        </div>
+      )}
+    </div>
+  </div>
+</BaseLayout>

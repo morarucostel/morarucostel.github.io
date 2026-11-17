@@ -1,0 +1,103 @@
+---
+import ThemeToggle from '../ThemeToggle.astro';
+import { getUrl } from '../../utils/url';
+---
+
+<header
+  id="main-header"
+  class="fixed top-0 left-0 w-full z-40 transition-all duration-300 ease-in-out bg-white/80 dark:bg-background/80 backdrop-blur-md border-b border-gray-200 dark:border-border"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <a href={getUrl("/")} class="text-2xl font-serif font-bold tracking-tighter text-gray-900 dark:text-white">
+          MASURII
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-8 items-center" aria-label="Main Navigation">
+        <a href={getUrl("/gallery/portraits")} class="text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors">
+          Work
+        </a>
+        <a href={getUrl("/about")} class="text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors">
+          About
+        </a>
+        <a href={getUrl("/shop")} class="text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors">
+          Shop
+        </a>
+        <a href={getUrl("/contact")} class="text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors">
+          Contact
+        </a>
+        
+        <a href={getUrl("/checkout")} class="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors" aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+        </a>
+
+        <div class="border-l border-gray-200 dark:border-gray-700 pl-6 ml-2">
+          <ThemeToggle />
+        </div>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <div class="flex items-center md:hidden space-x-4">
+        <a href={getUrl("/checkout")} class="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors" aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+        </a>
+        <ThemeToggle />
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          aria-label="Toggle mobile menu"
+        >
+          <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  import { isMenuOpen } from '../../store/nav';
+
+  const header = document.getElementById('main-header');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  let lastScrollY = window.scrollY;
+
+  // Handle Scroll (Hide/Show)
+  window.addEventListener('scroll', () => {
+    if (!header) return;
+    
+    // Don't hide if at the very top or if menu is open
+    if (window.scrollY < 10 || isMenuOpen.get()) {
+      header.style.transform = 'translateY(0)';
+      return;
+    }
+
+    if (window.scrollY > lastScrollY) {
+      // Scrolling down
+      header.style.transform = 'translateY(-100%)';
+    } else {
+      // Scrolling up
+      header.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollY = window.scrollY;
+  }, { passive: true });
+
+  // Handle Mobile Menu Toggle
+  mobileMenuBtn?.addEventListener('click', () => {
+    const current = isMenuOpen.get();
+    isMenuOpen.set(!current);
+  });
+</script>

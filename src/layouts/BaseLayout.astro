@@ -1,0 +1,122 @@
+---
+import DemoBanner from '../components/demo/DemoBanner.astro';
+import DemoModal from '../components/demo/DemoModal.astro';
+import CartModal from '../components/shop/CartModal.astro';
+import Lightbox from '../components/lightbox/Lightbox.astro';
+import Header from '../components/navigation/Header.astro';
+import MobileMenu from '../components/navigation/MobileMenu.astro';
+import HireMeCTA from '../components/navigation/HireMeCTA.astro';
+import Footer from '../components/footer/Footer.astro';
+import { getUrl } from '../utils/url';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article' | 'profile';
+  fullScreen?: boolean;
+  preloadImage?: string;
+  preloadSrcset?: string;
+}
+
+const { 
+  title, 
+  description = "Modern Photography Portfolio",
+  image = "/og-default.jpg",
+  type = "website",
+  fullScreen = false,
+  preloadImage,
+  preloadSrcset
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || "http://localhost:4321");
+// Use getUrl to ensure og-image includes base path for GitHub Pages
+const ogImagePath = image.startsWith('/') ? getUrl(image) : image;
+const socialImageURL = new URL(ogImagePath, Astro.site || "http://localhost:4321");
+const faviconUrl = getUrl("/favicon.ico");
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href={faviconUrl} />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Preload LCP Image -->
+    {preloadImage && (
+      <link 
+        rel="preload" 
+        as="image" 
+        href={preloadImage} 
+        imagesrcset={preloadSrcset}
+        fetchpriority="high" 
+      />
+    )}
+
+    <!-- Google Fonts Preloading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;700&display=swap" 
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+    </noscript>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImageURL} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={socialImageURL} />
+
+    <title>{title}</title>
+    <slot name="head" />
+    <script is:inline>
+      // Theme Initialization
+      (function() {
+        const storedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (storedTheme === 'light' || (!storedTheme && !systemDark)) {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body class={`bg-background text-primary min-h-screen antialiased selection:bg-indigo-500 selection:text-white ${fullScreen ? '' : 'pt-16'}`}>
+    <DemoBanner />
+    <Header />
+    
+    <main class="relative z-10">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <HireMeCTA />
+    <MobileMenu />
+    <DemoModal />
+    <CartModal />
+    <Lightbox />
+  </body>
+</html>

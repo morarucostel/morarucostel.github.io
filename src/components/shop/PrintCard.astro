@@ -1,0 +1,114 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  image: ImageMetadata;
+  title: string;
+  category: string;
+  basePrice?: number;
+}
+
+const { image, title, category, basePrice = 150 } = Astro.props;
+
+const sizes = [
+  { label: 'Small (12x18")', multiplier: 1 },
+  { label: 'Medium (20x30")', multiplier: 1.8 },
+  { label: 'Large (24x36")', multiplier: 2.5 },
+];
+
+const frames = [
+  { label: 'No Frame', price: 0 },
+  { label: 'Black Wood', price: 50 },
+  { label: 'White Wood', price: 50 },
+  { label: 'Natural Oak', price: 70 },
+];
+
+const uniqueId = Math.random().toString(36).slice(2, 11);
+const sizeId = `size-${uniqueId}`;
+const frameId = `frame-${uniqueId}`;
+---
+
+<article class="print-card group">
+  <div class="aspect-[4/5] overflow-hidden bg-surface mb-6 relative">
+    <Image 
+      src={image}
+      alt={title}
+      width={600}
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+    />
+  </div>
+  
+  <div class="space-y-4">
+    <div class="flex justify-between items-baseline">
+      <h2 class="text-primary font-medium text-lg font-serif">{title}</h2>
+      <span class="text-primary font-medium price-display" data-base-price={basePrice}>${basePrice}</span>
+    </div>
+    <p class="text-secondary text-xs uppercase tracking-widest">{category}</p>
+
+    <!-- Selection UI -->
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label for={sizeId} class="block text-xs text-secondary mb-1">Size</label>
+        <select id={sizeId} class="size-select w-full bg-surface border border-border text-primary text-sm rounded px-2 py-2 focus:outline-none focus:border-primary transition-colors">
+          {sizes.map((s, i) => (
+            <option value={s.multiplier} selected={i === 0}>{s.label}</option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label for={frameId} class="block text-xs text-secondary mb-1">Frame</label>
+        <select id={frameId} class="frame-select w-full bg-surface border border-border text-primary text-sm rounded px-2 py-2 focus:outline-none focus:border-primary transition-colors">
+          {frames.map((f, i) => (
+            <option value={f.price} selected={i === 0}>{f.label}</option>
+          ))}
+        </select>
+      </div>
+    </div>
+
+    <button class="add-to-cart-btn w-full bg-primary text-background font-medium py-3 rounded hover:opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+      Add to Cart
+    </button>
+  </div>
+</article>
+
+<script>
+  import { addCartItem } from '../../store/cart';
+
+  // Handle price updates
+  document.querySelectorAll('.print-card').forEach(card => {
+    const sizeSelect = card.querySelector('.size-select') as HTMLSelectElement;
+    const frameSelect = card.querySelector('.frame-select') as HTMLSelectElement;
+    const priceDisplay = card.querySelector('.price-display') as HTMLElement;
+    const addToCartBtn = card.querySelector('.add-to-cart-btn');
+    const basePrice = parseFloat(priceDisplay.dataset.basePrice || '0');
+    const title = card.querySelector('h2')?.textContent || 'Print';
+
+    function getPrice() {
+      const multiplier = parseFloat(sizeSelect.value);
+      const framePrice = parseFloat(frameSelect.value);
+      return (basePrice * multiplier) + framePrice;
+    }
+
+    function updatePrice() {
+      const finalPrice = getPrice();
+      priceDisplay.textContent = `$${finalPrice.toFixed(0)}`;
+    }
+
+    sizeSelect.addEventListener('change', updatePrice);
+    frameSelect.addEventListener('change', updatePrice);
+
+    addToCartBtn?.addEventListener('click', () => {
+        const sizeLabel = sizeSelect.options[sizeSelect.selectedIndex].text;
+        const frameLabel = frameSelect.options[frameSelect.selectedIndex].text;
+        const price = getPrice();
+
+        addCartItem({
+            productId: title.toLowerCase().replace(/\s+/g, '-'),
+            title: title,
+            size: sizeLabel,
+            frame: frameLabel,
+            price: price
+        });
+    });
+  });
+</script>

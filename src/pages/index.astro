@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSlider from '../components/hero/HeroSlider.astro';
+import CategoryGrid from '../components/gallery/CategoryGrid.astro';
+import FeaturedGallery from '../components/gallery/FeaturedGallery.astro';
+import { getHeroSlides } from '../utils/hero';
+
+const slides = await getHeroSlides();
+---
+
+<BaseLayout title="Modern Photography Portfolio" fullScreen={true}>
+  <HeroSlider slides={slides} />
+  
+  <CategoryGrid />
+
+  <FeaturedGallery />
+</BaseLayout>

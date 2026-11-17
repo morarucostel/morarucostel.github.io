@@ -1,0 +1,78 @@
+{
+  "enabled": true,
+  "intercepts": [
+    {
+      "id": "social-instagram",
+      "pattern": "instagram.com",
+      "feature": "Instagram Profile",
+      "message": "In a production site, this link would take you to the photographer's Instagram profile."
+    },
+    {
+      "id": "social-twitter",
+      "pattern": "twitter.com",
+      "feature": "Twitter/X Profile",
+      "message": "In a production site, this link would take you to the photographer's Twitter/X profile."
+    },
+    {
+      "id": "social-x",
+      "pattern": "x.com",
+      "feature": "X (Twitter) Profile",
+      "message": "In a production site, this link would take you to the photographer's X (formerly Twitter) profile."
+    },
+    {
+      "id": "social-linkedin",
+      "pattern": "linkedin.com",
+      "feature": "LinkedIn Profile",
+      "message": "In a production site, this link would take you to the photographer's LinkedIn profile."
+    },
+    {
+      "id": "social-behance",
+      "pattern": "behance.net",
+      "feature": "Behance Profile",
+      "message": "In a production site, this link would take you to the photographer's Behance profile."
+    },
+    {
+      "id": "social-500px",
+      "pattern": "500px.com",
+      "feature": "500px Profile",
+      "message": "In a production site, this link would take you to the photographer's 500px profile."
+    },
+
+    {
+      "id": "service-booking",
+      "pattern": "/booking",
+      "feature": "Booking System",
+      "message": "This would connect to a scheduling service (e.g., Calendly) to book sessions."
+    },
+    {
+      "id": "service-client-portal",
+      "pattern": "/portal",
+      "feature": "Client Portal",
+      "message": "This would link to a secure gallery delivery area (e.g., Pixieset, Pic-Time)."
+    },
+    {
+      "id": "newsletter",
+      "pattern": "/newsletter",
+      "feature": "Newsletter Signup",
+      "message": "Success! (Demo Mode: No email was actually added to a list)."
+    },
+    {
+      "id": "pub-kinfolk",
+      "pattern": "kinfolk.com",
+      "feature": "Publication: Kinfolk",
+      "message": "In a production site, this would take you to the article in Kinfolk Magazine."
+    },
+    {
+      "id": "pub-aesthetica",
+      "pattern": "aestheticamagazine.com",
+      "feature": "Publication: Aesthetica",
+      "message": "In a production site, this would take you to the article in Aesthetica Magazine."
+    },
+    {
+      "id": "pub-cereal",
+      "pattern": "readcereal.com",
+      "feature": "Publication: Cereal",
+      "message": "In a production site, this would take you to the article in Cereal Magazine."
+    }
+  ]
+}
