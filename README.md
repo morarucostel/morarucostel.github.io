@@ -146,6 +146,30 @@ Edit the JSON files in `src/data/` to update your portfolio content:
 2. Run `bun run images:process` to optimize them
 3. Update `src/data/gallery-images.json` with new image metadata
 
+#### Build-time Google Drive image
+
+The `landscapes-2` gallery entry is downloaded from Google Drive before each
+production build and development-server startup. Its file ID is configured in
+`astro.config.mjs`; the file must have **General access: Anyone with the link**
+with viewer access. No Google credentials are required.
+
+The build keeps the Drive original in memory, then auto-orients and compresses it
+to `src/assets/images/gallery/landscapes-2-drive.webp` (ignored by Git). The saved
+image is at most **250 KB (250,000 bytes)**, with a maximum longest edge of
+1,920 pixels; the build progressively reduces dimensions when needed to meet
+the size limit.
+
+Astro exports this compressed image and optimized variants into `dist/_astro/`
+for the gallery, hero, and lightbox. Every exported version is checked against
+the same 250,000-byte limit. The high-resolution Drive original is never saved
+or exported, and browsers load local assets rather than Google Drive.
+
+Run `bun run build` (or `npm run build`) to fetch the latest image and rebuild.
+A failed download, invalid image, or oversized export stops the build rather
+than using a stale copy. The compressed exported image is publicly accessible
+wherever you deploy the site, even though the source Drive file is only
+discoverable through its shared link.
+
 ### Styling
 
 The project uses Tailwind CSS with a custom design system. Key customization points:

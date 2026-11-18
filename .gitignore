@@ -4,6 +4,8 @@ dist/
 stats.html
 # generated types
 .astro/
+# downloaded build-time image
+src/assets/images/gallery/landscapes-2-drive.webp
 
 # dependencies
 node_modules/

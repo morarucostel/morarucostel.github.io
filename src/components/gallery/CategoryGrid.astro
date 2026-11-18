@@ -13,7 +13,7 @@ const categories = [
 ];
 
 // Get one image for each category (first one found)
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/gallery/*.{jpeg,jpg,png,gif}');
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/gallery/*.{jpeg,jpg,png,gif,webp}');
 
 const categoryImages = await Promise.all(categories.map(async (cat) => {
   // Find the first image in this category that actually exists on disk
@@ -22,7 +22,7 @@ const categoryImages = await Promise.all(categories.map(async (cat) => {
   let imageMetadata: ImageMetadata | null = null;
   
   for (const item of catImages) {
-    const path = `/src/assets/images/gallery/${item.id}.jpg`;
+    const path = `/src/assets/images/gallery/${item.src.split('/').pop()}`;
     if (images[path]) {
       imageMetadata = (await images[path]()).default;
       break; // Found one

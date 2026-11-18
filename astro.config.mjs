@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
+import { googleDriveImage } from "./scripts/google-drive-image.ts";
 
 // https://astro.build/config
 export default defineConfig({
@@ -8,6 +9,12 @@ export default defineConfig({
   // For local development, defaults work out of the box
   site: process.env.SITE || "http://localhost:4321",
   output: "static",
+  integrations: [
+    googleDriveImage({
+      fileId: "1I_TjCGPtHIO9-VhivLm6avxlpimx7n9k",
+      outputPath: "src/assets/images/gallery/landscapes-2-drive.webp",
+    }),
+  ],
   build: {
     // Ensure assets use relative paths for GitHub Pages subpath compatibility
     assets: "_astro",
