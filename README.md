@@ -189,6 +189,17 @@ This project supports both **GitHub Pages** and **Vercel** deployment:
 3. The included workflow will automatically build and deploy on every push to `main`
 4. Your site will be available at `https://<username>.github.io/<repo-name>/`
 
+The [deployment workflow](.github/workflows/deploy.yml) sets up Node.js 22 and Bun,
+then runs the production build. Astro's build hooks download and compress all
+configured Google Drive images and verify that each exported version is at most
+250,000 bytes. A download, compression, or validation failure stops deployment.
+No Google credentials or separate `images:process` step are needed.
+
+Commit `astro.config.mjs`, `scripts/google-drive-image.ts`, the gallery metadata,
+placeholder data, and ignore rules along with the workflow. Generated Drive WebP
+files stay ignored; CI recreates them. If only a Drive image changes, use
+**Actions → Deploy to GitHub Pages → Run workflow** to rebuild and publish it.
+
 ### Vercel
 
 1. Push your code to GitHub

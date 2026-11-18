@@ -30,6 +30,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@4
+        with:
+          node-version: "22"
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
@@ -43,7 +48,8 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Build with Astro
+      - name: Build with Astro and process Google Drive images
+        # Astro hook download/compress Drive images and validate exports before upload
         run: |
           bun run build \
             --site "${{ steps.pages.outputs.origin }}" \
