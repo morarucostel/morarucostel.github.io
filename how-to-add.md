@@ -10,8 +10,9 @@ Drive original in memory and saves only a compressed WebP:
 - Maximum saved size: **250 KB (250,000 bytes)**.
 - Maximum saved longest edge: **1,920 pixels**, reduced further when needed.
 - The gallery, hero, and lightbox use local exported assets, not Drive URLs.
+- Drive file IDs come from private build-time environment variables, not source code.
 - Every exported version of the image is checked against the same size limit.
-- A failed download, invalid image, or oversized export fails the build.
+- A missing Drive ID, failed download, invalid image, or oversized export fails the build.
 
 Run the commands below from the project root, with dependencies already installed.
 The placeholder command uses a macOS/Linux shell and the project's existing Sharp
@@ -36,9 +37,10 @@ Copy only `YOUR_DRIVE_FILE_ID`: the part between `/d/` and `/view`.
 The Drive file ID is different from the gallery image ID you choose below.
 No Google credentials or API keys are needed.
 
-**Privacy:** link sharing is not authentication. If the repository is public,
-the file ID in its configuration is visible too. This workflow limits the images
-distributed by the website; it does not secure the original file on Google Drive.
+**Privacy:** put the real ID only in your ignored local environment file and the
+build host's secret settings. Never paste it into source code, gallery JSON,
+documentation, or the example environment file. Link sharing is not authentication:
+anyone who obtains the original Drive link can still access that file.
 
 ## 2. Choose a unique image ID and category
 
@@ -49,6 +51,7 @@ This guide uses the following example:
 | Gallery image ID | `portraits-11` |
 | Category | `portraits` |
 | Generated filename | `portraits-11-drive.webp` |
+| Environment variable name | `GOOGLE_DRIVE_PORTRAITS_11_FILE_ID` |
 
 Use an unused ID containing lowercase letters, numbers, and hyphens. Check
 [gallery-images.json](./src/data/gallery-images.json) first. Both the ID and
@@ -67,19 +70,59 @@ Supported category values are:
 
 Use the same chosen ID throughout the following steps.
 
-## 3. Register the Drive download
+## 3. Configure the private Drive ID and register the download
+
+### A. Store the real ID locally
+
+Create [`.env.local`](./.env.local) in the project root if it does not already
+exist. You can start by copying [.env.example](./.env.example); do not overwrite
+an existing local file. Keep the values for any images you have already configured.
+
+Add one line for your new image:
+
+```dotenv
+GOOGLE_DRIVE_PORTRAITS_11_FILE_ID=YOUR_DRIVE_FILE_ID
+```
+
+Replace `YOUR_DRIVE_FILE_ID` **in this local file only** with the ID from step 1.
+For the existing `landscapes-2` image, the variable name is
+`GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID`.
+
+[.gitignore](./.gitignore) excludes `.env` and `.env.*`, except the safe
+[.env.example](./.env.example) template. Confirm your local file is ignored:
+
+```bash
+git check-ignore .env.local
+```
+
+The output should be `.env.local`. Do not force-add the file to Git.
+You may add the new variable name to the example file, but leave its value empty:
+
+```dotenv
+GOOGLE_DRIVE_PORTRAITS_11_FILE_ID=
+```
+
+The integration reads `.env` and `.env.local` from the project root for both
+development and production builds. Values already provided by the process
+environment take priority, including in CI. A missing or blank value causes an
+explicit error; the build does not silently use a previously downloaded image.
+Use these mode-independent local files, not `.env.production` or `.env.development`,
+for Drive IDs. Never use the `PUBLIC_` prefix: it exposes variables to browser code.
+
+### B. Reference the variable name in source code
 
 In [astro.config.mjs](./astro.config.mjs), append another `googleDriveImage(...)`
 entry inside the existing `integrations` array:
 
 ```js
 googleDriveImage({
-  fileId: "YOUR_DRIVE_FILE_ID",
+  fileIdEnv: "GOOGLE_DRIVE_PORTRAITS_11_FILE_ID",
   outputPath: "src/assets/images/gallery/portraits-11-drive.webp",
 }),
 ```
 
-Replace the file ID with the one from step 1. Replace the filename if you chose a
+`fileIdEnv` contains the **environment variable name**, never the actual Drive ID.
+Use the exact name from the local file. Replace the filename if you chose a
 different gallery ID.
 
 **Keep the existing `landscapes-2` integration and all other images.** Add one
@@ -90,6 +133,38 @@ Keep generated Drive files directly inside
 [src/assets/images/gallery/](./src/assets/images/gallery/), using the
 `<gallery-id>-drive.webp` naming pattern. Do not create a category subfolder for
 this workflow; the JSON `category` field determines the section.
+
+### C. Provide the same ID to GitHub Actions
+
+For each image:
+
+1. In your GitHub repository, open **Settings > Secrets and variables > Actions**.
+2. Select **Secrets**, then **New repository secret**.
+3. Use the exact variable name, for example `GOOGLE_DRIVE_PORTRAITS_11_FILE_ID`.
+4. Paste the real Drive file ID as the secret value and save it.
+
+Use **repository secrets**, not the plain **Variables** tab, so values are masked
+in Actions logs. These secrets are injected into the build's environment; their
+values are not committed to the repository. Repository secrets are available to
+the build job; a secret added only to the `github-pages` deployment environment
+is not automatically available to that separate job.
+
+In [.github/workflows/deploy.yml](./.github/workflows/deploy.yml), add a mapping
+under `env` on the existing **Build site and process Google Drive images** step.
+Keep mappings for every existing image:
+
+```yaml
+env:
+  GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID: ${{ secrets.GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID }}
+  GOOGLE_DRIVE_PORTRAITS_11_FILE_ID: ${{ secrets.GOOGLE_DRIVE_PORTRAITS_11_FILE_ID }}
+```
+
+Only names appear in this YAML. GitHub supplies the actual values at build time.
+Adding a GitHub secret without its workflow mapping is not sufficient.
+
+If you deploy with Vercel or another host, add the same variable names and real
+values to that project's **build-time environment variables** instead. The local
+environment file must not be uploaded with the site.
 
 ## 4. Add the gallery metadata
 
@@ -147,7 +222,7 @@ src/assets/images/gallery/portraits-11-drive.webp
 ```
 
 Keep the existing ignored image paths. You commit the configuration and metadata,
-not the downloaded WebP.
+not the downloaded WebP or local environment file.
 
 Do not manually copy the large Drive original into
 [public/](./public/) or [src/assets/](./src/assets/). In particular, files in the
@@ -166,6 +241,7 @@ bun run build
 ```
 
 This downloads all configured Drive images and creates the new local WebP.
+Every configured image needs its environment variable set before the build starts.
 The build also checks every exported version against the 250,000-byte limit.
 Do not deploy if the build reports a download, missing-export, or size-limit error.
 
@@ -224,30 +300,35 @@ Open the URL printed in the terminal and check:
 - Network requests for the image use local `/_astro/` assets, possibly preceded
   by the deployment's base path, rather than Google Drive.
 
-Commit the configuration, gallery metadata, placeholder data, and ignore rule,
-then deploy normally. The deployment build recreates the compressed assets.
+Commit the configuration, gallery metadata, placeholder data, ignore rule, workflow
+variable mappings, and any blank entries added to the example environment file.
+Do not commit the real IDs or the local environment file. Configure all required
+GitHub secrets before deploying. The deployment build recreates the compressed assets.
 An already-deployed site needs a new deployment to show the new images.
 
 For development, `npm run dev` also downloads the configured images on startup.
-Restart it after changing the integrations. `npm run preview` only serves an
-existing build; it does not download images.
+Restart it after changing the integrations or local environment values.
+`npm run preview` only serves an existing build; it does not download images
+and does not require Drive IDs.
 
 ## Example: adding three images later
 
 These are example IDs; choose unused values when you add your own images:
 
-| Image ID | Category | Generated filename |
-| --- | --- | --- |
-| `landscapes-11` | `landscapes` | `landscapes-11-drive.webp` |
-| `portraits-11` | `portraits` | `portraits-11-drive.webp` |
-| `events-11` | `events` | `events-11-drive.webp` |
+| Image ID | Category | Generated filename | Environment variable |
+| --- | --- | --- | --- |
+| `landscapes-11` | `landscapes` | `landscapes-11-drive.webp` | `GOOGLE_DRIVE_LANDSCAPES_11_FILE_ID` |
+| `portraits-11` | `portraits` | `portraits-11-drive.webp` | `GOOGLE_DRIVE_PORTRAITS_11_FILE_ID` |
+| `events-11` | `events` | `events-11-drive.webp` | `GOOGLE_DRIVE_EVENTS_11_FILE_ID` |
 
 For three images, add:
 
-1. Three `googleDriveImage(...)` entries, each with its own Drive file ID.
-2. Three gallery JSON objects with matching filenames.
-3. Three ignore rules.
-4. Three placeholder entries, using the step 7 command once per image.
+1. Three private local variable values and three matching GitHub repository secrets.
+2. Three workflow `env` mappings and, optionally, three blank example-file entries.
+3. Three `googleDriveImage(...)` entries, each referencing its variable with `fileIdEnv`.
+4. Three gallery JSON objects with matching filenames.
+5. Three ignore rules for the generated images.
+6. Three placeholder entries, using the step 7 command once per image.
 
 You can register all three before the first build. Then generate their
 placeholders and run the final build once. All three images may also belong to
@@ -257,6 +338,7 @@ the same category, as long as their IDs and filenames remain unique.
 
 | Problem | Check |
 | --- | --- |
+| Build reports a missing environment variable | Set the named variable in `.env.local`, or add both the GitHub repository secret and its workflow `env` mapping. Check for spelling differences or a blank process environment override. |
 | Drive returns an error or a sign-in page | Confirm **Anyone with the link / Viewer**, the individual file ID, and access in a private browser window. |
 | Image is missing from the gallery | Check that `outputPath` and `src` use exactly the same unique `.webp` filename, and that the category spelling is correct. Rebuild. |
 | Image is missing from the home page | Check `featured` and its position among the first 5 or 8 featured records. |
@@ -264,3 +346,12 @@ the same category, as long as their IDs and filenames remain unique.
 | Placeholder is wrong after replacing a photo | Generate its placeholder again and rebuild. |
 | Build reports an oversized export | Do not remove the size check or publish the original. The pipeline needs adjustment before that image can be deployed safely within the limit. |
 | A change does not appear on the live site | Rebuild and redeploy; changing the Drive file alone does not update an existing static deployment. |
+
+## If a Drive ID was already committed
+
+Moving the ID into an environment variable removes it from the current source,
+but not from earlier Git commits. If the ID was already pushed and must no longer
+grant access to the original, revoke sharing on that Drive file and share a new
+copy with a new ID. Update the local environment value and GitHub secret, then
+rebuild. Existing repository history needs separate cleanup if you want it removed
+there too; adding an ignore rule does not erase history.

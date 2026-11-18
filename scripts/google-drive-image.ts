@@ -1,9 +1,27 @@
 import { mkdir, readdir, stat, writeFile } from "node:fs/promises";
 import { parse } from "node:path";
+import { fileURLToPath } from "node:url";
 import type { AstroIntegration } from "astro";
 import sharp from "sharp";
+import { loadEnv } from "vite";
 
 const MAX_IMAGE_BYTES = 250_000;
+
+export function getGoogleDriveFileId(envName: string, root: URL) {
+  if (envName.startsWith("PUBLIC_")) {
+    throw new Error("Google Drive file IDs must not use a PUBLIC_ environment variable.");
+  }
+
+  // Use mode-independent .env/.env.local files; process environment values take precedence.
+  const fileId = loadEnv("", fileURLToPath(root), envName)[envName]?.trim();
+  if (!fileId) {
+    throw new Error(
+      `Missing required environment variable ${envName}. Set it in .env.local or in the build environment.`
+    );
+  }
+
+  return fileId;
+}
 
 export async function downloadGoogleDriveImage(fileId: string, destination: URL) {
   const url = new URL("https://drive.usercontent.google.com/download");
@@ -70,10 +88,10 @@ export async function validateGoogleDriveImageExports(directory: URL, outputPath
 }
 
 export function googleDriveImage({
-  fileId,
+  fileIdEnv,
   outputPath,
 }: {
-  fileId: string;
+  fileIdEnv: string;
   outputPath: string;
 }): AstroIntegration {
   let assetsDirectory = "_astro";
@@ -85,6 +103,7 @@ export function googleDriveImage({
         assetsDirectory = config.build.assets;
         if (command !== "build" && command !== "dev") return;
 
+        const fileId = getGoogleDriveFileId(fileIdEnv, config.root);
         await downloadGoogleDriveImage(fileId, new URL(outputPath, config.root));
         logger.info(`Downloaded ${outputPath} from Google Drive.`);
       },

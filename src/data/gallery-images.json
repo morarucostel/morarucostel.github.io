@@ -180,16 +180,16 @@
     "id": "landscapes-2",
     "src": "/images/gallery/landscapes-2-drive.webp",
     "category": "landscapes",
-    "title": "Mountain Peak",
-    "caption": "A captured moment from the landscapes series.",
+    "title": "The Pleiades",
+    "caption": "A prominent open star cluster known as Messier 45.",
     "featured": true,
     "printAvailable": true,
     "exif": {
-      "camera": "Sony A7RV",
-      "lens": "35mm f/1.4 GM",
-      "iso": 120,
-      "aperture": "f/1.4",
-      "shutter": "1/250s"
+      "camera": "RisingCam IMX571 colour",
+      "lens": "William Optics GT71",
+      "rgb-lights": "11h at 180s",
+      "calibration": "yes",
+      "integration": "TBD"
     }
   },
   {

@@ -11,7 +11,7 @@ export default defineConfig({
   output: "static",
   integrations: [
     googleDriveImage({
-      fileId: "1I_TjCGPtHIO9-VhivLm6avxlpimx7n9k",
+      fileIdEnv: "GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID",
       outputPath: "src/assets/images/gallery/landscapes-2-drive.webp",
     }),
   ],

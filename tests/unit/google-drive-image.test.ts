@@ -8,14 +8,70 @@ import { pathToFileURL } from "node:url";
 import sharp from "sharp";
 import {
   downloadGoogleDriveImage,
+  getGoogleDriveFileId,
   validateGoogleDriveImageExports,
 } from "../../scripts/google-drive-image.ts";
 
-async function imageDestination(t: TestContext) {
+async function temporaryDirectory(t: TestContext) {
   const directory = await mkdtemp(join(tmpdir(), "drive-gallery-image-"));
   t.after(() => rm(directory, { recursive: true, force: true }));
-  return pathToFileURL(join(directory, "gallery", "landscapes-2-drive.webp"));
+  return pathToFileURL(`${directory}/`);
 }
+
+async function imageDestination(t: TestContext) {
+  return new URL("gallery/landscapes-2-drive.webp", await temporaryDirectory(t));
+}
+
+const TEST_ENV_NAME = "GOOGLE_DRIVE_UNIT_TEST_FILE_ID";
+
+function setDriveEnvironment(t: TestContext, value?: string) {
+  const previousValue = process.env[TEST_ENV_NAME];
+  t.after(() => {
+    if (previousValue === undefined) delete process.env[TEST_ENV_NAME];
+    else process.env[TEST_ENV_NAME] = previousValue;
+  });
+
+  if (value === undefined) delete process.env[TEST_ENV_NAME];
+  else process.env[TEST_ENV_NAME] = value;
+}
+
+test("loads the Drive ID from the project env files, preferring .env.local", async (t) => {
+  setDriveEnvironment(t);
+  const root = await temporaryDirectory(t);
+  await writeFile(new URL(".env", root), `${TEST_ENV_NAME}=default-file-id\n`);
+  assert.equal(getGoogleDriveFileId(TEST_ENV_NAME, root), "default-file-id");
+
+  await writeFile(new URL(".env.local", root), `${TEST_ENV_NAME}="  local-file-id  "\n`);
+  assert.equal(getGoogleDriveFileId(TEST_ENV_NAME, root), "local-file-id");
+});
+
+test("uses the build environment without a local file and overrides local values", async (t) => {
+  setDriveEnvironment(t, "remote-file-id");
+  const root = await temporaryDirectory(t);
+  assert.equal(getGoogleDriveFileId(TEST_ENV_NAME, root), "remote-file-id");
+
+  await writeFile(new URL(".env.local", root), `${TEST_ENV_NAME}=local-file-id\n`);
+  assert.equal(getGoogleDriveFileId(TEST_ENV_NAME, root), "remote-file-id");
+});
+
+test("rejects missing or blank environment IDs instead of falling back to a local value", async (t) => {
+  setDriveEnvironment(t);
+  const root = await temporaryDirectory(t);
+  const expectedError = /Missing required environment variable GOOGLE_DRIVE_UNIT_TEST_FILE_ID/;
+  assert.throws(() => getGoogleDriveFileId(TEST_ENV_NAME, root), expectedError);
+
+  await writeFile(new URL(".env.local", root), `${TEST_ENV_NAME}=local-file-id\n`);
+  process.env[TEST_ENV_NAME] = "   ";
+  assert.throws(() => getGoogleDriveFileId(TEST_ENV_NAME, root), expectedError);
+});
+
+test("rejects public environment variables for Drive IDs", async (t) => {
+  const root = await temporaryDirectory(t);
+  assert.throws(
+    () => getGoogleDriveFileId("PUBLIC_DRIVE_FILE_ID", root),
+    /must not use a PUBLIC_ environment variable/
+  );
+});
 
 test("downloads a Drive image and writes a valid local WebP without enlarging it", async (t) => {
   const destination = await imageDestination(t);

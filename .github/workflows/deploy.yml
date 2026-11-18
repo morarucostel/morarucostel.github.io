@@ -50,6 +50,8 @@ jobs:
 
       - name: Build site and process Google Drive images
         # Astro hooks download/compress Drive images and validate exports before upload.
+        env:
+          GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID: ${{ secrets.GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID }}
         run: |
           bun run build \
             --site "${{ steps.pages.outputs.origin }}" \

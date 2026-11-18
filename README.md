@@ -149,9 +149,22 @@ Edit the JSON files in `src/data/` to update your portfolio content:
 #### Build-time Google Drive image
 
 The `landscapes-2` gallery entry is downloaded from Google Drive before each
-production build and development-server startup. Its file ID is configured in
-`astro.config.mjs`; the file must have **General access: Anyone with the link**
-with viewer access. No Google credentials are required.
+production build and development-server startup. Its file ID comes from
+`GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID`, not from source code. Locally, copy
+[.env.example](./.env.example) to `.env.local` if that file does not exist yet,
+then set the ID there. Local environment files are ignored by Git; the example
+file contains names only, not real Drive IDs.
+
+For GitHub Actions, add a **repository secret** named
+`GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID` under **Settings > Secrets and variables >
+Actions > Secrets**. The workflow passes it to the build as an environment
+variable. Other build hosts must provide the same variable in their build
+environment. Process environment values override local files, and a missing
+or blank ID fails the build. Never use a `PUBLIC_` variable for a Drive ID.
+
+The Drive file must have **General access: Anyone with the link** with viewer
+access. No Google credentials are required. See [how-to-add.md](./how-to-add.md)
+for the per-image local and GitHub setup.
 
 The build keeps the Drive original in memory, then auto-orients and compresses it
 to `src/assets/images/gallery/landscapes-2-drive.webp` (ignored by Git). The saved
@@ -193,11 +206,13 @@ The [deployment workflow](.github/workflows/deploy.yml) sets up Node.js 22 and B
 then runs the production build. Astro's build hooks download and compress all
 configured Google Drive images and verify that each exported version is at most
 250,000 bytes. A download, compression, or validation failure stops deployment.
+Configure the required Drive repository secrets before the first build.
 No Google credentials or separate `images:process` step are needed.
 
 Commit `astro.config.mjs`, `scripts/google-drive-image.ts`, the gallery metadata,
 placeholder data, and ignore rules along with the workflow. Generated Drive WebP
-files stay ignored; CI recreates them. If only a Drive image changes, use
+files and local environment files stay ignored; CI recreates the images using
+its environment variables. If only a Drive image changes, use
 **Actions → Deploy to GitHub Pages → Run workflow** to rebuild and publish it.
 
 ### Vercel
