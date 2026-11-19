@@ -193,6 +193,23 @@
     }
   },
   {
+    "id": "andromeda-rgb-ha-oiii",
+    "src": "/images/gallery/andromeda-rgb-ha-oiii-drive.webp",
+    "category": "landscapes",
+    "title": "Andromeda galaxy",
+    "caption": "A captured moment from the landscapes series.",
+    "featured": true,
+    "printAvailable": false,
+    "exif": {
+      "camera": "RisingCam IMX571 colour",
+      "lens": "William Optics GT71",
+      "rgb-lights": "11h at 180s",
+      "HaOIII-lights": "10h at 300s",
+      "calibration": "yes",
+      "integration": "21h"
+    }
+  },
+  {
     "id": "landscapes-3",
     "src": "/images/gallery/landscapes/landscapes-3.jpg",
     "category": "landscapes",

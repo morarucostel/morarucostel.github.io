@@ -1,4 +1,4 @@
-import { atom } from 'nanostores';
+import { atom } from "nanostores";
 
 export interface LightboxImage {
   id: string;
@@ -7,6 +7,13 @@ export interface LightboxImage {
   category?: string;
   title?: string;
   caption?: string;
+  exif?: {
+    camera?: string;
+    lens?: string;
+    iso?: number;
+    aperture?: string;
+    shutter?: string;
+  };
 }
 
 export const isLightboxOpen = atom(false);

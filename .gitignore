@@ -6,7 +6,7 @@ stats.html
 .astro/
 # downloaded build-time image
 src/assets/images/gallery/landscapes-2-drive.webp
-
+src/assets/images/gallery/andromeda-rgb-ha-oiii-drive.webp
 # dependencies
 node_modules/
 

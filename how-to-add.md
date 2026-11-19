@@ -213,6 +213,52 @@ Simply appending another featured image may not put it on the home page if those
 slots are already filled. Move its JSON object earlier, or unfeature other images,
 if needed. It will still appear on its category gallery page.
 
+### Optional: add rich-text technical information
+
+The image viewer shows the category, title, caption, and compact EXIF settings
+over the photograph while **Image details** is closed. Opening details hides
+this overlay and displays the caption, EXIF settings, and any longer notes in
+the details view. Closing details (or selecting **Photo** on mobile) restores
+the overlay.
+
+For longer information, add a Markdown file in
+[src/data/image-details/](./src/data/image-details/) whose filename matches the
+gallery image ID. For `portraits-11`, create `portraits-11.md`:
+
+```markdown
+### Capture notes
+
+A portrait made with **soft window light**.
+
+### Equipment and technique
+
+- A reflector provided fill light.
+- Focus was placed on the nearer eye.
+
+| Setting | Value |
+| --- | --- |
+| White balance | Daylight |
+| Editing | Colour and contrast adjustments |
+```
+
+Use your own information instead of these example notes. Paragraphs, headings,
+bold and italic text, lists, links, and tables are supported. No frontmatter or
+extra JSON field is required. See the clearly labelled
+[sample notes for portraits-1](./src/data/image-details/portraits-1.md).
+
+Markdown is trusted, repository-authored content compiled by Astro at build
+time, not HTML accepted from visitors. Do not paste untrusted scripts or HTML
+into it. Rebuild and deploy after changing the information.
+
+- At widths of **1,024 pixels and above**, **Image details** toggles a separately
+  scrolling side panel. The photograph resizes rather than being covered.
+- On smaller screens, **Photo / Details** tabs switch between the photograph
+  and a full-width reading view.
+- Details start closed whenever the viewer is opened. Navigating to another
+  image updates its information and resets the reading position.
+- An image with no caption, EXIF values, or non-empty Markdown has no details
+  control. Its title and category remain visible in the toolbar.
+
 ## 5. Ignore the generated image in Git
 
 Add a line to [.gitignore](./.gitignore) for the new generated file:

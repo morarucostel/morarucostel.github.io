@@ -1,7 +1,12 @@
 ---
-import DemoLink from '../demo/DemoLink.astro';
-import DemoButton from '../demo/DemoButton.astro';
-// Lightbox.astro
+import type { MarkdownInstance } from "astro";
+import DemoLink from "../demo/DemoLink.astro";
+import DemoButton from "../demo/DemoButton.astro";
+
+const imageDetails = import.meta.glob<MarkdownInstance<Record<string, unknown>>>(
+  "../../data/image-details/*.md",
+  { eager: true }
+);
 ---
 
 <div
@@ -9,114 +14,399 @@ import DemoButton from '../demo/DemoButton.astro';
   role="dialog"
   aria-modal="true"
   aria-label="Image Gallery"
-  class="fixed inset-0 z-[100] flex items-center justify-center bg-[rgba(10,10,10,0.95)] backdrop-blur-xl opacity-0 pointer-events-none transition-opacity duration-300 ease-out"
+  aria-hidden="true"
+  inert
+  class="fixed inset-0 z-[100] flex flex-col bg-[rgba(10,10,10,0.95)] text-white backdrop-blur-xl opacity-0 pointer-events-none transition-opacity duration-300 ease-out"
   tabindex="-1"
 >
-  <!-- Top Bar -->
-  <div class="absolute top-0 left-0 right-0 p-6 flex justify-between items-start z-[110]">
-    <div class="flex items-center gap-4">
-      <span id="lightbox-counter" class="text-white/60 font-mono text-sm tracking-widest"></span>
+  <div
+    class="flex shrink-0 items-center justify-between gap-3 border-b border-white/10 px-4 py-3 lg:px-6"
+  >
+    <div class="min-w-0">
+      <h2 id="lightbox-title" class="truncate font-serif text-lg lg:text-xl">Image gallery</h2>
+      <div class="flex items-center gap-3 text-xs text-neutral-300">
+        <span id="lightbox-category" class="truncate uppercase tracking-widest"></span>
+        <span id="lightbox-counter" class="shrink-0 font-mono" aria-live="polite" aria-atomic="true"
+        ></span>
+      </div>
     </div>
 
-    <div class="flex items-center gap-4 pr-12">
-        <DemoButton 
-            feature="Download Image" 
-            demoMessage="Downloading high-res images is disabled in demo mode."
-            class="text-white/70 hover:text-white p-2 transition-colors"
-            aria-label="Download"
+    <div class="flex shrink-0 items-center gap-1 lg:gap-3">
+      <button
+        id="lightbox-details-toggle"
+        type="button"
+        hidden
+        aria-expanded="false"
+        aria-controls="lightbox-details-panel"
+        class="hidden min-h-11 items-center gap-2 rounded-md border border-white/20 px-3 text-sm text-neutral-200 transition-colors hover:bg-white/10 aria-expanded:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:inline-flex"
+      >
+        <svg
+          aria-hidden="true"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
         >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        </DemoButton>
-        <DemoLink 
-            href="#" 
-            id="lightbox-share"
-            class="text-white/70 hover:text-white p-2 transition-colors"
-            aria-label="Share"
+          <circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7v1"></path>
+        </svg>
+        Image details
+      </button>
+      <DemoButton
+        feature="Download Image"
+        demoMessage="Downloading high-res images is disabled in demo mode."
+        class="flex size-11 items-center justify-center rounded-full text-white/70 hover:text-white focus-visible:outline-2 focus-visible:outline-white"
+        aria-label="Download"
+      >
+        <svg
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline
+            points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg
         >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
-        </DemoLink>
+      </DemoButton>
+      <DemoLink
+        href="#"
+        id="lightbox-share"
+        class="flex size-11 items-center justify-center rounded-full text-white/70 hover:text-white focus-visible:outline-2 focus-visible:outline-white"
+        aria-label="Share"
+      >
+        <svg
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline
+            points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg
+        >
+      </DemoLink>
+      <button
+        id="lightbox-close"
+        type="button"
+        class="flex size-11 items-center justify-center rounded-full text-white/70 hover:text-white focus-visible:outline-2 focus-visible:outline-white"
+        aria-label="Close lightbox"
+      >
+        <svg
+          aria-hidden="true"
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        >
+          <path d="m18 6-12 12M6 6l12 12"></path>
+        </svg>
+      </button>
     </div>
   </div>
 
-  <!-- Close Button -->
-  <button
-    id="lightbox-close"
-    class="absolute top-6 right-6 text-white/70 hover:text-white z-[110] p-2 focus:outline-none focus:ring-1 focus:ring-white/50 rounded-full transition-colors duration-200"
-    aria-label="Close lightbox"
+  <div
+    id="lightbox-view-tabs"
+    role="tablist"
+    aria-label="Image view"
+    hidden
+    class="flex shrink-0 border-b border-white/10 px-4 lg:hidden"
   >
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="18" y1="6" x2="6" y2="18"></line>
-      <line x1="6" y1="6" x2="18" y2="18"></line>
-    </svg>
-  </button>
-
-  <!-- Prev Button -->
-  <button
-    id="lightbox-prev"
-    class="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-[110] p-4 focus:outline-none focus:ring-1 focus:ring-white/50 rounded-full transition-colors duration-200 hidden md:block"
-    aria-label="Previous image"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6"></polyline>
-    </svg>
-  </button>
-
-  <!-- Next Button -->
-  <button
-    id="lightbox-next"
-    class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-[110] p-4 focus:outline-none focus:ring-1 focus:ring-white/50 rounded-full transition-colors duration-200 hidden md:block"
-    aria-label="Next image"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-  </button>
-
-  <!-- Main Image Container -->
-  <div class="relative w-full h-full max-w-[90vw] max-h-[90vh] flex items-center justify-center overflow-hidden">
-    <div id="lightbox-image-wrapper" class="relative w-full h-full flex items-center justify-center overflow-hidden">
-      <img
-        id="lightbox-image"
-        src=""
-        alt=""
-        class="max-w-full max-h-full object-contain shadow-2xl select-none transition-transform duration-200 ease-out cursor-zoom-in touch-none"
-        draggable="false"
-      />
-    </div>
-    
-    <!-- Caption Overlay -->
-    <div
-      id="lightbox-caption-container"
-      class="absolute bottom-0 left-0 right-0 p-8 text-center text-white bg-gradient-to-t from-black/80 to-transparent pointer-events-none opacity-0 transition-opacity duration-300 delay-150 flex flex-col items-center"
+    <button
+      id="lightbox-photo-tab"
+      type="button"
+      role="tab"
+      aria-controls="lightbox-photo"
+      aria-selected="true"
+      class="min-h-12 flex-1 border-b-2 border-transparent px-4 text-sm text-neutral-300 aria-selected:border-white aria-selected:text-white focus-visible:outline-2 focus-visible:outline-white"
     >
-        <span id="lightbox-category" class="block text-xs font-light uppercase tracking-[0.2em] text-neutral-300 mb-2"></span>
-        <h2 id="lightbox-title" class="text-xl md:text-2xl font-serif font-normal tracking-wide"></h2>
-        <p id="lightbox-caption" class="text-sm font-light text-neutral-400 mt-2 max-w-2xl mx-auto hidden"></p>
-        
-        <!-- EXIF Data -->
-        <div id="lightbox-exif" class="mt-4 flex flex-wrap justify-center gap-4 text-xs font-mono text-neutral-500 hidden">
-            <!-- Populated via JS -->
-        </div>
-    </div>
+      Photo
+    </button>
+    <button
+      id="lightbox-details-tab"
+      type="button"
+      role="tab"
+      aria-controls="lightbox-details-panel"
+      aria-selected="false"
+      tabindex="-1"
+      class="flex min-h-12 flex-1 items-center justify-center gap-2 border-b-2 border-transparent px-4 text-sm text-neutral-300 aria-selected:border-white aria-selected:text-white focus-visible:outline-2 focus-visible:outline-white"
+    >
+      <svg
+        aria-hidden="true"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+      >
+        <circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7v1"></path>
+      </svg>
+      Details
+    </button>
   </div>
+
+  <div class="flex min-h-0 flex-1 overflow-hidden">
+    <div
+      id="lightbox-photo"
+      class="relative flex min-h-0 min-w-0 flex-1 items-center px-2 py-4 outline-none sm:px-4"
+    >
+      <button
+        id="lightbox-prev"
+        type="button"
+        class="hidden shrink-0 rounded-full p-3 text-white/70 hover:text-white focus-visible:outline-2 focus-visible:outline-white lg:block"
+        aria-label="Previous image"
+      >
+        <svg
+          aria-hidden="true"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <div
+        id="lightbox-image-wrapper"
+        class="relative flex h-full min-w-0 flex-1 items-center justify-center overflow-hidden"
+      >
+        <img
+          id="lightbox-image"
+          src=""
+          alt=""
+          class="max-w-full max-h-full object-contain shadow-2xl select-none transition-transform duration-200 ease-out cursor-zoom-in touch-none"
+          draggable="false"
+        />
+        <div
+          id="lightbox-caption-container"
+          hidden
+          class="pointer-events-none absolute bottom-0 left-0 right-0 flex flex-col items-center bg-gradient-to-t from-black/80 to-transparent p-6 text-center text-white md:p-8"
+        >
+          <span
+            id="lightbox-overlay-category"
+            class="mb-2 block text-xs font-light uppercase tracking-[0.2em] text-neutral-300"
+          ></span>
+          <p
+            id="lightbox-overlay-title"
+            class="font-serif text-xl font-normal tracking-wide md:text-2xl"
+          >
+          </p>
+          <p
+            id="lightbox-overlay-caption"
+            hidden
+            class="mt-2 max-w-2xl text-sm font-light text-neutral-300"
+          >
+          </p>
+          <div
+            id="lightbox-overlay-exif"
+            hidden
+            class="mt-4 flex flex-wrap justify-center gap-4 font-mono text-xs text-neutral-300"
+          >
+          </div>
+        </div>
+      </div>
+      <button
+        id="lightbox-next"
+        type="button"
+        class="hidden shrink-0 rounded-full p-3 text-white/70 hover:text-white focus-visible:outline-2 focus-visible:outline-white lg:block"
+        aria-label="Next image"
+      >
+        <svg
+          aria-hidden="true"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+    <section
+      id="lightbox-details-panel"
+      role="region"
+      aria-labelledby="lightbox-details-heading"
+      tabindex="0"
+      hidden
+      class="min-h-0 w-full shrink-0 overflow-y-auto overscroll-contain bg-neutral-950 p-6 text-neutral-300 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-white/50 lg:w-[min(26rem,40vw)] lg:border-l lg:border-white/10"
+    >
+      <h2 id="lightbox-details-heading" class="mb-5 font-serif text-xl text-white">
+        Image details
+      </h2>
+      <p id="lightbox-caption" class="mb-6 whitespace-pre-line text-sm leading-relaxed" hidden></p>
+      <dl id="lightbox-exif" class="mb-6 text-sm" hidden></dl>
+      <div
+        id="lightbox-rich-text"
+        class="prose prose-invert prose-sm max-w-none overflow-x-auto break-words prose-a:text-indigo-300 prose-a:underline"
+        hidden
+      >
+      </div>
+    </section>
+  </div>
+  {
+    Object.entries(imageDetails).map(([path, { Content }]) => (
+      <template data-image-details={path.slice(path.lastIndexOf("/") + 1, -3)}>
+        <Content />
+      </template>
+    ))
+  }
 </div>
 
+<style>
+  #lightbox [hidden] {
+    display: none !important;
+  }
+</style>
+
 <script>
-  import { isLightboxOpen, currentIndex, lightboxImages, closeLightbox, nextImage, prevImage } from '../../store/lightbox';
-  
-  const lightbox = document.getElementById('lightbox');
-  const imgElement = document.getElementById('lightbox-image') as HTMLImageElement;
-  const titleElement = document.getElementById('lightbox-title');
-  const categoryElement = document.getElementById('lightbox-category');
-  const captionElement = document.getElementById('lightbox-caption');
-  const exifElement = document.getElementById('lightbox-exif');
-  const counterElement = document.getElementById('lightbox-counter');
-  const shareLink = document.getElementById('lightbox-share') as HTMLAnchorElement;
-  const captionContainer = document.getElementById('lightbox-caption-container');
-  const closeBtn = document.getElementById('lightbox-close');
-  const prevBtn = document.getElementById('lightbox-prev');
-  const nextBtn = document.getElementById('lightbox-next');
-  const imageWrapper = document.getElementById('lightbox-image-wrapper');
+  import {
+    isLightboxOpen,
+    currentIndex,
+    lightboxImages,
+    closeLightbox,
+    nextImage,
+    prevImage,
+  } from "../../store/lightbox";
+  import type { LightboxImage } from "../../store/lightbox";
+
+  function requireElement<T extends HTMLElement = HTMLElement>(selector: string): T {
+    const element = document.querySelector<T>(selector);
+    if (!element) throw new Error(`Missing lightbox element: ${selector}`);
+    return element;
+  }
+
+  const lightbox = requireElement("#lightbox");
+  const imgElement = requireElement<HTMLImageElement>("#lightbox-image");
+  const titleElement = requireElement("#lightbox-title");
+  const categoryElement = requireElement("#lightbox-category");
+  const captionElement = requireElement("#lightbox-caption");
+  const exifElement = requireElement("#lightbox-exif");
+  const captionOverlay = requireElement("#lightbox-caption-container");
+  const overlayTitle = requireElement("#lightbox-overlay-title");
+  const overlayCategory = requireElement("#lightbox-overlay-category");
+  const overlayCaption = requireElement("#lightbox-overlay-caption");
+  const overlayExif = requireElement("#lightbox-overlay-exif");
+  const counterElement = requireElement("#lightbox-counter");
+  const shareLink = requireElement<HTMLAnchorElement>("#lightbox-share");
+  const closeBtn = requireElement<HTMLButtonElement>("#lightbox-close");
+  const prevBtn = requireElement<HTMLButtonElement>("#lightbox-prev");
+  const nextBtn = requireElement<HTMLButtonElement>("#lightbox-next");
+  const imageWrapper = requireElement("#lightbox-image-wrapper");
+  const photoPanel = requireElement("#lightbox-photo");
+  const detailsPanel = requireElement("#lightbox-details-panel");
+  const richText = requireElement("#lightbox-rich-text");
+  const detailsToggle = requireElement<HTMLButtonElement>("#lightbox-details-toggle");
+  const viewTabs = requireElement("#lightbox-view-tabs");
+  const photoTab = requireElement<HTMLButtonElement>("#lightbox-photo-tab");
+  const detailsTab = requireElement<HTMLButtonElement>("#lightbox-details-tab");
+  const desktopLayout = window.matchMedia("(min-width: 1024px)");
+  const detailTemplates = new Map(
+    Array.from(document.querySelectorAll<HTMLTemplateElement>("template[data-image-details]")).map(
+      (template) => [template.dataset.imageDetails, template] as const
+    )
+  );
+  const exifFields = [
+    ["camera", "Camera"],
+    ["lens", "Lens"],
+    ["iso", "ISO"],
+    ["aperture", "Aperture"],
+    ["shutter", "Shutter speed"],
+  ] as const;
+
+  let hasDetails = false;
+  let detailsOpen = false;
+  let isActive = false;
+  let previousActiveElement: HTMLElement | null = null;
+  let previousOverflow = "";
+  let swipeStart: { x: number; y: number } | null = null;
+
+  function updateDetailsView() {
+    const visible = hasDetails && detailsOpen;
+    detailsToggle.hidden = !hasDetails;
+    viewTabs.hidden = !hasDetails;
+    detailsPanel.hidden = !visible;
+    photoPanel.hidden = !desktopLayout.matches && visible;
+    captionOverlay.hidden = visible || !isActive;
+    detailsToggle.setAttribute("aria-expanded", String(visible));
+    photoTab.setAttribute("aria-selected", String(!visible));
+    detailsTab.setAttribute("aria-selected", String(visible));
+    photoTab.tabIndex = visible ? -1 : 0;
+    detailsTab.tabIndex = visible ? 0 : -1;
+
+    if (desktopLayout.matches || !hasDetails) {
+      photoPanel.removeAttribute("role");
+      photoPanel.removeAttribute("aria-labelledby");
+      photoPanel.tabIndex = -1;
+      detailsPanel.setAttribute("role", "region");
+      detailsPanel.setAttribute("aria-labelledby", "lightbox-details-heading");
+    } else {
+      photoPanel.setAttribute("role", "tabpanel");
+      photoPanel.setAttribute("aria-labelledby", "lightbox-photo-tab");
+      photoPanel.tabIndex = 0;
+      detailsPanel.setAttribute("role", "tabpanel");
+      detailsPanel.setAttribute("aria-labelledby", "lightbox-details-tab");
+    }
+  }
+
+  function renderDetails(image: LightboxImage) {
+    const caption = image.caption?.trim() || "";
+    captionElement.textContent = caption;
+    captionElement.hidden = !caption;
+    overlayCaption.textContent = caption;
+    overlayCaption.hidden = !caption;
+    exifElement.replaceChildren();
+    overlayExif.replaceChildren();
+
+    for (const [key, label] of exifFields) {
+      const value = image.exif?.[key];
+      if (value === undefined || String(value).trim() === "") continue;
+      const row = document.createElement("div");
+      row.className = "grid grid-cols-[7rem_minmax(0,1fr)] gap-3 border-b border-white/10 py-3";
+      const term = document.createElement("dt");
+      term.className = "text-neutral-400";
+      term.textContent = label;
+      const description = document.createElement("dd");
+      description.className = "break-words text-neutral-200";
+      description.textContent = String(value);
+      row.append(term, description);
+      exifElement.append(row);
+      const summary = document.createElement("span");
+      summary.textContent = key === "iso" ? `ISO ${value}` : String(value);
+      overlayExif.append(summary);
+    }
+    exifElement.hidden = exifElement.childElementCount === 0;
+    overlayExif.hidden = exifElement.hidden;
+
+    const template = detailTemplates.get(image.id);
+    richText.replaceChildren();
+    if (template) richText.append(template.content.cloneNode(true));
+    richText.hidden = !richText.textContent?.trim();
+    hasDetails = !captionElement.hidden || !exifElement.hidden || !richText.hidden;
+    if (!hasDetails) detailsOpen = false;
+    updateDetailsView();
+    detailsPanel.scrollTop = 0;
+  }
 
   // Zoom State
   let isZoomed = false;
@@ -126,170 +416,155 @@ import DemoButton from '../demo/DemoButton.astro';
   let startX = 0;
   let startY = 0;
   let isDragging = false;
-  
+
   // Touch Zoom State
   let initialDistance = 0;
 
   function resetZoom() {
     isZoomed = false;
+    isDragging = false;
+    initialDistance = 0;
+    swipeStart = null;
     currentScale = 1;
     translateX = 0;
     translateY = 0;
     updateImageTransform();
     if (imgElement) {
-        imgElement.style.cursor = 'zoom-in';
-        imgElement.classList.remove('cursor-grab', 'cursor-grabbing');
+      imgElement.style.cursor = "zoom-in";
+      imgElement.classList.remove("cursor-grab", "cursor-grabbing");
     }
   }
 
   function updateImageTransform() {
     if (imgElement) {
-        imgElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+      imgElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
     }
   }
 
   function toggleZoom(e: MouseEvent | TouchEvent) {
     if (isZoomed) {
-        resetZoom();
+      resetZoom();
     } else {
-        isZoomed = true;
-        currentScale = 2.5; // Zoom level
-        
-        // Calculate click position relative to image to zoom towards that point
-        // For simplicity in this iteration, we just zoom to center or clamp later
-        // A simple centered zoom is safer for the first pass
-        
-        if (imgElement) {
-            imgElement.style.cursor = 'zoom-out';
-            imgElement.classList.add('cursor-grab');
-        }
-        updateImageTransform();
+      isZoomed = true;
+      currentScale = 2.5; // Zoom level
+
+      // Calculate click position relative to image to zoom towards that point
+      // For simplicity in this iteration, we just zoom to center or clamp later
+      // A simple centered zoom is safer for the first pass
+
+      if (imgElement) {
+        imgElement.style.cursor = "zoom-out";
+        imgElement.classList.add("cursor-grab");
+      }
+      updateImageTransform();
     }
     e.stopPropagation();
   }
 
   function handlePointerDown(e: MouseEvent | TouchEvent) {
-    if (!isZoomed) return;
+    if (!isActive || !isZoomed) return;
     isDragging = true;
-    
+
     let clientX = 0;
     let clientY = 0;
 
-    if ('touches' in e && e.touches.length > 0) {
-        clientX = e.touches[0].clientX;
-        clientY = e.touches[0].clientY;
-    } else if ('clientX' in e) {
-        clientX = (e as MouseEvent).clientX;
-        clientY = (e as MouseEvent).clientY;
+    if ("touches" in e && e.touches.length > 0) {
+      clientX = e.touches[0].clientX;
+      clientY = e.touches[0].clientY;
+    } else if ("clientX" in e) {
+      clientX = (e as MouseEvent).clientX;
+      clientY = (e as MouseEvent).clientY;
     } else {
-        return;
+      return;
     }
-    
+
     startX = clientX - translateX;
     startY = clientY - translateY;
-    
-    if (imgElement) imgElement.classList.add('cursor-grabbing');
+
+    if (imgElement) imgElement.classList.add("cursor-grabbing");
     if (e.cancelable) e.preventDefault(); // Prevent default drag behavior
   }
 
   function handlePointerMove(e: MouseEvent | TouchEvent) {
     if (!isDragging || !isZoomed) return;
-    
+
     let clientX = 0;
     let clientY = 0;
 
-    if ('touches' in e && e.touches.length > 0) {
-        clientX = e.touches[0].clientX;
-        clientY = e.touches[0].clientY;
-    } else if ('clientX' in e) {
-        clientX = (e as MouseEvent).clientX;
-        clientY = (e as MouseEvent).clientY;
+    if ("touches" in e && e.touches.length > 0) {
+      clientX = e.touches[0].clientX;
+      clientY = e.touches[0].clientY;
+    } else if ("clientX" in e) {
+      clientX = (e as MouseEvent).clientX;
+      clientY = (e as MouseEvent).clientY;
     } else {
-        return;
+      return;
     }
-    
+
     translateX = clientX - startX;
     translateY = clientY - startY;
-    
+
     updateImageTransform();
     if (e.cancelable) e.preventDefault();
   }
 
   function handlePointerUp() {
     isDragging = false;
-    if (imgElement) imgElement.classList.remove('cursor-grabbing');
+    if (imgElement) imgElement.classList.remove("cursor-grabbing");
   }
 
   function updateLightbox() {
     const images = lightboxImages.get();
     const index = currentIndex.get();
     const isOpen = isLightboxOpen.get();
-    
-    if (isOpen) {
-        // Reset zoom whenever image changes or lightbox opens
+
+    if (!isOpen) {
+      if (isActive) {
+        isActive = false;
+        detailsOpen = false;
         resetZoom();
-
-        lightbox?.classList.remove('opacity-0', 'pointer-events-none');
-        lightbox?.focus();
-        // Prevent body scroll
-        document.body.style.overflow = 'hidden';
-        
-        if (images[index]) {
-            const img = images[index];
-            if (imgElement) {
-                // Preload adjacent images
-                const nextIdx = (index + 1) % images.length;
-                const prevIdx = (index - 1 + images.length) % images.length;
-                new Image().src = images[nextIdx].src;
-                new Image().src = images[prevIdx].src;
-
-                imgElement.src = img.src;
-                imgElement.alt = img.alt || img.title || 'Gallery image';
-            }
-            if (titleElement) titleElement.textContent = img.title || '';
-            if (categoryElement) categoryElement.textContent = img.category || '';
-            if (counterElement) counterElement.textContent = `${index + 1} / ${images.length}`;
-            
-            // Share Link Update (placeholder)
-            if (shareLink) shareLink.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(img.title || '')}&url=${encodeURIComponent(window.location.href)}`;
-
-            if (captionElement) {
-                if (img.caption) {
-                    captionElement.textContent = img.caption;
-                    captionElement.classList.remove('hidden');
-                } else {
-                    captionElement.classList.add('hidden');
-                }
-            }
-
-            if (exifElement) {
-                // EXIF requires data passed from store. 
-                // We need to update map logic below to include EXIF.
-                // Assuming img.exif exists (we need to update mapping first)
-                // Cast to any for now or update interface
-                const exif = (img as any).exif;
-                if (exif) {
-                    exifElement.innerHTML = `
-                        <span>${exif.camera || ''}</span>
-                        <span>${exif.lens || ''}</span>
-                        <span>${exif.iso ? 'ISO ' + exif.iso : ''}</span>
-                        <span>${exif.aperture || ''}</span>
-                        <span>${exif.shutter || ''}</span>
-                    `;
-                    exifElement.classList.remove('hidden');
-                } else {
-                    exifElement.classList.add('hidden');
-                }
-            }
-            
-            captionContainer?.classList.remove('opacity-0');
-        }
-    } else {
-        lightbox?.classList.add('opacity-0', 'pointer-events-none');
-        captionContainer?.classList.add('opacity-0');
-        // Restore body scroll
-        document.body.style.overflow = '';
+        updateDetailsView();
+        lightbox.classList.add("opacity-0", "pointer-events-none");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightbox.inert = true;
+        document.body.style.overflow = previousOverflow;
+        previousActiveElement?.focus({ preventScroll: true });
+        previousActiveElement = null;
+      }
+      return;
     }
+
+    const image = images[index];
+    if (!image) throw new Error(`No lightbox image at index ${index}.`);
+    const opening = !isActive;
+    if (opening) {
+      previousActiveElement =
+        document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      previousOverflow = document.body.style.overflow;
+      detailsOpen = false;
+      isActive = true;
+      lightbox.inert = false;
+      lightbox.setAttribute("aria-hidden", "false");
+      lightbox.classList.remove("opacity-0", "pointer-events-none");
+      document.body.style.overflow = "hidden";
+    }
+
+    resetZoom();
+    new Image().src = images[(index + 1) % images.length].src;
+    new Image().src = images[(index - 1 + images.length) % images.length].src;
+    imgElement.src = image.src;
+    imgElement.alt = image.alt || image.title || "Gallery image";
+    titleElement.textContent = image.title || "Image gallery";
+    overlayTitle.textContent = image.title || "";
+    overlayTitle.hidden = !image.title;
+    categoryElement.textContent = image.category || "";
+    categoryElement.hidden = !image.category;
+    overlayCategory.textContent = categoryElement.textContent;
+    overlayCategory.hidden = categoryElement.hidden;
+    counterElement.textContent = `${index + 1} / ${images.length}`;
+    shareLink.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(image.title || "")}&url=${encodeURIComponent(window.location.href)}`;
+    renderDetails(image);
+    if (opening) lightbox.focus();
   }
 
   // Subscriptions
@@ -297,116 +572,213 @@ import DemoButton from '../demo/DemoButton.astro';
   currentIndex.subscribe(updateLightbox);
 
   // Event Listeners
-  closeBtn?.addEventListener('click', closeLightbox);
-  prevBtn?.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
-  nextBtn?.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
-  
+  closeBtn?.addEventListener("click", closeLightbox);
+  prevBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    prevImage();
+  });
+  nextBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    nextImage();
+  });
+
+  detailsToggle.addEventListener("click", () => {
+    detailsOpen = !detailsOpen;
+    updateDetailsView();
+  });
+  photoTab.addEventListener("click", () => {
+    detailsOpen = false;
+    updateDetailsView();
+  });
+  detailsTab.addEventListener("click", () => {
+    detailsOpen = true;
+    updateDetailsView();
+  });
+  viewTabs.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+    event.stopPropagation();
+    detailsOpen = event.key === "End" || (event.key !== "Home" && !detailsOpen);
+    updateDetailsView();
+    (detailsOpen ? detailsTab : photoTab).focus();
+  });
+  desktopLayout.addEventListener("change", () => {
+    const focused = document.activeElement;
+    updateDetailsView();
+    if (
+      isActive &&
+      focused instanceof HTMLElement &&
+      lightbox.contains(focused) &&
+      !focused.getClientRects().length
+    ) {
+      (desktopLayout.matches ? detailsToggle : detailsOpen ? detailsTab : photoTab).focus();
+    }
+  });
+
   // Click to toggle zoom
-  imgElement?.addEventListener('click', (e) => {
+  imgElement?.addEventListener("click", (e) => {
     // Only toggle if not dragging (to distinguish click from drag release)
     if (!isDragging) {
-        toggleZoom(e);
+      toggleZoom(e);
     }
   });
 
   // Dragging for Panning (Mouse + Touch)
-  imgElement?.addEventListener('mousedown', handlePointerDown);
-  window.addEventListener('mousemove', handlePointerMove);
-  window.addEventListener('mouseup', handlePointerUp);
-  
-  imgElement?.addEventListener('touchstart', (e) => {
-    if (e.touches.length === 2 && e.touches[0] && e.touches[1]) {
+  imgElement?.addEventListener("mousedown", handlePointerDown);
+  window.addEventListener("mousemove", handlePointerMove);
+  window.addEventListener("mouseup", handlePointerUp);
+
+  imgElement?.addEventListener(
+    "touchstart",
+    (e) => {
+      if (e.touches.length === 2 && e.touches[0] && e.touches[1]) {
         // Prepare for pinch
         const touch1 = e.touches[0];
         const touch2 = e.touches[1];
-        initialDistance = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
+        initialDistance = Math.hypot(
+          touch2.clientX - touch1.clientX,
+          touch2.clientY - touch1.clientY
+        );
         return;
-    }
-    handlePointerDown(e);
-  }, { passive: false });
-  
-  window.addEventListener('touchmove', (e) => {
-    if (e.touches.length === 2 && initialDistance > 0 && e.touches[0] && e.touches[1]) {
+      }
+      handlePointerDown(e);
+    },
+    { passive: false }
+  );
+
+  window.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!isActive || photoPanel.hidden) return;
+      if (e.touches.length === 2 && initialDistance > 0 && e.touches[0] && e.touches[1]) {
         // Pinch Zoom Logic
         const touch1 = e.touches[0];
         const touch2 = e.touches[1];
-        const currentDistance = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
-        
+        const currentDistance = Math.hypot(
+          touch2.clientX - touch1.clientX,
+          touch2.clientY - touch1.clientY
+        );
+
         const scaleChange = currentDistance / initialDistance;
-        
+
         // Update scale with limits
         const newScale = currentScale * scaleChange;
         if (newScale >= 1 && newScale <= 4) {
-             currentScale = newScale;
-             updateImageTransform();
+          currentScale = newScale;
+          updateImageTransform();
         }
-        
+
         initialDistance = currentDistance; // Reset for continuous delta
         if (e.cancelable) e.preventDefault();
         return;
-    }
-    handlePointerMove(e);
-  }, { passive: false });
-  
-  window.addEventListener('touchend', (e) => {
+      }
+      handlePointerMove(e);
+    },
+    { passive: false }
+  );
+
+  window.addEventListener("touchend", (e) => {
     handlePointerUp();
     if (e.touches.length < 2) {
-        initialDistance = 0;
+      initialDistance = 0;
     }
   });
 
-  // Click outside to close (click on backdrop)
-  lightbox?.addEventListener('click', (e) => {
-    // Check if click target is the container or the flex spacer
-    if (e.target === lightbox) {
-        closeLightbox();
-    }
+  imageWrapper.addEventListener("click", (event) => {
+    if (event.target === imageWrapper) closeLightbox();
   });
 
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    if (!isLightboxOpen.get()) return;
+  document.addEventListener("keydown", (e) => {
+    if (!isLightboxOpen.get() || !(e.target instanceof Node) || !lightbox.contains(e.target))
+      return;
 
-    switch(e.key) {
-        case 'Escape': 
-            closeLightbox(); 
-            break;
-        case 'ArrowRight': 
-            if (!isZoomed) nextImage(); // Disable nav when zoomed to avoid conflict with pan
-            break;
-        case 'ArrowLeft': 
-            if (!isZoomed) prevImage(); 
-            break;
-        case ' ':
-            e.preventDefault(); 
-            if (!isZoomed) nextImage(); 
-            break;
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closeLightbox();
+      return;
     }
-  });
-  
-  // Touch Gestures (Simple Swipe)
-  let touchStartX = 0;
-  let touchEndX = 0;
-  
-  lightbox?.addEventListener('touchstart', (e) => {
-      // Don't swipe nav if zoomed
-      if (isZoomed || e.changedTouches.length === 0) return;
-      touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-  
-  lightbox?.addEventListener('touchend', (e) => {
-      if (isZoomed || e.changedTouches.length === 0) return;
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-  }, { passive: true });
-  
-  function handleSwipe() {
-      const threshold = 50;
-      if (touchEndX < touchStartX - threshold) {
-          nextImage();
+    if (e.key === "Tab") {
+      const focusable = Array.from(
+        lightbox.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((element) => element.tabIndex >= 0 && element.getClientRects().length > 0);
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) {
+        e.preventDefault();
+        lightbox.focus();
+      } else if (
+        e.shiftKey &&
+        (document.activeElement === first || document.activeElement === lightbox)
+      ) {
+        e.preventDefault();
+        last.focus();
+      } else if (
+        !e.shiftKey &&
+        (document.activeElement === last || document.activeElement === lightbox)
+      ) {
+        e.preventDefault();
+        first.focus();
       }
-      if (touchEndX > touchStartX + threshold) {
-          prevImage();
+      return;
+    }
+
+    // Reading, tab navigation, and native control activation must not change the image.
+    if (
+      e.target instanceof Element &&
+      e.target.closest(
+        "#lightbox-details-panel, #lightbox-view-tabs, input, select, textarea, [contenteditable]"
+      )
+    )
+      return;
+    if (e.key === " " && e.target instanceof Element && e.target.closest("button, a")) return;
+    if (detailsOpen && !desktopLayout.matches) return;
+
+    switch (e.key) {
+      case "ArrowRight":
+        e.preventDefault();
+        if (!isZoomed) nextImage();
+        break;
+      case "ArrowLeft":
+        e.preventDefault();
+        if (!isZoomed) prevImage();
+        break;
+      case " ":
+        e.preventDefault();
+        if (!isZoomed) nextImage();
+        break;
+    }
+  });
+
+  imageWrapper.addEventListener(
+    "touchstart",
+    (event) => {
+      const touch = event.touches[0];
+      swipeStart =
+        !isZoomed && event.touches.length === 1 && touch
+          ? { x: touch.screenX, y: touch.screenY }
+          : null;
+    },
+    { passive: true }
+  );
+  imageWrapper.addEventListener(
+    "touchend",
+    (event) => {
+      const start = swipeStart;
+      swipeStart = null;
+      const touch = event.changedTouches[0];
+      if (!start || !touch || isZoomed) return;
+      const deltaX = touch.screenX - start.x;
+      const deltaY = touch.screenY - start.y;
+      if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX < 0) nextImage();
+        else prevImage();
       }
-  }
+    },
+    { passive: true }
+  );
+  imageWrapper.addEventListener("touchcancel", () => {
+    swipeStart = null;
+  });
 </script>

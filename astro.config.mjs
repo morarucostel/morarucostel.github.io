@@ -14,6 +14,10 @@ export default defineConfig({
       fileIdEnv: "GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID",
       outputPath: "src/assets/images/gallery/landscapes-2-drive.webp",
     }),
+    googleDriveImage({
+      fileIdEnv: "GOOGLE_DRIVE_M31_RGB_HA_OIII_FILE_ID",
+      outputPath: "src/assets/images/gallery/andromeda-rgb-ha-oiii-drive.webp",
+    }),
   ],
   build: {
     // Ensure assets use relative paths for GitHub Pages subpath compatibility

@@ -52,6 +52,7 @@ jobs:
         # Astro hooks download/compress Drive images and validate exports before upload.
         env:
           GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID: ${{ secrets.GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID }}
+          GOOGLE_DRIVE_M31_RGB_HA_OIII_FILE_ID: ${{ secrets.GOOGLE_DRIVE_M31_RGB_HA_OIII_FILE_ID }}
         run: |
           bun run build \
             --site "${{ steps.pages.outputs.origin }}" \
