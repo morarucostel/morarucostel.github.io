@@ -51,8 +51,14 @@ jobs:
       - name: Build site and process Google Drive images
         # Astro hooks download/compress Drive images and validate exports before upload.
         env:
-          GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID: ${{ secrets.GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID }}
+          GOOGLE_DRIVE_M45_PLEIADES_RGB_FILE_ID: ${{ secrets.GOOGLE_DRIVE_M45_PLEIADES_RGB_FILE_ID }}
+          GOOGLE_DRIVE_CYGNUS_9PANEL_HA_OIII_RED_FILE_ID: ${{ secrets.GOOGLE_DRIVE_CYGNUS_9PANEL_HA_OIII_RED_FILE_ID }}
+          GOOGLE_DRIVE_CYGNUS_9PANEL_HA_OIII_YELLOW_BLUE_FILE_ID: ${{ secrets.GOOGLE_DRIVE_CYGNUS_9PANEL_HA_OIII_YELLOW_BLUE_FILE_ID }}
           GOOGLE_DRIVE_M31_RGB_HA_OIII_FILE_ID: ${{ secrets.GOOGLE_DRIVE_M31_RGB_HA_OIII_FILE_ID }}
+          GOOGLE_DRIVE_NGC2174_MONKEYHEAD_NEBULA_HA_OIII_FILE_ID: ${{ secrets.GOOGLE_DRIVE_NGC2174_MONKEYHEAD_NEBULA_HA_OIII_FILE_ID }}
+          GOOGLE_DRIVE_IC_1805_HEART_NEBULA_HA_OIII_FILE_ID: ${{ secrets.GOOGLE_DRIVE_IC_1805_HEART_NEBULA_HA_OIII_FILE_ID }}
+          GOOGLE_DRIVE_NGC_1499_CALIFORNIA_NEBULA_HA_OIII_FILE_ID: ${{ secrets.GOOGLE_DRIVE_NGC_1499_CALIFORNIA_NEBULA_HA_OIII_FILE_ID }}
+          GOOGLE_DRIVE_M31_RGB_FILE_ID: ${{ secrets.GOOGLE_DRIVE_M31_RGB_FILE_ID }}
         run: |
           bun run build \
             --site "${{ steps.pages.outputs.origin }}" \

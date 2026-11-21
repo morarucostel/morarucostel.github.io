@@ -61,7 +61,7 @@ Supported category values are:
 
 | Section | Exact `category` value |
 | --- | --- |
-| Landscapes | `landscapes` |
+| Cosmic Clouds | `cosmic-clouds` |
 | Portraits | `portraits` |
 | Events | `events` |
 | Street | `street-photography` |
@@ -85,8 +85,8 @@ GOOGLE_DRIVE_PORTRAITS_11_FILE_ID=YOUR_DRIVE_FILE_ID
 ```
 
 Replace `YOUR_DRIVE_FILE_ID` **in this local file only** with the ID from step 1.
-For the existing `landscapes-2` image, the variable name is
-`GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID`.
+For the existing `m45-pleiades-rgb` image, the variable name is
+`GOOGLE_DRIVE_M45_PLEIADES_RGB_FILE_ID`.
 
 [.gitignore](./.gitignore) excludes `.env` and `.env.*`, except the safe
 [.env.example](./.env.example) template. Confirm your local file is ignored:
@@ -125,7 +125,7 @@ googleDriveImage({
 Use the exact name from the local file. Replace the filename if you chose a
 different gallery ID.
 
-**Keep the existing `landscapes-2` integration and all other images.** Add one
+**Keep the existing `m45-pleiades-rgb` integration and all other images.** Add one
 integration entry per new Drive image. The `googleDriveImage` import already
 exists at the top of the configuration file; do not add another import.
 
@@ -175,7 +175,7 @@ Append an object to the array in
 {
   "id": "portraits-11",
   "src": "/images/gallery/portraits-11-drive.webp",
-  "category": "portraits",
+  "category": "galaxies",
   "title": "Evening Portrait",
   "caption": "A portrait captured in the evening light.",
   "featured": false,
@@ -301,7 +301,7 @@ After the first successful build, run this command. Replace `portraits-11` in th
 first line with your gallery image ID:
 
 ```bash
-node --input-type=module - portraits-11 <<'NODE'
+node --input-type=module - m31-andromeda-rgb <<'NODE'
 import { readFile, writeFile } from "node:fs/promises";
 import sharp from "sharp";
 
@@ -363,7 +363,7 @@ These are example IDs; choose unused values when you add your own images:
 
 | Image ID | Category | Generated filename | Environment variable |
 | --- | --- | --- | --- |
-| `landscapes-11` | `landscapes` | `landscapes-11-drive.webp` | `GOOGLE_DRIVE_LANDSCAPES_11_FILE_ID` |
+| `landscapes-11` | `cosmic-clouds` | `landscapes-11-drive.webp` | `GOOGLE_DRIVE_LANDSCAPES_11_FILE_ID` |
 | `portraits-11` | `portraits` | `portraits-11-drive.webp` | `GOOGLE_DRIVE_PORTRAITS_11_FILE_ID` |
 | `events-11` | `events` | `events-11-drive.webp` | `GOOGLE_DRIVE_EVENTS_11_FILE_ID` |
 

@@ -5,7 +5,7 @@ import type { AstroIntegration } from "astro";
 import sharp from "sharp";
 import { loadEnv } from "vite";
 
-const MAX_IMAGE_BYTES = 250_000;
+const MAX_IMAGE_BYTES = 300_000;
 
 export function getGoogleDriveFileId(envName: string, root: URL) {
   if (envName.startsWith("PUBLIC_")) {

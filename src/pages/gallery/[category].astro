@@ -22,7 +22,12 @@ export async function getStaticPaths() {
 const { category } = Astro.props;
 
 // Capitalize category for display
-const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
+// const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
+// Capitalize category for display and replace hyphens with spaces (e.g., "cosmic-clouds" -> "Cosmic Clouds")
+const categoryTitle = category
+  .split('-')
+  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  .join(' ');
 
 // Filter images for this category
 const categoryImages = galleryImages.filter((img) => img.category === category);

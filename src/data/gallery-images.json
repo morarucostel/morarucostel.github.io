@@ -1,12 +1,12 @@
 [
   {
-    "id": "portraits-1",
-    "src": "/images/gallery/portraits/portraits-1.jpg",
-    "category": "portraits",
-    "title": "Silent Gaze",
-    "caption": "A captured moment from the portraits series.",
+    "id": "m31-andromeda-rgb-ha-oiii",
+    "src": "/images/gallery/m31-andromeda-rgb-ha-oiii-drive.webp",
+    "category": "galaxies",
+    "title": "Andromeda",
+    "caption": "Our closest neighboring galaxy captured with Hα and OIII.",
     "featured": true,
-    "printAvailable": false,
+    "printAvailable": true,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -16,25 +16,9 @@
     }
   },
   {
-    "id": "portraits-2",
-    "src": "/images/gallery/portraits/portraits-2.jpg",
-    "category": "portraits",
-    "title": "Urban Soul",
-    "caption": "A captured moment from the portraits series.",
-    "featured": true,
-    "printAvailable": true,
-    "exif": {
-      "camera": "Sony A7RV",
-      "lens": "35mm f/1.4 GM",
-      "iso": 120,
-      "aperture": "f/1.4",
-      "shutter": "1/250s"
-    }
-  },
-  {
     "id": "portraits-3",
     "src": "/images/gallery/portraits/portraits-3.jpg",
-    "category": "portraits",
+    "category": "galaxies",
     "title": "Fading Light",
     "caption": "A captured moment from the portraits series.",
     "featured": false,
@@ -50,7 +34,7 @@
   {
     "id": "portraits-4",
     "src": "/images/gallery/portraits/portraits-4.jpg",
-    "category": "portraits",
+    "category": "galaxies",
     "title": "The Artist",
     "caption": "A captured moment from the portraits series.",
     "featured": false,
@@ -64,9 +48,25 @@
     }
   },
   {
+    "id": "m31-andromeda-rgb",
+    "src": "/images/gallery/m31-andromeda-rgb-drive.webp",
+    "category": "galaxies",
+    "title": "Andromeda",
+    "caption": "Our closest neighboring galaxy captured in RGB.",
+    "featured": false,
+    "printAvailable": true,
+    "exif": {
+      "camera": "Sony A7RV",
+      "lens": "35mm f/1.4 GM",
+      "iso": 120,
+      "aperture": "f/1.4",
+      "shutter": "1/250s"
+    }
+  },
+  {
     "id": "portraits-5",
     "src": "/images/gallery/portraits/portraits-5.jpg",
-    "category": "portraits",
+    "category": "galaxies",
     "title": "Tokyo Drifter",
     "caption": "A captured moment from the portraits series.",
     "featured": false,
@@ -82,7 +82,7 @@
   {
     "id": "portraits-6",
     "src": "/images/gallery/portraits/portraits-6.jpg",
-    "category": "portraits",
+    "category": "galaxies",
     "title": "Morning Coffee",
     "caption": "A captured moment from the portraits series.",
     "featured": false,
@@ -98,7 +98,7 @@
   {
     "id": "portraits-7",
     "src": "/images/gallery/portraits/portraits-7.jpg",
-    "category": "portraits",
+    "category": "galaxies",
     "title": "Shadow Play",
     "caption": "A captured moment from the portraits series.",
     "featured": false,
@@ -114,7 +114,7 @@
   {
     "id": "portraits-8",
     "src": "/images/gallery/portraits/portraits-8.jpg",
-    "category": "portraits",
+    "category": "galaxies",
     "title": "Neon Dreams",
     "caption": "A captured moment from the portraits series.",
     "featured": false,
@@ -130,7 +130,7 @@
   {
     "id": "portraits-9",
     "src": "/images/gallery/portraits/portraits-9.jpg",
-    "category": "portraits",
+    "category": "galaxies",
     "title": "Solitude",
     "caption": "A captured moment from the portraits series.",
     "featured": false,
@@ -146,7 +146,7 @@
   {
     "id": "portraits-10",
     "src": "/images/gallery/portraits/portraits-10.jpg",
-    "category": "portraits",
+    "category": "galaxies",
     "title": "The Wait",
     "caption": "A captured moment from the portraits series.",
     "featured": false,
@@ -160,63 +160,13 @@
     }
   },
   {
-    "id": "andromeda-1",
-    "src": "/images/gallery/landscapes/andromeda-1.jpg",
-    "category": "landscapes",
-    "title": "Andromeda galaxy",
-    "caption": "A captured moment from the landscapes series.",
+    "id": "cygnus-9panel-ha-o3-red",
+    "src": "/images/gallery/cygnus-9panel-ha-o3-red-drive.webp",
+    "category": "cosmic-clouds",
+    "title": "Cygnus region",
+    "caption": "A captured moment from the Cygnus region series.",
     "featured": true,
     "printAvailable": true,
-    "exif": {
-      "camera": "RisingCam IMX571 colour",
-      "lens": "William Optics GT71",
-      "rgb-lights": "11h at 180s",
-      "HaOIII-lights": "10h at 300s",
-      "calibration": "yes",
-      "integration": "21h"
-    }
-  },
-  {
-    "id": "landscapes-2",
-    "src": "/images/gallery/landscapes-2-drive.webp",
-    "category": "landscapes",
-    "title": "The Pleiades",
-    "caption": "A prominent open star cluster known as Messier 45.",
-    "featured": true,
-    "printAvailable": true,
-    "exif": {
-      "camera": "RisingCam IMX571 colour",
-      "lens": "William Optics GT71",
-      "rgb-lights": "11h at 180s",
-      "calibration": "yes",
-      "integration": "TBD"
-    }
-  },
-  {
-    "id": "andromeda-rgb-ha-oiii",
-    "src": "/images/gallery/andromeda-rgb-ha-oiii-drive.webp",
-    "category": "landscapes",
-    "title": "Andromeda galaxy",
-    "caption": "A captured moment from the landscapes series.",
-    "featured": true,
-    "printAvailable": false,
-    "exif": {
-      "camera": "RisingCam IMX571 colour",
-      "lens": "William Optics GT71",
-      "rgb-lights": "11h at 180s",
-      "HaOIII-lights": "10h at 300s",
-      "calibration": "yes",
-      "integration": "21h"
-    }
-  },
-  {
-    "id": "landscapes-3",
-    "src": "/images/gallery/landscapes/landscapes-3.jpg",
-    "category": "landscapes",
-    "title": "Ocean Whisper",
-    "caption": "A captured moment from the landscapes series.",
-    "featured": false,
-    "printAvailable": false,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -226,11 +176,11 @@
     }
   },
   {
-    "id": "landscapes-4",
-    "src": "/images/gallery/landscapes/landscapes-4.jpg",
-    "category": "landscapes",
-    "title": "Desert Winds",
-    "caption": "A captured moment from the landscapes series.",
+    "id": "cygnus-9panel-ha-o3-yellow-blue",
+    "src": "/images/gallery/cygnus-9panel-ha-o3-yellow-blue-drive.webp",
+    "category": "cosmic-clouds",
+    "title": "Cygnus region Hubble pallete",
+    "caption": "A captured moment from the Cygnus region series.",
     "featured": false,
     "printAvailable": true,
     "exif": {
@@ -242,11 +192,11 @@
     }
   },
   {
-    "id": "landscapes-5",
-    "src": "/images/gallery/landscapes/landscapes-5.jpg",
-    "category": "landscapes",
-    "title": "Forest Deep",
-    "caption": "A captured moment from the landscapes series.",
+    "id": "ngc2174-monkey-head-ha-oiii",
+    "src": "/images/gallery/ngc2174-monkey-head-ha-oiii-drive.webp",
+    "category": "cosmic-clouds",
+    "title": "Monkey Head Nebula",
+    "caption": "An emission nebula located in the constellation Orion.",
     "featured": false,
     "printAvailable": false,
     "exif": {
@@ -258,13 +208,13 @@
     }
   },
   {
-    "id": "landscapes-6",
-    "src": "/images/gallery/landscapes/landscapes-6.jpg",
-    "category": "landscapes",
-    "title": "Winter Silence",
-    "caption": "A captured moment from the landscapes series.",
+    "id": "ic1805-heart-nebula-ha-oiii",
+    "src": "/images/gallery/ic1805-heart-nebula-ha-oiii-drive.webp",
+    "category": "cosmic-clouds",
+    "title": "Heart Nebula",
+    "caption": "A star forming region with glowing hydrogen gas.",
     "featured": false,
-    "printAvailable": true,
+    "printAvailable": false,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -274,11 +224,11 @@
     }
   },
   {
-    "id": "landscapes-7",
-    "src": "/images/gallery/landscapes/landscapes-7.jpg",
-    "category": "landscapes",
-    "title": "Autumn Gold",
-    "caption": "A captured moment from the landscapes series.",
+    "id": "ngc1499-california-nebula-ha-oiii",
+    "src": "/images/gallery/ngc1499-california-nebula-ha-oiii-drive.webp",
+    "category": "cosmic-clouds",
+    "title": "California Nebula",
+    "caption": "An Ha emission nebula located in the constellation Perseus.",
     "featured": false,
     "printAvailable": false,
     "exif": {
@@ -292,7 +242,7 @@
   {
     "id": "landscapes-8",
     "src": "/images/gallery/landscapes/landscapes-8.jpg",
-    "category": "landscapes",
+    "category": "cosmic-clouds",
     "title": "River Flow",
     "caption": "A captured moment from the landscapes series.",
     "featured": false,
@@ -308,7 +258,7 @@
   {
     "id": "landscapes-9",
     "src": "/images/gallery/landscapes/landscapes-9.jpg",
-    "category": "landscapes",
+    "category": "cosmic-clouds",
     "title": "Storm Rising",
     "caption": "A captured moment from the landscapes series.",
     "featured": false,
@@ -324,7 +274,7 @@
   {
     "id": "landscapes-10",
     "src": "/images/gallery/landscapes/landscapes-10.jpg",
-    "category": "landscapes",
+    "category": "cosmic-clouds",
     "title": "Sunset Hues",
     "caption": "A captured moment from the landscapes series.",
     "featured": false,
@@ -338,9 +288,25 @@
     }
   },
   {
+    "id": "m45-pleiades-rgb",
+    "src": "/images/gallery/m45-pleiades-rgb-drive.webp",
+    "category": "star-clusters",
+    "title": "The Pleiades",
+    "caption": "A prominent open star cluster known as Messier 45.",
+    "featured": true,
+    "printAvailable": true,
+    "exif": {
+      "camera": "RisingCam IMX571 KPA",
+      "lens": "William Optics GT71",
+      "integration": "11h at 180s",
+      "filters": "TBD",
+      "calibration": "yes"
+    }
+  },
+  {
     "id": "street-photography-1",
     "src": "/images/gallery/street-photography/street-photography-1.jpg",
-    "category": "street-photography",
+    "category": "star-clusters",
     "title": "Crossing Shibuya",
     "caption": "A captured moment from the street-photography series.",
     "featured": true,
@@ -356,7 +322,7 @@
   {
     "id": "street-photography-2",
     "src": "/images/gallery/street-photography/street-photography-2.jpg",
-    "category": "street-photography",
+    "category": "star-clusters",
     "title": "Rainy Night",
     "caption": "A captured moment from the street-photography series.",
     "featured": true,
@@ -372,7 +338,7 @@
   {
     "id": "street-photography-3",
     "src": "/images/gallery/street-photography/street-photography-3.jpg",
-    "category": "street-photography",
+    "category": "star-clusters",
     "title": "Subway Life",
     "caption": "A captured moment from the street-photography series.",
     "featured": false,
@@ -388,7 +354,7 @@
   {
     "id": "street-photography-4",
     "src": "/images/gallery/street-photography/street-photography-4.jpg",
-    "category": "street-photography",
+    "category": "star-clusters",
     "title": "Market Chaos",
     "caption": "A captured moment from the street-photography series.",
     "featured": false,
@@ -404,7 +370,7 @@
   {
     "id": "street-photography-5",
     "src": "/images/gallery/street-photography/street-photography-5.jpg",
-    "category": "street-photography",
+    "category": "star-clusters",
     "title": "Lonely Walker",
     "caption": "A captured moment from the street-photography series.",
     "featured": false,
@@ -420,7 +386,7 @@
   {
     "id": "street-photography-6",
     "src": "/images/gallery/street-photography/street-photography-6.jpg",
-    "category": "street-photography",
+    "category": "star-clusters",
     "title": "City Reflection",
     "caption": "A captured moment from the street-photography series.",
     "featured": false,
@@ -436,7 +402,7 @@
   {
     "id": "street-photography-7",
     "src": "/images/gallery/street-photography/street-photography-7.jpg",
-    "category": "street-photography",
+    "category": "star-clusters",
     "title": "Neon Alley",
     "caption": "A captured moment from the street-photography series.",
     "featured": false,
@@ -452,7 +418,7 @@
   {
     "id": "street-photography-8",
     "src": "/images/gallery/street-photography/street-photography-8.jpg",
-    "category": "street-photography",
+    "category": "star-clusters",
     "title": "Bus Stop",
     "caption": "A captured moment from the street-photography series.",
     "featured": false,
@@ -468,7 +434,7 @@
   {
     "id": "street-photography-9",
     "src": "/images/gallery/street-photography/street-photography-9.jpg",
-    "category": "street-photography",
+    "category": "star-clusters",
     "title": "Traffic Blur",
     "caption": "A captured moment from the street-photography series.",
     "featured": false,
@@ -484,7 +450,7 @@
   {
     "id": "street-photography-10",
     "src": "/images/gallery/street-photography/street-photography-10.jpg",
-    "category": "street-photography",
+    "category": "star-clusters",
     "title": "Vendor's Smile",
     "caption": "A captured moment from the street-photography series.",
     "featured": false,
@@ -499,8 +465,8 @@
   },
   {
     "id": "events-1",
-    "src": "/images/gallery/events/events-1.jpg",
-    "category": "events",
+    "src": "/images/gallery/stellar-echoes/events-1.jpg",
+    "category": "stellar-echoes",
     "title": "The Vows",
     "caption": "A captured moment from the events series.",
     "featured": true,
@@ -515,8 +481,8 @@
   },
   {
     "id": "events-2",
-    "src": "/images/gallery/events/events-2.jpg",
-    "category": "events",
+    "src": "/images/gallery/stellar-echoes/events-2.jpg",
+    "category": "stellar-echoes",
     "title": "Jazz Night",
     "caption": "A captured moment from the events series.",
     "featured": true,
@@ -531,8 +497,8 @@
   },
   {
     "id": "events-3",
-    "src": "/images/gallery/events/events-3.jpg",
-    "category": "events",
+    "src": "/images/gallery/stellar-echoes/events-3.jpg",
+    "category": "stellar-echoes",
     "title": "First Dance",
     "caption": "A captured moment from the events series.",
     "featured": false,
@@ -547,8 +513,8 @@
   },
   {
     "id": "events-4",
-    "src": "/images/gallery/events/events-4.jpg",
-    "category": "events",
+    "src": "/images/gallery/stellar-echoes/events-4.jpg",
+    "category": "stellar-echoes",
     "title": "Concert Crowd",
     "caption": "A captured moment from the events series.",
     "featured": false,
@@ -563,8 +529,8 @@
   },
   {
     "id": "events-5",
-    "src": "/images/gallery/events/events-5.jpg",
-    "category": "events",
+    "src": "/images/gallery/stellar-echoes/events-5.jpg",
+    "category": "stellar-echoes",
     "title": "Festival Lights",
     "caption": "A captured moment from the events series.",
     "featured": false,
@@ -579,8 +545,8 @@
   },
   {
     "id": "events-6",
-    "src": "/images/gallery/events/events-6.jpg",
-    "category": "events",
+    "src": "/images/gallery/stellar-echoes/events-6.jpg",
+    "category": "stellar-echoes",
     "title": "Backstage",
     "caption": "A captured moment from the events series.",
     "featured": false,
@@ -595,8 +561,8 @@
   },
   {
     "id": "events-7",
-    "src": "/images/gallery/events/events-7.jpg",
-    "category": "events",
+    "src": "/images/gallery/stellar-echoes/events-7.jpg",
+    "category": "stellar-echoes",
     "title": "Cheers",
     "caption": "A captured moment from the events series.",
     "featured": false,
@@ -611,8 +577,8 @@
   },
   {
     "id": "events-8",
-    "src": "/images/gallery/events/events-8.jpg",
-    "category": "events",
+    "src": "/images/gallery/stellar-echoes/events-8.jpg",
+    "category": "stellar-echoes",
     "title": "The Speech",
     "caption": "A captured moment from the events series.",
     "featured": false,
@@ -627,8 +593,8 @@
   },
   {
     "id": "events-9",
-    "src": "/images/gallery/events/events-9.jpg",
-    "category": "events",
+    "src": "/images/gallery/stellar-echoes/events-9.jpg",
+    "category": "stellar-echoes",
     "title": "Confetti Fall",
     "caption": "A captured moment from the events series.",
     "featured": false,
@@ -643,8 +609,8 @@
   },
   {
     "id": "events-10",
-    "src": "/images/gallery/events/events-10.jpg",
-    "category": "events",
+    "src": "/images/gallery/stellar-echoes/events-10.jpg",
+    "category": "stellar-echoes",
     "title": "Last Song",
     "caption": "A captured moment from the events series.",
     "featured": false,

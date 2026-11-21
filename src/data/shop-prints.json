@@ -1,17 +1,9 @@
 [
   {
-    "id": "print-1",
-    "src": "/images/shop/print-1.jpg",
-    "title": "Andromeda galaxy",
-    "category": "landscapes",
-    "description": "A stunning view of Andromeda galaxy showing oxygen and hydrogen gases.",
-    "basePrice": 10
-  },
-  {
     "id": "print-2",
     "src": "/images/shop/print-2.jpg",
     "title": "Forest Cathedral",
-    "category": "landscapes",
+    "category": "cosmic-clouds",
     "description": "Sunbeams piercing through an ancient forest canopy.",
     "basePrice": 150
   },
@@ -19,7 +11,7 @@
     "id": "print-3",
     "src": "/images/shop/print-3.jpg",
     "title": "Mirror Lake",
-    "category": "landscapes",
+    "category": "cosmic-clouds",
     "description": "Perfect reflections on a calm mountain lake at dawn.",
     "basePrice": 200
   },
@@ -27,7 +19,7 @@
     "id": "print-4",
     "src": "/images/shop/print-4.jpg",
     "title": "Urban Pulse",
-    "category": "street-photography",
+    "category": "star-clusters",
     "description": "The energy of a bustling city captured in a single frame.",
     "basePrice": 165
   },
@@ -43,7 +35,7 @@
     "id": "print-6",
     "src": "/images/shop/print-6.jpg",
     "title": "Misty Horizons",
-    "category": "landscapes",
+    "category": "cosmic-clouds",
     "description": "Rolling hills disappearing into morning mist.",
     "basePrice": 160
   },
@@ -51,7 +43,7 @@
     "id": "print-7",
     "src": "/images/shop/print-7.jpg",
     "title": "Ocean Symphony",
-    "category": "landscapes",
+    "category": "cosmic-clouds",
     "description": "Powerful waves meeting the shore in dramatic fashion.",
     "basePrice": 175
   },
@@ -59,7 +51,7 @@
     "id": "print-8",
     "src": "/images/shop/print-8.jpg",
     "title": "Inner Light",
-    "category": "portraits",
+    "category": "galaxies",
     "description": "A contemplative portrait capturing quiet strength.",
     "basePrice": 195
   },
@@ -67,7 +59,7 @@
     "id": "print-9",
     "src": "/images/shop/print-9.jpg",
     "title": "Neon Dreams",
-    "category": "street-photography",
+    "category": "star-clusters",
     "description": "City lights reflected on rain-soaked streets.",
     "basePrice": 180
   }

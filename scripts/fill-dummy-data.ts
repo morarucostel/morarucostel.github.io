@@ -17,7 +17,7 @@ async function main() {
 
   if (!existsSync(portraitSource)) {
     // Try subfolder
-    const sub = join(TARGET_BASE, "portraits", "portraits-1.jpg");
+    const sub = join(TARGET_BASE, "galaxies", "portraits-1.jpg");
     if (existsSync(sub)) {
       await copyFile(sub, portraitSource);
     } else {
@@ -59,7 +59,7 @@ async function main() {
     const source =
       img.category === "landscapes" ||
       img.category === "architecture" ||
-      img.category === "street-photography"
+      img.category === "star-clusters"
         ? landscapeSource
         : portraitSource;
 

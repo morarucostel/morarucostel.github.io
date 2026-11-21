@@ -6,10 +6,10 @@ test.describe("Category Grid Navigation", () => {
   });
 
   const categories = [
-    { id: "portraits", title: "Portraits" },
-    { id: "landscapes", title: "Landscapes" },
-    { id: "street-photography", title: "Street" },
-    { id: "events", title: "Events" },
+    { id: "galaxies", title: "Galaxies" },
+    { id: "cosmic-clouds", title: "Cosmic Clouds" },
+    { id: "star-clusters", title: "Star Clusters" },
+    { id: "stellar-echoes", title: "Stellar Echoes" },
     { id: "editorial", title: "Editorial" },
     { id: "architecture", title: "Architecture" },
   ];

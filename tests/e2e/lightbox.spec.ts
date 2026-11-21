@@ -362,7 +362,7 @@ test.describe("Lightbox Component", () => {
       .poll(() => page.locator("#lightbox-details-panel").evaluate((element) => element.scrollTop))
       .toBe(0);
 
-    await page.goto("/gallery/portraits/");
+    await page.goto("/gallery/galaxies/");
     await page.locator('.masonry-item[data-id="portraits-1"]').click();
     await openDetails(page);
     await expect(page.locator("#lightbox-rich-text")).toContainText("Capture notes");

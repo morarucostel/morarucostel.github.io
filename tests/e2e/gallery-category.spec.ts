@@ -1,10 +1,10 @@
 import { test, expect } from "@playwright/test";
 
 const categories = [
-  "portraits",
-  "landscapes",
-  "street-photography",
-  "events",
+  "galaxies",
+  "cosmic-clouds",
+  "star-clusters",
+  "stellar-echoes",
   "editorial",
   "architecture",
 ];

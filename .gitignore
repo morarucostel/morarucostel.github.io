@@ -5,8 +5,15 @@ stats.html
 # generated types
 .astro/
 # downloaded build-time image
-src/assets/images/gallery/landscapes-2-drive.webp
-src/assets/images/gallery/andromeda-rgb-ha-oiii-drive.webp
+src/assets/images/gallery/m45-pleiades-rgb-drive.webp
+src/assets/images/gallery/cygnus-9panel-ha-o3-red-drive.webp
+src/assets/images/gallery/cygnus-9panel-ha-o3-yellow-blue-drive.webp
+src/assets/images/gallery/m31-andromeda-rgb-ha-oiii-drive.webp
+src/assets/images/gallery/ngc2174-monkey-head-ha-oiii-drive.webp
+src/assets/images/gallery/ic1805-heart-nebula-ha-oiii-drive.webp
+src/assets/images/gallery/m31-andromeda-rgb-drive.webp
+src/assets/images/gallery/ngc1499-california-nebula-ha-oiii-drive.webp
+
 # dependencies
 node_modules/
 

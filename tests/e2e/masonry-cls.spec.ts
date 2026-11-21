@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Masonry Grid Visual Stability", () => {
-  // Use a category that is known to have images (from previous 'ls' output: portraits, landscapes)
-  const category = "portraits";
+  // Use a category that is known to have images (from previous 'ls' output: portraits, cosmic-clouds)
+  const category = "galaxies";
 
   test("should load masonry layout with minimal Cumulative Layout Shift (CLS)", async ({
     page,

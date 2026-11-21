@@ -5,10 +5,10 @@ import { write } from "bun";
 const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 const TARGET_DIR = "src/assets/images/gallery";
 const CATEGORIES = [
-  "portraits",
-  "landscapes",
-  "street-photography", // 'street' might be ambiguous, using specific tag
-  "events",
+  "galaxies",
+  "cosmic-clouds",
+  "star-clusters", // 'street' might be ambiguous, using specific tag
+  "stellar-echoes",
   "editorial",
   "architecture"
 ];

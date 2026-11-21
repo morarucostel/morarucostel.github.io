@@ -26,7 +26,7 @@ test.describe("SEO & Metadata", () => {
   });
 
   test("Gallery page has ImageGallery schema", async ({ page }) => {
-    await page.goto("/gallery/portraits");
+    await page.goto("/gallery/galaxies");
 
     const script = page.locator('script[type="application/ld+json"]');
     const content = await script.textContent();

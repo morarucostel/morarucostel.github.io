@@ -148,7 +148,7 @@ Edit the JSON files in `src/data/` to update your portfolio content:
 
 #### Build-time Google Drive image
 
-The `landscapes-2` gallery entry is downloaded from Google Drive before each
+The `m45-pleiades-rgb` gallery entry is downloaded from Google Drive before each
 production build and development-server startup. Its file ID comes from
 `GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID`, not from source code. Locally, copy
 [.env.example](./.env.example) to `.env.local` if that file does not exist yet,
@@ -167,7 +167,7 @@ access. No Google credentials are required. See [how-to-add.md](./how-to-add.md)
 for the per-image local and GitHub setup.
 
 The build keeps the Drive original in memory, then auto-orients and compresses it
-to `src/assets/images/gallery/landscapes-2-drive.webp` (ignored by Git). The saved
+to `src/assets/images/gallery/m45-pleiades-rgb-drive.webp` (ignored by Git). The saved
 image is at most **250 KB (250,000 bytes)**, with a maximum longest edge of
 1,920 pixels; the build progressively reduces dimensions when needed to meet
 the size limit.

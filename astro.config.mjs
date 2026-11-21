@@ -11,12 +11,36 @@ export default defineConfig({
   output: "static",
   integrations: [
     googleDriveImage({
-      fileIdEnv: "GOOGLE_DRIVE_LANDSCAPES_2_FILE_ID",
-      outputPath: "src/assets/images/gallery/landscapes-2-drive.webp",
+      fileIdEnv: "GOOGLE_DRIVE_M45_PLEIADES_RGB_FILE_ID",
+      outputPath: "src/assets/images/gallery/m45-pleiades-rgb-drive.webp",
+    }),
+    googleDriveImage({
+      fileIdEnv: "GOOGLE_DRIVE_CYGNUS_9PANEL_HA_OIII_RED_FILE_ID",
+      outputPath: "src/assets/images/gallery/cygnus-9panel-ha-o3-red-drive.webp",
+    }),
+    googleDriveImage({
+      fileIdEnv: "GOOGLE_DRIVE_CYGNUS_9PANEL_HA_OIII_YELLOW_BLUE_FILE_ID",
+      outputPath: "src/assets/images/gallery/cygnus-9panel-ha-o3-yellow-blue-drive.webp",
     }),
     googleDriveImage({
       fileIdEnv: "GOOGLE_DRIVE_M31_RGB_HA_OIII_FILE_ID",
-      outputPath: "src/assets/images/gallery/andromeda-rgb-ha-oiii-drive.webp",
+      outputPath: "src/assets/images/gallery/m31-andromeda-rgb-ha-oiii-drive.webp",
+    }),
+    googleDriveImage({
+      fileIdEnv: "GOOGLE_DRIVE_NGC2174_MONKEYHEAD_NEBULA_HA_OIII_FILE_ID",
+      outputPath: "src/assets/images/gallery/ngc2174-monkey-head-ha-oiii-drive.webp",
+    }),
+    googleDriveImage({
+      fileIdEnv: "GOOGLE_DRIVE_IC_1805_HEART_NEBULA_HA_OIII_FILE_ID",
+      outputPath: "src/assets/images/gallery/ic1805-heart-nebula-ha-oiii-drive.webp",
+    }),
+    googleDriveImage({
+      fileIdEnv: "GOOGLE_DRIVE_M31_RGB_FILE_ID",
+      outputPath: "src/assets/images/gallery/m31-andromeda-rgb-drive.webp",
+    }),
+    googleDriveImage({
+      fileIdEnv: "GOOGLE_DRIVE_NGC_1499_CALIFORNIA_NEBULA_HA_OIII_FILE_ID",
+      outputPath: "src/assets/images/gallery/ngc1499-california-nebula-ha-oiii-drive.webp",
     }),
   ],
   build: {

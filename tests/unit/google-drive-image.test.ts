@@ -19,7 +19,7 @@ async function temporaryDirectory(t: TestContext) {
 }
 
 async function imageDestination(t: TestContext) {
-  return new URL("gallery/landscapes-2-drive.webp", await temporaryDirectory(t));
+  return new URL("gallery/m45-pleiades-rgb-drive.webp", await temporaryDirectory(t));
 }
 
 const TEST_ENV_NAME = "GOOGLE_DRIVE_UNIT_TEST_FILE_ID";
@@ -144,15 +144,15 @@ test("checks the exact size ceiling for both exported originals and variants", a
   const destination = await imageDestination(t);
   const directory = new URL(".", destination);
   await mkdir(directory, { recursive: true });
-  await writeFile(new URL("landscapes-2-drive.hash.webp", directory), Buffer.alloc(250_000));
+  await writeFile(new URL("m45-pleiades-rgb-drive.hash.webp", directory), Buffer.alloc(250_000));
   await writeFile(new URL("another-image.hash.webp", directory), Buffer.alloc(300_000));
 
-  assert.equal(await validateGoogleDriveImageExports(directory, "landscapes-2-drive.webp"), 1);
+  assert.equal(await validateGoogleDriveImageExports(directory, "m45-pleiades-rgb-drive.webp"), 1);
 
-  await writeFile(new URL("landscapes-2-drive.hash_hero.webp", directory), Buffer.alloc(250_001));
+  await writeFile(new URL("m45-pleiades-rgb-drive.hash_hero.webp", directory), Buffer.alloc(250_001));
 
   await assert.rejects(
-    validateGoogleDriveImageExports(directory, "landscapes-2-drive.webp"),
+    validateGoogleDriveImageExports(directory, "m45-pleiades-rgb-drive.webp"),
     /250001 bytes, exceeding the 250000-byte limit/
   );
 });
@@ -163,7 +163,7 @@ test("fails if the Drive image is missing from the exported assets", async (t) =
   await mkdir(directory, { recursive: true });
 
   await assert.rejects(
-    validateGoogleDriveImageExports(directory, "landscapes-2-drive.webp"),
+    validateGoogleDriveImageExports(directory, "m45-pleiades-rgb-drive.webp"),
     /No Google Drive image exports found/
   );
 });
