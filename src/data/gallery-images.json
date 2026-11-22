@@ -64,6 +64,22 @@
     }
   },
   {
+    "id": "ic5070-pelican-nebula-ha-o3",
+    "src": "/images/gallery/ic5070-pelican-nebula-ha-o3-drive.webp",
+    "category": "cosmic-clouds",
+    "title": "Pelican Nebula",
+    "caption": "A beautiful Ha, OIII and SII emission in Cygnus constellation.",
+    "featured": true,
+    "printAvailable": true,
+    "exif": {
+      "camera": "Sony A7RV",
+      "lens": "35mm f/1.4 GM",
+      "iso": 130,
+      "aperture": "f/1.4",
+      "shutter": "1/250s"
+    }
+  },
+  {
     "id": "ngc2174-monkey-head-ha-oiii",
     "src": "/images/gallery/ngc2174-monkey-head-ha-oiii-drive.webp",
     "category": "cosmic-clouds",
@@ -75,6 +91,22 @@
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
       "iso": 150,
+      "aperture": "f/1.4",
+      "shutter": "1/250s"
+    }
+  },
+  {
+    "id": "cygnus-12panel-partial-ha-o3-red",
+    "src": "/images/gallery/cygnus-12panel-partial-ha-o3-red-drive.webp",
+    "category": "cosmic-clouds",
+    "title": "Cygnus region",
+    "caption": "A partial region from the Cygnus region series.",
+    "featured": true,
+    "printAvailable": true,
+    "exif": {
+      "camera": "Sony A7RV",
+      "lens": "35mm f/1.4 GM",
+      "iso": 130,
       "aperture": "f/1.4",
       "shutter": "1/250s"
     }

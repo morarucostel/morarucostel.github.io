@@ -64,6 +64,8 @@ jobs:
           GOOGLE_DRIVE_SUN_V4_FILE_ID: ${{ secrets.GOOGLE_DRIVE_SUN_V4_FILE_ID }}
           GOOGLE_DRIVE_MOON_V1_FILE_ID: ${{ secrets.GOOGLE_DRIVE_MOON_V1_FILE_ID }}
           GOOGLE_DRIVE_SUN_V2_FILE_ID: ${{ secrets.GOOGLE_DRIVE_SUN_V2_FILE_ID }}
+          GOOGLE_DRIVE_CYGNU_12PANEL_PARTIAL_HA_OIII_FILE_ID: ${{ secrets.GOOGLE_DRIVE_CYGNU_12PANEL_PARTIAL_HA_OIII_FILE_ID }}
+          GOOGLE_DRIVE_IC_5070_PELICAN_NEBULA_HA_OIII_FILE_ID: ${{ secrets.GOOGLE_DRIVE_IC_5070_PELICAN_NEBULA_HA_OIII_FILE_ID }}
         run: |
           bun run build \
             --site "${{ steps.pages.outputs.origin }}" \
