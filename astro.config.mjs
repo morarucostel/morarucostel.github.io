@@ -62,6 +62,14 @@ export default defineConfig({
       fileIdEnv: "GOOGLE_DRIVE_SUN_V2_FILE_ID",
       outputPath: "src/assets/images/gallery/our-sun-v2-drive.webp",
     }),
+    googleDriveImage({
+      fileIdEnv: "GOOGLE_DRIVE_CYGNU_12PANEL_PARTIAL_HA_OIII_FILE_ID",
+      outputPath: "src/assets/images/gallery/cygnus-12panel-partial-ha-o3-red-drive.webp",
+    }),
+    googleDriveImage({
+      fileIdEnv: "GOOGLE_DRIVE_IC_5070_PELICAN_NEBULA_HA_OIII_FILE_ID",
+      outputPath: "src/assets/images/gallery/ic5070-pelican-nebula-ha-o3-drive.webp",
+    }),
   ],
   build: {
     // Ensure assets use relative paths for GitHub Pages subpath compatibility
