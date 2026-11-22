@@ -301,7 +301,7 @@ After the first successful build, run this command. Replace `portraits-11` in th
 first line with your gallery image ID:
 
 ```bash
-node --input-type=module - m31-andromeda-rgb <<'NODE'
+node --input-type=module - ngc6888_crescent_ha_oiii <<'NODE'
 import { readFile, writeFile } from "node:fs/promises";
 import sharp from "sharp";
 

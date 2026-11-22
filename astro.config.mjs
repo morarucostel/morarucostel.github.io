@@ -42,6 +42,10 @@ export default defineConfig({
       fileIdEnv: "GOOGLE_DRIVE_NGC_1499_CALIFORNIA_NEBULA_HA_OIII_FILE_ID",
       outputPath: "src/assets/images/gallery/ngc1499-california-nebula-ha-oiii-drive.webp",
     }),
+    googleDriveImage({
+      fileIdEnv: "GOOGLE_DRIVE_NGC6888_CRESCENT_HA_OIII_NEBULA_FILE_ID",
+      outputPath: "src/assets/images/gallery/ngc6888_crescent_ha_oiii-drive.webp",
+    }),
   ],
   build: {
     // Ensure assets use relative paths for GitHub Pages subpath compatibility

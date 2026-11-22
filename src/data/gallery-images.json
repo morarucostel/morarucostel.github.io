@@ -464,13 +464,13 @@
     }
   },
   {
-    "id": "events-1",
-    "src": "/images/gallery/stellar-echoes/events-1.jpg",
+    "id": "ngc6888_crescent_ha_oiii",
+    "src": "/images/gallery/ngc6888_crescent_ha_oiii-drive.webp",
     "category": "stellar-echoes",
-    "title": "The Vows",
-    "caption": "A captured moment from the events series.",
+    "title": "Crescent Nebula",
+    "caption": "An emission nebula 5000 light-years away from Earth.",
     "featured": true,
-    "printAvailable": false,
+    "printAvailable": true,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
