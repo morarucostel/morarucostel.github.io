@@ -9,8 +9,8 @@ const CATEGORIES = [
   "cosmic-clouds",
   "star-clusters", // 'street' might be ambiguous, using specific tag
   "stellar-echoes",
-  "editorial",
-  "architecture"
+  "solar-system",
+  "equipment"
 ];
 const IMAGES_PER_CATEGORY = 10;
 

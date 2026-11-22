@@ -5,8 +5,8 @@ const CATEGORIES = [
   "cosmic-clouds",
   "star-clusters", 
   "stellar-echoes",
-  "editorial",
-  "architecture"
+  "solar-system",
+  "equipment"
 ];
 
 const TITLES: Record<string, string[]> = {
@@ -14,8 +14,8 @@ const TITLES: Record<string, string[]> = {
   "cosmic-clouds": ["Misty Valley", "Mountain Peak", "Ocean Whisper", "Desert Winds", "Forest Deep", "Winter Silence", "Autumn Gold", "River Flow", "Storm Rising", "Sunset Hues"],
   "star-clusters": ["Crossing Shibuya", "Rainy Night", "Subway Life", "Market Chaos", "Lonely Walker", "City Reflection", "Neon Alley", "Bus Stop", "Traffic Blur", "Vendor's Smile"],
   "stellar-echoes": ["The Vows", "Jazz Night", "First Dance", "Concert Crowd", "Festival Lights", "Backstage", "Cheers", "The Speech", "Confetti Fall", "Last Song"],
-  "editorial": ["Vogue September", "Kinfolk Feature", "Fashion Week", "Studio Session", "Texture Study", "Monochrome Mood", "Red Dress", "Vintage Vibes", "Modern Muse", "Accessory Detail"],
-  "architecture": ["Steel Curves", "Glass Tower", "Concrete Jungle", "Spiral Stair", "Geometric Shadow", "Bridge Lines", "Old Facade", "Sky Reflection", "Minimal Wall", "Urban Canyon"]
+  "solar-system": ["Vogue September", "Kinfolk Feature", "Fashion Week", "Studio Session", "Texture Study", "Monochrome Mood", "Red Dress", "Vintage Vibes", "Modern Muse", "Accessory Detail"],
+  "equipment": ["Steel Curves", "Glass Tower", "Concrete Jungle", "Spiral Stair", "Geometric Shadow", "Bridge Lines", "Old Facade", "Sky Reflection", "Minimal Wall", "Urban Canyon"]
 };
 
 const images = [];

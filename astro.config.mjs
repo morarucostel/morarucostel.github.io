@@ -46,6 +46,22 @@ export default defineConfig({
       fileIdEnv: "GOOGLE_DRIVE_NGC6888_CRESCENT_HA_OIII_NEBULA_FILE_ID",
       outputPath: "src/assets/images/gallery/ngc6888_crescent_ha_oiii-drive.webp",
     }),
+    googleDriveImage({
+      fileIdEnv: "GOOGLE_DRIVE_MOON_V2_FILE_ID",
+      outputPath: "src/assets/images/gallery/full-moon-v2-drive.webp",
+    }),
+    googleDriveImage({
+      fileIdEnv: "GOOGLE_DRIVE_SUN_V4_FILE_ID",
+      outputPath: "src/assets/images/gallery/our-sun-v4-drive.webp",
+    }),
+    googleDriveImage({
+      fileIdEnv: "GOOGLE_DRIVE_MOON_V1_FILE_ID",
+      outputPath: "src/assets/images/gallery/full-moon-v1-drive.webp",
+    }),
+    googleDriveImage({
+      fileIdEnv: "GOOGLE_DRIVE_SUN_V2_FILE_ID",
+      outputPath: "src/assets/images/gallery/our-sun-v2-drive.webp",
+    }),
   ],
   build: {
     // Ensure assets use relative paths for GitHub Pages subpath compatibility

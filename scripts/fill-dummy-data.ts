@@ -58,7 +58,7 @@ async function main() {
 
     const source =
       img.category === "landscapes" ||
-      img.category === "architecture" ||
+      img.category === "equipment" ||
       img.category === "star-clusters"
         ? landscapeSource
         : portraitSource;

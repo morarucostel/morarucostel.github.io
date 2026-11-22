@@ -10,8 +10,8 @@ test.describe("Category Grid Navigation", () => {
     { id: "cosmic-clouds", title: "Cosmic Clouds" },
     { id: "star-clusters", title: "Star Clusters" },
     { id: "stellar-echoes", title: "Stellar Echoes" },
-    { id: "editorial", title: "Editorial" },
-    { id: "architecture", title: "Architecture" },
+    { id: "solar-system", title: "Solar System" },
+    { id: "equipment", title: "Equipment" },
   ];
 
   for (const category of categories) {

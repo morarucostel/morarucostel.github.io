@@ -5,8 +5,8 @@ const categories = [
   "cosmic-clouds",
   "star-clusters",
   "stellar-echoes",
-  "editorial",
-  "architecture",
+  "solar-system",
+  "equipment",
 ];
 
 test.describe("Gallery Category Pages", () => {
