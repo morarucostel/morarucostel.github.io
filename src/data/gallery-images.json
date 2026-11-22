@@ -624,11 +624,11 @@
     }
   },
   {
-    "id": "editorial-1",
-    "src": "/images/gallery/editorial/editorial-1.jpg",
-    "category": "editorial",
-    "title": "Vogue September",
-    "caption": "A captured moment from the editorial series.",
+    "id": "full-moon-v2",
+    "src": "/images/gallery/full-moon-v2-drive.webp",
+    "category": "solar-system",
+    "title": "The Moon",
+    "caption": "A captured moment from our closest neighbour.",
     "featured": true,
     "printAvailable": false,
     "exif": {
@@ -640,11 +640,11 @@
     }
   },
   {
-    "id": "editorial-2",
-    "src": "/images/gallery/editorial/editorial-2.jpg",
-    "category": "editorial",
-    "title": "Kinfolk Feature",
-    "caption": "A captured moment from the editorial series.",
+    "id": "our-sun-v4",
+    "src": "/images/gallery/our-sun-v4-drive.webp",
+    "category": "solar-system",
+    "title": "The Sun",
+    "caption": "A captured moment from our star.",
     "featured": true,
     "printAvailable": true,
     "exif": {
@@ -656,11 +656,11 @@
     }
   },
   {
-    "id": "editorial-3",
-    "src": "/images/gallery/editorial/editorial-3.jpg",
-    "category": "editorial",
-    "title": "Fashion Week",
-    "caption": "A captured moment from the editorial series.",
+    "id": "full-moon-v1",
+    "src": "/images/gallery/full-moon-v1-drive.webp",
+    "category": "solar-system",
+    "title": "The Moon",
+    "caption": "A captured moment from our closest neighbour.",
     "featured": false,
     "printAvailable": false,
     "exif": {
@@ -672,11 +672,11 @@
     }
   },
   {
-    "id": "editorial-4",
-    "src": "/images/gallery/editorial/editorial-4.jpg",
-    "category": "editorial",
-    "title": "Studio Session",
-    "caption": "A captured moment from the editorial series.",
+    "id": "our-sun-v2",
+    "src": "/images/gallery/our-sun-v2-drive.webp",
+    "category": "solar-system",
+    "title": "The Sun",
+    "caption": "A captured moment from our star.",
     "featured": false,
     "printAvailable": true,
     "exif": {
@@ -690,7 +690,7 @@
   {
     "id": "editorial-5",
     "src": "/images/gallery/editorial/editorial-5.jpg",
-    "category": "editorial",
+    "category": "solar-system",
     "title": "Texture Study",
     "caption": "A captured moment from the editorial series.",
     "featured": false,
@@ -706,7 +706,7 @@
   {
     "id": "editorial-6",
     "src": "/images/gallery/editorial/editorial-6.jpg",
-    "category": "editorial",
+    "category": "solar-system",
     "title": "Monochrome Mood",
     "caption": "A captured moment from the editorial series.",
     "featured": false,
@@ -722,7 +722,7 @@
   {
     "id": "editorial-7",
     "src": "/images/gallery/editorial/editorial-7.jpg",
-    "category": "editorial",
+    "category": "solar-system",
     "title": "Red Dress",
     "caption": "A captured moment from the editorial series.",
     "featured": false,
@@ -738,7 +738,7 @@
   {
     "id": "editorial-8",
     "src": "/images/gallery/editorial/editorial-8.jpg",
-    "category": "editorial",
+    "category": "solar-system",
     "title": "Vintage Vibes",
     "caption": "A captured moment from the editorial series.",
     "featured": false,
@@ -754,7 +754,7 @@
   {
     "id": "editorial-9",
     "src": "/images/gallery/editorial/editorial-9.jpg",
-    "category": "editorial",
+    "category": "solar-system",
     "title": "Modern Muse",
     "caption": "A captured moment from the editorial series.",
     "featured": false,
@@ -770,7 +770,7 @@
   {
     "id": "editorial-10",
     "src": "/images/gallery/editorial/editorial-10.jpg",
-    "category": "editorial",
+    "category": "solar-system",
     "title": "Accessory Detail",
     "caption": "A captured moment from the editorial series.",
     "featured": false,
@@ -786,7 +786,7 @@
   {
     "id": "architecture-1",
     "src": "/images/gallery/architecture/architecture-1.jpg",
-    "category": "architecture",
+    "category": "equipment",
     "title": "Steel Curves",
     "caption": "A captured moment from the architecture series.",
     "featured": true,
@@ -802,7 +802,7 @@
   {
     "id": "architecture-2",
     "src": "/images/gallery/architecture/architecture-2.jpg",
-    "category": "architecture",
+    "category": "equipment",
     "title": "Glass Tower",
     "caption": "A captured moment from the architecture series.",
     "featured": true,
@@ -818,7 +818,7 @@
   {
     "id": "architecture-3",
     "src": "/images/gallery/architecture/architecture-3.jpg",
-    "category": "architecture",
+    "category": "equipment",
     "title": "Concrete Jungle",
     "caption": "A captured moment from the architecture series.",
     "featured": false,
@@ -834,7 +834,7 @@
   {
     "id": "architecture-4",
     "src": "/images/gallery/architecture/architecture-4.jpg",
-    "category": "architecture",
+    "category": "equipment",
     "title": "Spiral Stair",
     "caption": "A captured moment from the architecture series.",
     "featured": false,
@@ -850,7 +850,7 @@
   {
     "id": "architecture-5",
     "src": "/images/gallery/architecture/architecture-5.jpg",
-    "category": "architecture",
+    "category": "equipment",
     "title": "Geometric Shadow",
     "caption": "A captured moment from the architecture series.",
     "featured": false,
@@ -866,7 +866,7 @@
   {
     "id": "architecture-6",
     "src": "/images/gallery/architecture/architecture-6.jpg",
-    "category": "architecture",
+    "category": "equipment",
     "title": "Bridge Lines",
     "caption": "A captured moment from the architecture series.",
     "featured": false,
@@ -882,7 +882,7 @@
   {
     "id": "architecture-7",
     "src": "/images/gallery/architecture/architecture-7.jpg",
-    "category": "architecture",
+    "category": "equipment",
     "title": "Old Facade",
     "caption": "A captured moment from the architecture series.",
     "featured": false,
@@ -898,7 +898,7 @@
   {
     "id": "architecture-8",
     "src": "/images/gallery/architecture/architecture-8.jpg",
-    "category": "architecture",
+    "category": "equipment",
     "title": "Sky Reflection",
     "caption": "A captured moment from the architecture series.",
     "featured": false,
@@ -914,7 +914,7 @@
   {
     "id": "architecture-9",
     "src": "/images/gallery/architecture/architecture-9.jpg",
-    "category": "architecture",
+    "category": "equipment",
     "title": "Minimal Wall",
     "caption": "A captured moment from the architecture series.",
     "featured": false,
@@ -930,7 +930,7 @@
   {
     "id": "architecture-10",
     "src": "/images/gallery/architecture/architecture-10.jpg",
-    "category": "architecture",
+    "category": "equipment",
     "title": "Urban Canyon",
     "caption": "A captured moment from the architecture series.",
     "featured": false,
