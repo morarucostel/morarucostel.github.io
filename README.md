@@ -1,4 +1,4 @@
-# Modern Photography Portfolio Template
+# Night Sky Journey Astrophotography Portfolio Template
 
 <div align="center">
 
