@@ -26,9 +26,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "bun run sitemap && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "sitemap": "bun scripts/generate-sitemap.ts",
     "lint": "eslint .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",

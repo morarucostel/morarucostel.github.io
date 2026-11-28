@@ -107,7 +107,7 @@ test("downloads a Drive image and writes a valid local WebP without enlarging it
   assert.equal(metadata.height, 2);
 });
 
-test("shrinks a detailed image until the saved asset is at most 250,000 bytes", async (t) => {
+test("uses maximum quality and resolution while fitting a detailed image under 1 MB", async (t) => {
   const destination = await imageDestination(t);
   const width = 1920;
   const height = 1080;
@@ -120,7 +120,7 @@ test("shrinks a detailed image until the saved asset is at most 250,000 bytes", 
   const source = await sharp(pixels, { raw: { width, height, channels: 3 } })
     .png()
     .toBuffer();
-  assert(source.length > 250_000);
+  assert(source.length > 1_000_000);
   t.mock.method(
     globalThis,
     "fetch",
@@ -134,26 +134,27 @@ test("shrinks a detailed image until the saved asset is at most 250,000 bytes", 
 
   const saved = await readFile(destination);
   const metadata = await sharp(saved).metadata();
-  assert(saved.length <= 250_000, `Saved image is ${saved.length} bytes`);
+  assert(saved.length <= 1_000_000, `Saved image is ${saved.length} bytes`);
+  assert(saved.length > 900_000, `Saved image only uses ${saved.length} bytes`);
   assert.equal(metadata.format, "webp");
-  assert(metadata.width !== undefined && metadata.width <= 1920);
-  assert(metadata.height !== undefined && metadata.height <= 1920);
+  assert(metadata.width !== undefined && metadata.width <= width);
+  assert(metadata.height !== undefined && metadata.height <= height);
 });
 
 test("checks the exact size ceiling for both exported originals and variants", async (t) => {
   const destination = await imageDestination(t);
   const directory = new URL(".", destination);
   await mkdir(directory, { recursive: true });
-  await writeFile(new URL("m45-pleiades-rgb-drive.hash.webp", directory), Buffer.alloc(250_000));
+  await writeFile(new URL("m45-pleiades-rgb-drive.hash.webp", directory), Buffer.alloc(1_000_000));
   await writeFile(new URL("another-image.hash.webp", directory), Buffer.alloc(300_000));
 
   assert.equal(await validateGoogleDriveImageExports(directory, "m45-pleiades-rgb-drive.webp"), 1);
 
-  await writeFile(new URL("m45-pleiades-rgb-drive.hash_hero.webp", directory), Buffer.alloc(250_001));
+  await writeFile(new URL("m45-pleiades-rgb-drive.hash_hero.webp", directory), Buffer.alloc(1_000_001));
 
   await assert.rejects(
     validateGoogleDriveImageExports(directory, "m45-pleiades-rgb-drive.webp"),
-    /250001 bytes, exceeding the 250000-byte limit/
+    /1000001 bytes, exceeding the 1000000-byte limit/
   );
 });
 

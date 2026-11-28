@@ -1,10 +1,6 @@
 {
-  "printShop": {
-    "url": "https://printshop.com/elenav_photo",
-    "label": "Visit Print Shop"
-  },
   "booking": {
-    "url": "https://calendly.com/elenav_photo",
+    "url": "https://calendly.com/costel_moraru",
     "label": "Book a Session"
   },
   "newsletter": {
@@ -12,7 +8,7 @@
     "label": "Subscribe to Newsletter"
   },
   "clientPortal": {
-    "url": "https://pixieset.com/elenav_photo",
+    "url": "https://pixieset.com/costel_moraru",
     "label": "Client Login"
   }
 }

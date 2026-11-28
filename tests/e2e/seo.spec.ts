@@ -22,7 +22,7 @@ test.describe("SEO & Metadata", () => {
     const json = JSON.parse(content || "{}");
 
     expect(json["@type"]).toBe("Person");
-    expect(json.name).toBe("Elena Vashchenko");
+    expect(json.name).toBe("Costel Moraru");
   });
 
   test("Gallery page has ImageGallery schema", async ({ page }) => {

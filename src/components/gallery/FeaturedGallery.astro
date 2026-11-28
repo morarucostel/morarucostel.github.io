@@ -9,7 +9,6 @@ interface GalleryImage extends LightboxImage {
   title: string;
   caption: string;
   featured: boolean;
-  printAvailable: boolean;
 }
 
 // Filter featured images and limit to a reasonable number (e.g., 8-10)
@@ -90,6 +89,7 @@ const getResolvedImage = (srcPath: string) => {
                 src={resolvedImage}
                 alt={image.title}
                 width={isLarge ? 1200 : 600}
+                quality={image.src.includes("-drive.webp") ? 100 : undefined}
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
 

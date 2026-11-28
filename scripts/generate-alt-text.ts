@@ -6,7 +6,7 @@ console.log("Generating alt text suggestions...");
 // Here we output suggestions based on metadata.
 
 galleryImages.forEach((img) => {
-  const alt = `${img.title} - Fine art ${img.category} photography by Elena Vashchenko. ${img.caption}`;
+  const alt = `${img.title} - Fine ${img.category} astrophotography by Costel Moraru. ${img.caption}`;
   console.log(`ID: ${img.id}`);
   console.log(`Alt: ${alt}`);
   console.log("---");

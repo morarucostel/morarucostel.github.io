@@ -5,7 +5,9 @@ import type { AstroIntegration } from "astro";
 import sharp from "sharp";
 import { loadEnv } from "vite";
 
-const MAX_IMAGE_BYTES = 300_000;
+const MAX_IMAGE_BYTES = 1_000_000;
+const MAX_IMAGE_DIMENSION = 2_560;
+const INITIAL_IMAGE_DIMENSION = 1_024;
 
 export function getGoogleDriveFileId(envName: string, root: URL) {
   if (envName.startsWith("PUBLIC_")) {
@@ -49,22 +51,45 @@ export async function downloadGoogleDriveImage(fileId: string, destination: URL)
   }
 
   const source = Buffer.from(await response.arrayBuffer());
+  const { width = 0, height = 0 } = await sharp(source).metadata();
+  const maxDimension = Math.min(MAX_IMAGE_DIMENSION, Math.max(width, height));
 
-  for (let size = 1920; size >= 320; size = Math.floor(size * 0.9)) {
-    const image = await sharp(source)
+  const encodeAtSize = (size: number) =>
+    sharp(source)
       .rotate()
       .resize({ width: size, height: size, fit: "inside", withoutEnlargement: true })
-      .webp({ quality: 80, effort: 5 })
+      .webp({ quality: 100, effort: 4 })
       .toBuffer();
 
-    if (image.length > MAX_IMAGE_BYTES) continue;
+  let size = Math.min(INITIAL_IMAGE_DIMENSION, maxDimension);
+  let image = await encodeAtSize(size);
+  let bestFit = image.length <= MAX_IMAGE_BYTES ? image : undefined;
+  let low = bestFit ? size + 1 : Math.min(320, maxDimension);
+  let high = bestFit ? maxDimension : size - 1;
 
-    await mkdir(new URL(".", destination), { recursive: true });
-    await writeFile(destination, image);
-    return;
+  for (let attempt = 0; attempt < 6 && low <= high; attempt++) {
+    if (image.length <= MAX_IMAGE_BYTES) {
+      if (!bestFit || image.length > bestFit.length) bestFit = image;
+      low = size + 1;
+    } else {
+      high = size - 1;
+    }
+
+    if (low > high) break;
+    const estimate = Math.floor(size * Math.sqrt(MAX_IMAGE_BYTES / image.length));
+    size = Math.max(low, Math.min(high, estimate));
+    image = await encodeAtSize(size);
   }
 
-  throw new Error(`Google Drive image could not be compressed to ${MAX_IMAGE_BYTES} bytes.`);
+  if (image.length <= MAX_IMAGE_BYTES && (!bestFit || image.length > bestFit.length)) {
+    bestFit = image;
+  }
+  if (!bestFit) {
+    throw new Error(`Google Drive image could not be compressed to ${MAX_IMAGE_BYTES} bytes.`);
+  }
+
+  await mkdir(new URL(".", destination), { recursive: true });
+  await writeFile(destination, bestFit);
 }
 
 export async function validateGoogleDriveImageExports(directory: URL, outputPath: string) {
@@ -104,6 +129,7 @@ export function googleDriveImage({
         if (command !== "build" && command !== "dev") return;
 
         const fileId = getGoogleDriveFileId(fileIdEnv, config.root);
+        logger.info(`Fetching and optimizing ${outputPath} from Google Drive.`);
         await downloadGoogleDriveImage(fileId, new URL(outputPath, config.root));
         logger.info(`Downloaded ${outputPath} from Google Drive.`);
       },
@@ -112,7 +138,7 @@ export function googleDriveImage({
           new URL(`${assetsDirectory}/`, dir),
           outputPath
         );
-        logger.info(`Verified ${count} Drive image exports are at most 250 KB each.`);
+        logger.info(`Verified ${count} Drive image exports are at most 1 MB each.`);
       },
     },
   };

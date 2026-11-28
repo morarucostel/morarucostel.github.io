@@ -1,7 +1,6 @@
 import { z } from "zod";
 import galleryImages from "../src/data/gallery-images.json";
 import socialLinks from "../src/data/social-links.json";
-import printProducts from "../src/data/print-products.json";
 import photographer from "../src/data/photographer.json";
 
 const ImageSchema = z.object({
@@ -11,7 +10,6 @@ const ImageSchema = z.object({
   title: z.string(),
   caption: z.string(),
   featured: z.boolean(),
-  printAvailable: z.boolean(),
   exif: z
     .object({
       camera: z.string(),
@@ -28,24 +26,6 @@ const SocialSchema = z.object({
   url: z.string().url(),
   icon: z.string(),
   label: z.string(),
-});
-
-const PrintProductSchema = z.object({
-  sizes: z.array(
-    z.object({
-      id: z.string(),
-      label: z.string(),
-      multiplier: z.number(),
-      basePrice: z.number(),
-    })
-  ),
-  frames: z.array(
-    z.object({
-      id: z.string(),
-      label: z.string(),
-      price: z.number(),
-    })
-  ),
 });
 
 const PhotographerSchema = z.object({
@@ -79,10 +59,6 @@ const validate = () => {
     console.log("Validating social-links.json...");
     z.array(SocialSchema).parse(socialLinks);
     console.log("✅ Social links valid.");
-
-    console.log("Validating print-products.json...");
-    PrintProductSchema.parse(printProducts);
-    console.log("✅ Print products valid.");
 
     console.log("Validating photographer.json...");
     PhotographerSchema.parse(photographer);

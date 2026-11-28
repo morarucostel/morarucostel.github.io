@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Privacy & Cookies | Night Sky Journey";
+const description = "How this website stores preferences and handles contact inquiries.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="min-h-screen pt-32 pb-20 px-6 md:px-12 bg-background text-secondary">
+    <article class="max-w-3xl mx-auto space-y-10">
+      <header class="space-y-4">
+        <h1 class="font-serif text-4xl md:text-5xl text-primary tracking-tight">
+          Privacy &amp; Cookies
+        </h1>
+        <p class="text-sm text-secondary">Last updated: 27 November 2026</p>
+        <p class="text-lg font-light leading-relaxed">
+          This notice explains the browser storage used by this site and what happens when you send
+          a contact inquiry.
+        </p>
+      </header>
+
+      <section aria-labelledby="browser-storage-heading" class="space-y-4">
+        <h2 id="browser-storage-heading" class="font-serif text-2xl text-primary">
+          Browser storage
+        </h2>
+        <p>
+          The site does not set cookies for these preferences. It uses your browser's
+          <code>localStorage</code> to remember your light or dark theme choice and whether you dismissed
+          the demo banner. These values stay in your browser and are not sent to the website with requests.
+          They remain until you clear this site's data in your browser.
+        </p>
+        <p>The site does not currently use analytics or advertising trackers.</p>
+      </section>
+
+      <section aria-labelledby="contact-data-heading" class="space-y-4">
+        <h2 id="contact-data-heading" class="font-serif text-2xl text-primary">
+          Contact inquiries
+        </h2>
+        <p>
+          <strong class="text-primary">Data controller:</strong> Costel Moraru.
+          <strong class="text-primary">Privacy contact:</strong>
+          <a href="mailto:" class="underline hover:text-primary">
+            moraru_costel at yahoo com
+          </a>.
+        </p>
+        <p>
+          If you submit the contact form, it collects your name, email address, and message. This
+          information is used to respond to your inquiry and, where relevant, take steps you request
+          before a potential agreement. Do not include sensitive personal information.
+        </p>
+        <p>
+          Form submissions are sent securely to Web3Forms, which processes them to deliver the
+          inquiry to the site operator. Web3Forms says submission data may be retained for up to
+          three years, and that its spam-prevention providers may process submitters' IP addresses
+          and email addresses. Its infrastructure may process data in India and other regions; its
+          <a
+            href="https://web3forms.com/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline hover:text-primary"
+          >
+            privacy policy
+          </a>
+          and
+          <a
+            href="https://web3forms.com/dpa"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline hover:text-primary"
+          >
+            data processing agreement
+          </a>
+          describe its processing and transfer safeguards.
+        </p>
+      </section>
+
+      <section aria-labelledby="your-rights-heading" class="space-y-4">
+        <h2 id="your-rights-heading" class="font-serif text-2xl text-primary">Your rights</h2>
+        <p>
+          You can contact the controller above to request access to, correction or deletion of your
+          information, or to exercise other rights available under data-protection law. You may also
+          lodge a complaint with your local data-protection authority.
+        </p>
+      </section>
+    </article>
+  </section>
+</BaseLayout>

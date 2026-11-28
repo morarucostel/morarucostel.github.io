@@ -38,6 +38,15 @@ test.describe("Category Grid Navigation", () => {
     await expect(cards).toHaveCount(6);
   });
 
+  test("should load equipment-5.jpg for the Equipment category", async ({ page }) => {
+    const image = page.getByRole("img", { name: "Equipment Gallery" });
+    await expect(image).toHaveAttribute("src", /equipment-5/);
+    await image.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() => image.evaluate((element) => (element as HTMLImageElement).naturalWidth))
+      .toBeGreaterThan(0);
+  });
+
   test("should show hover effects on desktop", async ({ page, isMobile }) => {
     // Skip hover tests on mobile/touch devices where hover interaction is different
     if (isMobile) return;

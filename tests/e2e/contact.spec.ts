@@ -3,11 +3,12 @@ import AxeBuilder from "@axe-core/playwright";
 
 test.describe("Contact Page", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/contact");
+    await page.goto("/contact?demo=true");
   });
 
   test("Form validation works", async ({ page }) => {
     const submitBtn = page.getByRole("button", { name: "Send Inquiry" });
+    await expect(page.locator("#service")).toHaveCount(0);
 
     // Empty submission
     await submitBtn.click();
@@ -32,7 +33,6 @@ test.describe("Contact Page", () => {
   test("Successful submission shows demo notice", async ({ page }) => {
     await page.fill("#name", "Test User");
     await page.fill("#email", "test@example.com");
-    await page.selectOption("#service", "Portrait Session");
     await page.fill("#message", "This is a test message.");
 
     const submitBtn = page.locator('#contact-form button[type="submit"]');

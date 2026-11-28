@@ -1,25 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getUrl } from '../utils/url';
 
-const title = "Contact | Modern Photography Portfolio";
-const description = "Get in touch for bookings, collaborations, or print inquiries.";
+const title = "Contact | Night Sky Journey Portfolio";
+const description = "Get in touch for collaborations, projects, or other inquiries.";
 
-const services = [
-  "Portrait Session",
-  "Event Coverage",
-  "Commercial/Editorial",
-  "Architecture/Interior",
-  "Fine Art Prints",
-  "Other"
-];
+const web3FormsAccessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY?.trim() ?? "";
 
-const budgets = [
-  "Under $1,000",
-  "$1,000 - $3,000",
-  "$3,000 - $5,000",
-  "$5,000 - $10,000",
-  "$10,000+"
-];
 ---
 
 <BaseLayout title={title} description={description}>
@@ -40,15 +27,15 @@ const budgets = [
         <div class="space-y-6">
           <div>
             <h2 class="text-primary font-medium mb-2">Email</h2>
-            <a href="mailto:hello@elenavashchenko.com" class="text-secondary hover:text-primary transition-colors">
-              hello@elenavashchenko.com
+            <a href="mailto:" class="text-secondary hover:text-primary transition-colors">
+              moraru_costel at yahoo.com
             </a>
           </div>
           <div>
             <h2 class="text-primary font-medium mb-2">Studio</h2>
             <p class="text-secondary">
-              Shibuya City, Tokyo<br>
-              Japan 150-0002
+              Amateur Astrophotography<br>
+              Germany, Bayern
             </p>
           </div>
         </div>
@@ -56,7 +43,24 @@ const budgets = [
 
       <!-- Inquiry Form -->
       <div class="bg-surface/50 p-8 md:p-10 rounded-lg border border-border">
-        <form id="contact-form" class="space-y-8" novalidate>
+        <form
+          id="contact-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          class="space-y-8"
+          novalidate
+        >
+          <input type="hidden" name="access_key" value={web3FormsAccessKey} />
+          <input type="hidden" name="subject" value="New message from Night Sky Journey" />
+          <input type="hidden" name="from_name" value="Night Sky Journey Contact Form" />
+          <input
+            type="checkbox"
+            name="botcheck"
+            class="hidden"
+            style="display: none"
+            tabindex="-1"
+            aria-hidden="true"
+          />
           
           <!-- Name & Email -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -88,46 +92,6 @@ const budgets = [
             </div>
           </div>
 
-          <!-- Service Selection -->
-          <div class="space-y-2">
-            <label for="service" class="block text-sm font-medium text-primary">Service Type</label>
-            <div class="relative">
-              <select 
-                id="service" 
-                name="service" 
-                class="w-full bg-background border border-border rounded-md px-4 py-3 text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none transition-colors"
-              >
-                <option value="" disabled selected>Select a service...</option>
-                {services.map(service => (
-                  <option value={service}>{service}</option>
-                ))}
-              </select>
-              <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-secondary">
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Budget Selection -->
-          <div class="space-y-2">
-            <label for="budget" class="block text-sm font-medium text-primary">Budget Range (USD)</label>
-            <div class="relative">
-              <select 
-                id="budget" 
-                name="budget" 
-                class="w-full bg-background border border-border rounded-md px-4 py-3 text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none transition-colors"
-              >
-                <option value="" disabled selected>Select a range...</option>
-                {budgets.map(budget => (
-                  <option value={budget}>{budget}</option>
-                ))}
-              </select>
-              <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-secondary">
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
-              </div>
-            </div>
-          </div>
-
           <!-- Project Details -->
           <div class="space-y-2">
             <label for="message" class="block text-sm font-medium text-primary">Project Details</label>
@@ -153,6 +117,12 @@ const budgets = [
 
           <!-- Status Message Area -->
           <div id="form-status" class="hidden text-center text-sm pt-4" role="alert"></div>
+          <p class="text-xs text-secondary text-center">
+            Your details are used to respond to your inquiry. See our
+            <a href={getUrl("/privacy")} class="underline hover:text-primary transition-colors">
+              Privacy &amp; Cookies notice
+            </a>.
+          </p>
 
         </form>
       </div>
@@ -162,6 +132,7 @@ const budgets = [
 
 <script>
   import { handleDemoFormSubmit } from '../utils/demo-form-handler';
+  import { sendContactMessage } from '../utils/contact-form';
 
   const form = document.getElementById('contact-form') as HTMLFormElement;
   
@@ -203,35 +174,39 @@ const budgets = [
         return;
       }
 
-      // Valid form - attempt demo submission
+      e.preventDefault();
+
       const handled = await handleDemoFormSubmit(
         e,
-        (loading) => {
-          const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-          if (loading) {
-            btn.disabled = true;
-            if (!btn.dataset.originalText) btn.dataset.originalText = btn.textContent || '';
-            btn.textContent = 'Sending...';
-          } else {
-            btn.disabled = false;
-            btn.textContent = btn.dataset.originalText || 'Send Inquiry';
-          }
-        },
-        (message) => {
-          const status = document.getElementById('form-status');
-          if (status) {
-            status.textContent = message;
-            status.classList.remove('hidden', 'text-red-500');
-            status.classList.add('text-green-500');
-          }
-        },
+        setLoading,
+        (message) => showStatus(message, true),
         1500 // Increased delay for testing visibility
       );
 
-      if (!handled) {
-        // Fallback for non-demo mode (real backend would go here)
-        e.preventDefault();
-        alert('Form submission is not configured in this template. Enable demo mode to simulate.');
+      if (handled) return;
+
+      const formData = new FormData(form);
+      if (!String(formData.get('access_key') ?? '').trim()) {
+        showStatus(
+          'The contact form is not configured yet. Please email moraru_costel at yahoo com directly.',
+          false
+        );
+        return;
+      }
+
+      setLoading(true);
+      try {
+        await sendContactMessage(formData);
+        showStatus('Thanks! Your message has been sent.', true);
+        form.reset();
+      } catch (error) {
+        console.error('Contact form submission failed:', error);
+        showStatus(
+          'Your message could not be sent. Please try again or email moraru_costel at yahoo com directly.',
+          false
+        );
+      } finally {
+        setLoading(false);
       }
     });
 
@@ -251,8 +226,30 @@ const budgets = [
       if (status && !status.classList.contains('hidden')) {
         status.classList.add('hidden');
         status.textContent = '';
+        status.classList.remove('text-red-500', 'text-green-500');
       }
     });
+  }
+
+  function setLoading(loading: boolean) {
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (loading) {
+      btn.disabled = true;
+      if (!btn.dataset.originalText) btn.dataset.originalText = btn.textContent || '';
+      btn.textContent = 'Sending...';
+    } else {
+      btn.disabled = false;
+      btn.textContent = btn.dataset.originalText || 'Send Inquiry';
+    }
+  }
+
+  function showStatus(message: string, success: boolean) {
+    const status = document.getElementById('form-status');
+    if (!status) return;
+
+    status.textContent = message;
+    status.classList.remove('hidden', 'text-red-500', 'text-green-500');
+    status.classList.add(success ? 'text-green-500' : 'text-red-500');
   }
 
   function showError(field: HTMLElement, errorEl: HTMLElement | null, message: string) {

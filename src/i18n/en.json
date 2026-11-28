@@ -3,11 +3,10 @@
     "home": "Home",
     "gallery": "Gallery",
     "about": "About",
-    "contact": "Contact",
-    "shop": "Print Shop"
+    "contact": "Contact"
   },
   "common": {
-    "hireMe": "Hire Me",
+    "hireMe": "Contact Me",
     "viewProject": "View Project",
     "copyright": "All rights reserved"
   },

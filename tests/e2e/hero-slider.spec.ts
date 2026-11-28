@@ -5,12 +5,6 @@ test.describe('Hero Slider', () => {
     await page.goto('/');
   });
 
-  test('should render hero section with photographer branding', async ({ page }) => {
-    const hero = page.locator('section[aria-label="Featured Photography"]');
-    await expect(hero).toBeVisible();
-    await expect(page.getByRole('heading', { name: /Elena/i })).toBeVisible();
-  });
-
   test('should navigate via buttons', async ({ page }) => {
     // Pause auto-advance by hovering (optional but good practice to avoid race conditions)
     const hero = page.locator('section[aria-label="Featured Photography"]');

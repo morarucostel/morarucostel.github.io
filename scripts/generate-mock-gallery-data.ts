@@ -30,7 +30,6 @@ for (const category of CATEGORIES) {
       title: title,
       caption: `A captured moment from the ${category} series.`,
       featured: i <= 2, // First 2 are featured
-      printAvailable: i % 2 === 0,
       exif: {
         camera: "Sony A7RV",
         lens: "35mm f/1.4 GM",

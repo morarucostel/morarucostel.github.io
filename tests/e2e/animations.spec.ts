@@ -11,6 +11,12 @@ test.describe("Animations", () => {
     await expect(item).toBeVisible();
   });
 
+  test("Gallery images are not hidden while their sources load", async ({ page }) => {
+    await page.goto("/gallery/cosmic-clouds");
+
+    await expect(page.locator(".main-image").first()).not.toHaveClass(/opacity-0/);
+  });
+
   test("Reduced motion disables stagger delay", async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/gallery/cosmic-clouds");

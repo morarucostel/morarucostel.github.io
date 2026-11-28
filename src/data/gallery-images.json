@@ -6,7 +6,6 @@
     "title": "Andromeda",
     "caption": "Our closest neighboring galaxy captured with Hα and OIII.",
     "featured": true,
-    "printAvailable": true,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -22,7 +21,6 @@
     "title": "Andromeda",
     "caption": "Our closest neighboring galaxy captured in RGB.",
     "featured": false,
-    "printAvailable": true,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -38,7 +36,6 @@
     "title": "Cygnus region",
     "caption": "A captured moment from the Cygnus region series.",
     "featured": true,
-    "printAvailable": true,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -54,7 +51,6 @@
     "title": "Cygnus region Hubble pallete",
     "caption": "A captured moment from the Cygnus region series.",
     "featured": false,
-    "printAvailable": true,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -70,7 +66,6 @@
     "title": "Pelican Nebula",
     "caption": "A beautiful Ha, OIII and SII emission in Cygnus constellation.",
     "featured": true,
-    "printAvailable": true,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -86,7 +81,6 @@
     "title": "Monkey Head Nebula",
     "caption": "An emission nebula located in the constellation Orion.",
     "featured": false,
-    "printAvailable": false,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -102,7 +96,6 @@
     "title": "Cygnus region",
     "caption": "A partial region from the Cygnus region series.",
     "featured": true,
-    "printAvailable": true,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -118,7 +111,6 @@
     "title": "Heart Nebula",
     "caption": "A star forming region with glowing hydrogen gas.",
     "featured": false,
-    "printAvailable": false,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -134,7 +126,6 @@
     "title": "California Nebula",
     "caption": "An Ha emission nebula located in the constellation Perseus.",
     "featured": false,
-    "printAvailable": false,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -150,7 +141,6 @@
     "title": "The Pleiades",
     "caption": "A prominent open star cluster known as Messier 45.",
     "featured": true,
-    "printAvailable": true,
     "exif": {
       "camera": "RisingCam IMX571 KPA",
       "lens": "William Optics GT71",
@@ -166,7 +156,6 @@
     "title": "Crescent Nebula",
     "caption": "An emission nebula 5000 light-years away from Earth.",
     "featured": true,
-    "printAvailable": true,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -182,7 +171,21 @@
     "title": "The Moon",
     "caption": "A captured moment from our closest neighbour.",
     "featured": true,
-    "printAvailable": false,
+    "exif": {
+      "camera": "Sony A7RV",
+      "lens": "35mm f/1.4 GM",
+      "iso": 110,
+      "aperture": "f/1.4",
+      "shutter": "1/250s"
+    }
+  },
+  {
+    "id": "moon-old-dslr",
+    "src": "/images/gallery/solar-system/moon-old-dslr.jpg",
+    "category": "solar-system",
+    "title": "The Moon",
+    "caption": "A captured moment from our closest neighbour.",
+    "featured": true,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -198,7 +201,6 @@
     "title": "The Sun",
     "caption": "A captured moment from our star.",
     "featured": true,
-    "printAvailable": true,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -214,7 +216,6 @@
     "title": "The Moon",
     "caption": "A captured moment from our closest neighbour.",
     "featured": false,
-    "printAvailable": false,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -230,7 +231,6 @@
     "title": "The Sun",
     "caption": "A captured moment from our star.",
     "featured": false,
-    "printAvailable": true,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -240,13 +240,12 @@
     }
   },
   {
-    "id": "architecture-1",
-    "src": "/images/gallery/architecture/architecture-1.jpg",
+    "id": "equipment-1",
+    "src": "/images/gallery/equipment/equipment-1.jpg",
     "category": "equipment",
-    "title": "Steel Curves",
-    "caption": "A captured moment from the architecture series.",
-    "featured": true,
-    "printAvailable": false,
+    "title": "Initial telescope",
+    "caption": "It all started with this one.",
+    "featured": false,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -256,13 +255,12 @@
     }
   },
   {
-    "id": "architecture-2",
-    "src": "/images/gallery/architecture/architecture-2.jpg",
+    "id": "equipment-2",
+    "src": "/images/gallery/equipment/equipment-2.jpg",
     "category": "equipment",
-    "title": "Glass Tower",
-    "caption": "A captured moment from the architecture series.",
-    "featured": true,
-    "printAvailable": true,
+    "title": "My observation Newtonian",
+    "caption": "My first tracking mount with 1m Newtonian.",
+    "featured": false,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -272,13 +270,12 @@
     }
   },
   {
-    "id": "architecture-3",
-    "src": "/images/gallery/architecture/architecture-3.jpg",
+    "id": "equipment-3",
+    "src": "/images/gallery/equipment/equipment-3.png",
     "category": "equipment",
-    "title": "Concrete Jungle",
-    "caption": "A captured moment from the architecture series.",
+    "title": "My APO train",
+    "caption": "The astrophotography setup.",
     "featured": false,
-    "printAvailable": false,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -288,13 +285,12 @@
     }
   },
   {
-    "id": "architecture-4",
-    "src": "/images/gallery/architecture/architecture-4.jpg",
+    "id": "equipment-4",
+    "src": "/images/gallery/equipment/equipment-4.jpg",
     "category": "equipment",
-    "title": "Spiral Stair",
-    "caption": "A captured moment from the architecture series.",
+    "title": "Night harsh",
+    "caption": "A captured moment from the cold night harsh series.",
     "featured": false,
-    "printAvailable": true,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
@@ -304,97 +300,16 @@
     }
   },
   {
-    "id": "architecture-5",
-    "src": "/images/gallery/architecture/architecture-5.jpg",
+    "id": "equipment-5",
+    "src": "/images/gallery/equipment/equipment-5.jpg",
     "category": "equipment",
-    "title": "Geometric Shadow",
-    "caption": "A captured moment from the architecture series.",
-    "featured": false,
-    "printAvailable": false,
+    "title": "Complete setup",
+    "caption": "A captured moment from one of the nights.",
+    "featured": true,
     "exif": {
       "camera": "Sony A7RV",
       "lens": "35mm f/1.4 GM",
       "iso": 150,
-      "aperture": "f/1.4",
-      "shutter": "1/250s"
-    }
-  },
-  {
-    "id": "architecture-6",
-    "src": "/images/gallery/architecture/architecture-6.jpg",
-    "category": "equipment",
-    "title": "Bridge Lines",
-    "caption": "A captured moment from the architecture series.",
-    "featured": false,
-    "printAvailable": true,
-    "exif": {
-      "camera": "Sony A7RV",
-      "lens": "35mm f/1.4 GM",
-      "iso": 160,
-      "aperture": "f/1.4",
-      "shutter": "1/250s"
-    }
-  },
-  {
-    "id": "architecture-7",
-    "src": "/images/gallery/architecture/architecture-7.jpg",
-    "category": "equipment",
-    "title": "Old Facade",
-    "caption": "A captured moment from the architecture series.",
-    "featured": false,
-    "printAvailable": false,
-    "exif": {
-      "camera": "Sony A7RV",
-      "lens": "35mm f/1.4 GM",
-      "iso": 170,
-      "aperture": "f/1.4",
-      "shutter": "1/250s"
-    }
-  },
-  {
-    "id": "architecture-8",
-    "src": "/images/gallery/architecture/architecture-8.jpg",
-    "category": "equipment",
-    "title": "Sky Reflection",
-    "caption": "A captured moment from the architecture series.",
-    "featured": false,
-    "printAvailable": true,
-    "exif": {
-      "camera": "Sony A7RV",
-      "lens": "35mm f/1.4 GM",
-      "iso": 180,
-      "aperture": "f/1.4",
-      "shutter": "1/250s"
-    }
-  },
-  {
-    "id": "architecture-9",
-    "src": "/images/gallery/architecture/architecture-9.jpg",
-    "category": "equipment",
-    "title": "Minimal Wall",
-    "caption": "A captured moment from the architecture series.",
-    "featured": false,
-    "printAvailable": false,
-    "exif": {
-      "camera": "Sony A7RV",
-      "lens": "35mm f/1.4 GM",
-      "iso": 190,
-      "aperture": "f/1.4",
-      "shutter": "1/250s"
-    }
-  },
-  {
-    "id": "architecture-10",
-    "src": "/images/gallery/architecture/architecture-10.jpg",
-    "category": "equipment",
-    "title": "Urban Canyon",
-    "caption": "A captured moment from the architecture series.",
-    "featured": false,
-    "printAvailable": true,
-    "exif": {
-      "camera": "Sony A7RV",
-      "lens": "35mm f/1.4 GM",
-      "iso": 200,
       "aperture": "f/1.4",
       "shutter": "1/250s"
     }

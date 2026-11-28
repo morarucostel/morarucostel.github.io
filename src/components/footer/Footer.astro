@@ -16,6 +16,11 @@ const year = new Date().getFullYear();
       <div class="text-sm font-light space-y-1">
         <p>&copy; {year} Costel Moraru.</p>
         <p>All rights reserved.</p>
+        <p>
+          <a href={getUrl("/privacy")} class="hover:text-primary transition-colors">
+            Privacy &amp; Cookies
+          </a>
+        </p>
       </div>
       {branding.showAttribution && (
         <p class="text-xs text-secondary pt-4">

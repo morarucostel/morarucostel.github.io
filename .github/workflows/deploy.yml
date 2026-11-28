@@ -51,6 +51,7 @@ jobs:
       - name: Build site and process Google Drive images
         # Astro hooks download/compress Drive images and validate exports before upload.
         env:
+          PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.PUBLIC_WEB3FORMS_ACCESS_KEY }}
           GOOGLE_DRIVE_M45_PLEIADES_RGB_FILE_ID: ${{ secrets.GOOGLE_DRIVE_M45_PLEIADES_RGB_FILE_ID }}
           GOOGLE_DRIVE_CYGNUS_9PANEL_HA_OIII_RED_FILE_ID: ${{ secrets.GOOGLE_DRIVE_CYGNUS_9PANEL_HA_OIII_RED_FILE_ID }}
           GOOGLE_DRIVE_CYGNUS_9PANEL_HA_OIII_YELLOW_BLUE_FILE_ID: ${{ secrets.GOOGLE_DRIVE_CYGNUS_9PANEL_HA_OIII_YELLOW_BLUE_FILE_ID }}

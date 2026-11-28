@@ -42,6 +42,7 @@ const validSlides = slides;
         width={1920}
         height={1080}
         widths={[640, 1024, 1920]}
+        quality={slide.image.src.includes("-drive.webp") ? 100 : undefined}
         sizes="100vw"
         class={`h-full w-full object-cover animate-ken-burns relative z-0 ${index === 0 ? '' : 'transition-opacity duration-700 opacity-0'}`}
         loading={index === 0 ? "eager" : "lazy"}

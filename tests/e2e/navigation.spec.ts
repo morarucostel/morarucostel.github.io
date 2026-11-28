@@ -12,7 +12,9 @@ test.describe('Navigation', () => {
     await expect(nav).toBeVisible();
     await expect(nav.locator('a', { hasText: 'Work' })).toBeVisible();
     await expect(nav.locator('a', { hasText: 'About' })).toBeVisible();
-    await expect(nav.locator('a', { hasText: 'Shop' })).toBeVisible();
+    const galaxiesLink = nav.locator('a', { hasText: 'Galaxies' });
+    await expect(galaxiesLink).toBeVisible();
+    await expect(galaxiesLink).toHaveAttribute('href', /gallery\/galaxies/);
     await expect(nav.locator('a', { hasText: 'Contact' })).toBeVisible();
   });
 
@@ -30,6 +32,9 @@ test.describe('Navigation', () => {
     
     // Check links in mobile menu
     await expect(overlay.locator('a', { hasText: 'Work' })).toBeVisible();
+    const galaxiesLink = overlay.locator('a', { hasText: 'Galaxies' });
+    await expect(galaxiesLink).toBeVisible();
+    await expect(galaxiesLink).toHaveAttribute('href', /gallery\/galaxies/);
     
     // Close menu by clicking a link (simulated)
     // Or toggle again? The button might be covered?
@@ -64,8 +69,8 @@ test.describe('Navigation', () => {
     await expect(header).toHaveAttribute('style', /translateY\(0(px)?\)/);
   });
 
-  test('Hire Me CTA is persistent', async ({ page }) => {
-    const cta = page.locator('text=Hire Me');
+  test('Contact Me CTA is persistent', async ({ page }) => {
+    const cta = page.locator('text=Contact Me');
     await expect(cta).toBeVisible();
     
     // Check if fixed

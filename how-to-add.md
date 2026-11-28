@@ -7,8 +7,8 @@ The existing [Google Drive integration](./scripts/google-drive-image.ts) downloa
 each configured image during builds and development-server startup. It keeps the
 Drive original in memory and saves only a compressed WebP:
 
-- Maximum saved size: **250 KB (250,000 bytes)**.
-- Maximum saved longest edge: **1,920 pixels**, reduced further when needed.
+- Maximum saved size: **1 MB (1,000,000 bytes)**.
+- Maximum saved longest edge: **2,560 pixels**, adjusted to use the available size budget.
 - The gallery, hero, and lightbox use local exported assets, not Drive URLs.
 - Drive file IDs come from private build-time environment variables, not source code.
 - Every exported version of the image is checked against the same size limit.
@@ -179,7 +179,6 @@ Append an object to the array in
   "title": "Evening Portrait",
   "caption": "A portrait captured in the evening light.",
   "featured": false,
-  "printAvailable": false,
   "exif": {
     "camera": "Your camera model",
     "lens": "Your lens model",
@@ -194,7 +193,6 @@ Append an object to the array in
 - Keep `iso` numeric and the other EXIF values as strings.
 - The filename in `src` must exactly match `outputPath` from step 3.
 - Use the local `/images/gallery/...` value for `src`, **not** the Drive link.
-- Leave `printAvailable` as `false` unless you separately configure a shop product.
 - Add a comma after the preceding object. JSON does not allow comments or a
   trailing comma after the final object.
 
@@ -288,7 +286,7 @@ bun run build
 
 This downloads all configured Drive images and creates the new local WebP.
 Every configured image needs its environment variable set before the build starts.
-The build also checks every exported version against the 250,000-byte limit.
+The build also checks every exported version against the 1,000,000-byte limit.
 Do not deploy if the build reports a download, missing-export, or size-limit error.
 
 **Do not run `images:process` for this workflow.** The older

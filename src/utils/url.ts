@@ -9,12 +9,12 @@
  * Joins the base URL with a given path
  * Handles edge cases like double slashes and missing slashes
  *
- * @param path - The path to join with the base URL (e.g., "/shop", "/about")
+ * @param path - The path to join with the base URL (e.g., "/gallery/galaxies", "/about")
  * @returns The full path including the base URL
  *
  * @example
  * // When BASE_URL is "/modernphotography-portfolio-template/"
- * getUrl("/shop") // returns "/modernphotography-portfolio-template/shop"
+ * getUrl("/gallery/galaxies") // returns "/modernphotography-portfolio-template/gallery/galaxies"
  * getUrl("/") // returns "/modernphotography-portfolio-template/"
  */
 export function getUrl(path: string): string {

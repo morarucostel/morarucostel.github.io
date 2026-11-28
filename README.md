@@ -27,8 +27,6 @@
 - **Image Optimized** - Sharp integration for automatic image optimization and LQIP placeholders
 - **Gallery System** - Masonry grid layouts with category filtering (Portraits, Landscapes, Architecture, etc.)
 - **Lightbox Viewer** - Full-screen image viewing with keyboard navigation
-- **Print Shop** - Integrated shop functionality for selling prints
-- **Shopping Cart** - Persistent cart with checkout flow
 - **Dark/Light Mode** - Theme toggle with system preference detection
 - **Fully Responsive** - Mobile-first design that looks great on all devices
 - **SEO Optimized** - Built-in sitemap, meta tags, and Open Graph images
@@ -77,12 +75,16 @@ All commands are run from the root of the project:
 | ------------------------ | ------------------------------------------ |
 | `bun install`            | Install dependencies                       |
 | `bun dev`                | Start local dev server at `localhost:4321` |
-| `bun build`              | Build production site to `./dist/`         |
+| `bun run build`          | Generate sitemap and build production site |
 | `bun preview`            | Preview production build locally           |
+| `bun run sitemap`        | Generate `public/sitemap.xml`              |
 | `bun run lint`           | Run ESLint for code quality                |
 | `bun run format`         | Run Prettier for code formatting           |
 | `bun run typecheck`      | Run TypeScript type checking               |
 | `bun run images:process` | Process and optimize gallery images        |
+
+The sitemap uses `SITE_URL` (or `SITE`) when set; otherwise, it defaults to
+`https://www.costel.me`, matching `public/robots.txt`.
 
 ## Project Structure
 
@@ -91,9 +93,8 @@ modernphotography-portfolio-template/
 ├── public/                    # Static assets (favicon, robots.txt, og-image)
 ├── src/
 │   ├── assets/               # Images and fonts
-│   │   └── images/           # Gallery, shop, and about images
+│   │   └── images/           # Gallery and about images
 │   │       ├── gallery/      # Categorized gallery images
-│   │       └── shop/         # Print product images
 │   ├── components/
 │   │   ├── demo/             # Demo mode components (banner, modal)
 │   │   ├── footer/           # Site footer
@@ -101,23 +102,19 @@ modernphotography-portfolio-template/
 │   │   ├── hero/             # Hero slider component
 │   │   ├── lightbox/         # Lightbox viewer
 │   │   ├── navigation/       # Header, mobile menu, CTA
-│   │   ├── shop/             # Print cards, cart modal
 │   │   └── ThemeToggle.astro # Dark/light mode toggle
 │   ├── data/                 # JSON content files
 │   │   ├── branding.json     # Template branding info
 │   │   ├── gallery-images.json   # Gallery image data
 │   │   ├── photographer.json # Photographer profile
-│   │   ├── print-products.json   # Shop products
-│   │   ├── social-links.json # Social media links
-│   │   └── testimonials.json # Client testimonials
+│   │   └── social-links.json # Social media links
 │   ├── layouts/              # Page layouts
 │   │   └── BaseLayout.astro  # Main layout with SEO
 │   ├── pages/                # Astro pages
 │   │   ├── index.astro       # Home page
 │   │   ├── about.astro       # About page
 │   │   ├── contact.astro     # Contact page
-│   │   ├── shop.astro        # Print shop
-│   │   ├── checkout.astro    # Checkout page
+│   │   ├── privacy.astro     # Privacy and browser-storage notice
 │   │   └── gallery/          # Gallery category pages
 │   ├── store/                # Nanostores state management
 │   └── styles/               # Global CSS
@@ -135,9 +132,7 @@ Edit the JSON files in `src/data/` to update your portfolio content:
 
 - **`photographer.json`** - Your name, bio, contact info, services
 - **`gallery-images.json`** - Gallery images with categories and metadata
-- **`print-products.json`** - Products available for purchase
 - **`social-links.json`** - Social media profile links
-- **`testimonials.json`** - Client reviews and testimonials
 - **`branding.json`** - Template branding and attribution
 
 ### Images
@@ -166,15 +161,15 @@ The Drive file must have **General access: Anyone with the link** with viewer
 access. No Google credentials are required. See [how-to-add.md](./how-to-add.md)
 for the per-image local and GitHub setup.
 
-The build keeps the Drive original in memory, then auto-orients and compresses it
-to `src/assets/images/gallery/m45-pleiades-rgb-drive.webp` (ignored by Git). The saved
-image is at most **250 KB (250,000 bytes)**, with a maximum longest edge of
-1,920 pixels; the build progressively reduces dimensions when needed to meet
-the size limit.
+The build keeps the Drive original in memory, then auto-orients and converts it
+to `src/assets/images/gallery/m45-pleiades-rgb-drive.webp` (ignored by Git) at
+maximum WebP quality. It preserves the source resolution when possible and
+uses up to a 2,560-pixel longest edge. It adjusts dimensions to use as much of
+the **1 MB (1,000,000 bytes)** limit as the image allows.
 
 Astro exports this compressed image and optimized variants into `dist/_astro/`
 for the gallery, hero, and lightbox. Every exported version is checked against
-the same 250,000-byte limit. The high-resolution Drive original is never saved
+the same 1,000,000-byte limit. The high-resolution Drive original is never saved
 or exported, and browsers load local assets rather than Google Drive.
 
 Run `bun run build` (or `npm run build`) to fetch the latest image and rebuild.
@@ -182,6 +177,20 @@ A failed download, invalid image, or oversized export stops the build rather
 than using a stale copy. The compressed exported image is publicly accessible
 wherever you deploy the site, even though the source Drive file is only
 discoverable through its shared link.
+
+### Contact form
+
+The contact form uses [Web3Forms](https://web3forms.com/) to email submissions
+without a server. Its free plan currently lists 250 submissions per month; check
+Web3Forms for current limits.
+Create a form, verify the recipient email, then copy its access key into
+`.env.local` as `PUBLIC_WEB3FORMS_ACCESS_KEY`. For GitHub Pages, add a repository
+secret with that name; for Vercel, add it as a build environment variable.
+The access key is intentionally included in the public site, as required by
+Web3Forms; restrict the form to your domain and enable its spam protection.
+The site stores theme and dismissed-demo-banner preferences in `localStorage`,
+not cookies. The [Privacy & Cookies notice](./src/pages/privacy.astro) explains
+those preferences and what contact-form data Web3Forms processes.
 
 ### Styling
 
@@ -205,7 +214,7 @@ This project supports both **GitHub Pages** and **Vercel** deployment:
 The [deployment workflow](.github/workflows/deploy.yml) sets up Node.js 22 and Bun,
 then runs the production build. Astro's build hooks download and compress all
 configured Google Drive images and verify that each exported version is at most
-250,000 bytes. A download, compression, or validation failure stops deployment.
+1,000,000 bytes. A download, compression, or validation failure stops deployment.
 Configure the required Drive repository secrets before the first build.
 No Google credentials or separate `images:process` step are needed.
 

@@ -19,17 +19,10 @@ test.describe("Demo Mode", () => {
     await expect(page.locator("#demo-feature-name")).toContainText("Instagram Profile");
   });
 
-  test("should show modal when clicking checkout button", async ({ page }) => {
-    await page.getByRole("button", { name: "Checkout" }).click();
-    await expect(page.locator("#demo-modal")).toBeVisible();
-    await expect(page.locator("#demo-feature-name")).toContainText("Checkout");
-  });
-
   test("should show success message when submitting newsletter form", async ({ page }) => {
     await page.fill('input[type="email"]', "test@example.com");
     await page.click('button:has-text("Subscribe")');
 
-    // Wait for success message (simulated delay)
     await expect(page.locator("#newsletter-success")).toBeVisible({ timeout: 2000 });
     await expect(page.locator("#newsletter-success")).toContainText(
       "Success! (Demo Mode: No data was actually sent)"
@@ -42,32 +35,23 @@ test.describe("Demo Mode", () => {
   });
 
   test("should persist banner dismissal", async ({ page }) => {
-    // Wait for banner to slide in
     await expect(page.locator("#demo-banner")).toBeVisible();
     await expect(page.locator("#demo-banner")).not.toHaveClass(/.*-translate-y-full.*/);
-
-    // Slight delay for animation to settle
     await page.waitForTimeout(500);
 
-    // Use evaluate to click because Playwright complains about viewport visibility
-    // for this fixed element, likely due to layout specifics or animation timing
     await page.evaluate(() => {
       const btn = document.getElementById("demo-banner-dismiss");
       if (btn) btn.click();
     });
 
-    // Wait for transition class
     await expect(page.locator("#demo-banner")).toHaveClass(/.*-translate-y-full.*/);
-
-    // Reload and check if it stays hidden (class should be present on load)
     await page.reload();
-    // Wait for JS to execute
     await page.waitForTimeout(500);
     await expect(page.locator("#demo-banner")).toHaveClass(/.*-translate-y-full.*/);
   });
 
   test("should trap focus within modal", async ({ page }) => {
-    await page.getByRole("button", { name: "Checkout" }).click();
+    await page.getByRole("link", { name: "Instagram" }).first().click();
     await expect(page.locator("#demo-modal")).toBeVisible();
 
     // Focus should be on close button initially
@@ -79,7 +63,7 @@ test.describe("Demo Mode", () => {
   });
 
   test("should close modal with Escape key", async ({ page }) => {
-    await page.getByRole("button", { name: "Checkout" }).click();
+    await page.getByRole("link", { name: "Instagram" }).first().click();
     await expect(page.locator("#demo-modal")).toBeVisible();
     await page.keyboard.press("Escape");
     // Check backdrop visibility via aria-hidden as Playwright might consider opacity-0 visible
